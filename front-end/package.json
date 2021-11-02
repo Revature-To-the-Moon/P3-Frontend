@@ -21,6 +21,7 @@
     "@angular/router": "~12.2.0",
     "@auth0/auth0-angular": "^1.8.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "auth0": "^2.37.0",
     "bootstrap": "^4.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
