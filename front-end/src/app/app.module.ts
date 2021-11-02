@@ -8,6 +8,7 @@ import { RecentActivityComponent } from './profile/recent-activity/recent-activi
 import { ListOfFollowersComponent } from './profile/list-of-followers/list-of-followers.component';
 import { FollowedPostsComponent } from './profile/followed-posts/followed-posts.component';
 import { FollowButtonComponent } from './profile/follow-button/follow-button.component';
+import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FollowButtonComponent } from './profile/follow-button/follow-button.com
     RecentActivityComponent,
     ListOfFollowersComponent,
     FollowedPostsComponent,
-    FollowButtonComponent
+    FollowButtonComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
