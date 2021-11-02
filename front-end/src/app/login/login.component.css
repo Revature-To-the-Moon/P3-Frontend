@@ -1,6 +1,5 @@
 .container
 {
-<<<<<<< HEAD
   text-align: center;
   margin: 0;
   position: absolute;
@@ -14,13 +13,4 @@
   display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 4rem;
-=======
-text-align: center;
-margin: 0;
-position: absolute;
-top: 50%;
-left: 50%;
--ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
->>>>>>> 437214345c28b7fc657fa4c4d8c0a0f52e41f0e0
 }
