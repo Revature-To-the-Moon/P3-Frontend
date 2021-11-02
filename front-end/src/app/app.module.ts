@@ -8,11 +8,13 @@ import { LoginComponent } from './login/login.component';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { RootComponent } from './root/root.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,
