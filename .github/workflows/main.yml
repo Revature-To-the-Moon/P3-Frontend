@@ -28,8 +28,8 @@ jobs:
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
       
-      - name: ng test
-        run: ng test
+      - name: npm test
+        run: npm test
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
         
