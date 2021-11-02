@@ -19,4 +19,8 @@ export class LoginComponent implements OnInit {
   Registerfunc(){
     alert('right here bruv')
   }
+
+  Logoutfunc(){
+    alert('I will miss u :(')
+  }
 }
