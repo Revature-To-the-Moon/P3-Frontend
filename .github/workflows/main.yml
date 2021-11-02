@@ -31,16 +31,20 @@ jobs:
           
       - run: echo "Your repository is ${{ github.repository }}."
       - run: ls ${{ github.workspace }}
+        shell: bash
       
       - name: npm ci
         run: npm ci
+        shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
       
       - run: echo "Your repository is ${{ github.repository }}."
       - run: ls ${{ github.workspace }}
+        shell: bash
       
       - name: npm test
         run: npm test
+        shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
         
       - name: npm build
