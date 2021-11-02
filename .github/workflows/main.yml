@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  WORKING_DIRECTORY: ./front-end
+  WORKING_DIRECTORY: front-end
 
 jobs:
   build:
