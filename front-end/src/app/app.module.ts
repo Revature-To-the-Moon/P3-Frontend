@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,11 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AuthModule.forRoot({
+      domain: 'dev-0w--5cqa.us.auth0.com',
+      clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
