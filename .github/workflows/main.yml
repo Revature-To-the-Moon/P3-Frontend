@@ -13,39 +13,20 @@ env:
 
 jobs:
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - run: |
-          cd front-end
-          ls
-        shell: bash
-      
-      - run: echo "Your repository is ${{ github.repository }}."
-      - run: ls ${{ github.workspace }}
 
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-          
-      - run: echo "Your repository is ${{ github.repository }}."
-      - run: ls ${{ github.workspace }}
-        shell: bash
       
       - name: npm ci
         run: npm ci
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
-      
-      - run: echo "Your repository is ${{ github.repository }}."
-      - run: ls ${{ github.workspace }}
-        shell: bash
       
       - name: npm test
         run: npm test
@@ -55,8 +36,22 @@ jobs:
       - name: npm build
         run: npm build --if-present
           
-          
       # Runs the Sonar Cloud Testing
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+          
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v1
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+          
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
