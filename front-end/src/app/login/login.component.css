@@ -7,4 +7,10 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  overflow: visible;
+  padding: 5%;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 4rem;
 }
