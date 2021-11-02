@@ -12,4 +12,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Loginfunc(){
+    alert('Wheres the uhhhhh.. wheres the gabba goo?')
+  }
+
+  Registerfunc(){
+    alert('right here bruv')
+  }
 }
