@@ -29,7 +29,7 @@ jobs:
         working-directory: ${{env.WORKING_DIRECTORY}}
       
       - name: npm test
-        run: npm test --code-coverage
+        run: CI=true npm test --code-coverage trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
         
