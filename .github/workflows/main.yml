@@ -27,14 +27,14 @@ jobs:
         run: npm ci
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
+        
+      - name: npm build
+        run: npm build --if-present
       
       - name: npm test
         run: npm test
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
-        
-      - name: npm build
-        run: npm build --if-present
           
       # Runs the Sonar Cloud Testing
       - name: Cache SonarCloud packages
