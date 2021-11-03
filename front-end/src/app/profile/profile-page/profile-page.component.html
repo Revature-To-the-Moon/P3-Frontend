@@ -2,9 +2,13 @@
     <nav-bar></nav-bar>
 </div>
 
-<div class="followButton">
-    <button>Heya!</button>
-</div>
+<form>
+    <button class="follow" [ngClass]="{'follow':isFollow == true,
+        'unFollow':isFollow == false }" (click)="onClick()">
+        {{isFollow == true ? 'unfollow' : (isFollow == false ? 
+        'Follow' : '' )}}
+    </button>
+</form>
 
 <div class="greeting container">
     <p>Greetings!</p>
