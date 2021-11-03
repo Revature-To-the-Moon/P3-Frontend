@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { users } from '../../models/user';
 
 @Component({
   selector: 'app-follow-button',
