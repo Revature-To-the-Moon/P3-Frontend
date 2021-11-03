@@ -13,12 +13,10 @@ export class ProfilePageComponent implements OnInit {
 
   public isFollow: boolean = false;
   ngOnInit(): void {
-    
     this.profileService.getAll();
   }
 
   onClick() {
     this.isFollow = !this.isFollow;
   }
-
 }
