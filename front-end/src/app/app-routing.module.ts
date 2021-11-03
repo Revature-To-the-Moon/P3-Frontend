@@ -4,15 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { RootComponent } from './root/root.component';
 
 const routes: Routes = [
+  {
+    path: 'root',
+    component: RootComponent
+  },
 
   {
     path: '',
     component: LoginComponent
-  },
-
-  {
-    path: 'root',
-    component: RootComponent,
   }
 ];
 

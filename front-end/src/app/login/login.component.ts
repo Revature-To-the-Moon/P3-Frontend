@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
+import { UserCreationService } from '../service/user-creation.service';
 
 @Component({
   selector: 'app-login',
@@ -7,20 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
   ngOnInit(): void {
+    this.auth.user$.subscribe(
+      (profile) => (this.userService.username = profile.nickname))
   }
 
   Loginfunc(){
-    alert('Wheres the uhhhhh.. wheres the gabba goo?')
+    this.auth.loginWithRedirect({ appState: { target: '/' } });
   }
 
   Registerfunc(){
     alert('right here bruv')
+    if(this.userService.username != undefined)
+    {
+    console.log(this.userService.username + ' Larry, it works');
+    this.auth.user$.subscribe(
+      (profile) => (console.log(profile)))
+    }
   }
 
   Logoutfunc(){
-    alert('I will miss u :(')
+    this.auth.logout({ returnTo: this.doc.location.origin });
   }
 }
