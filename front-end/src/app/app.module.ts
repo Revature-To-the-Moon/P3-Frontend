@@ -11,17 +11,21 @@ import { FollowButtonComponent } from './profile/follow-button/follow-button.com
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    RootComponent,
+    CreatePostComponent,
     RecentActivityComponent,
     ListOfFollowersComponent,
     FollowedPostsComponent,
     FollowButtonComponent,
     ProfilePageComponent,
-    RootComponent,
     NavBarComponent,
+    FilterBarComponent,
   ],
   imports: [
     BrowserModule,

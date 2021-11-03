@@ -13,7 +13,8 @@ export class RootComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   goToCreatePost(): void {
-    this.router.navigateByUrl('create');
+    this.router.navigateByUrl('create-post');
   }
 }
