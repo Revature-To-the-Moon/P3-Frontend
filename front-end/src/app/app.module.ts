@@ -10,9 +10,8 @@ import { RootComponent } from './root/root.component';
 @NgModule({
   declarations: [
     AppComponent,
+    RootComponent,
     NavBarComponent,
-    RootComponent
-
   ],
   imports: [
     BrowserModule,
