@@ -24,15 +24,15 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ],
       imports: [RouterModule, HttpClientTestingModule, RouterTestingModule, AuthModule.forRoot(
         {
-            domain: 'dev-0w--5cqa.us.auth0.com',
-            clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
+          domain: 'dev-0w--5cqa.us.auth0.com',
+          clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
         }
         )],
 
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: activatedRoute 
+          useValue: activatedRoute
         }
       ]
     })
@@ -40,14 +40,14 @@ describe('LoginComponent', () => {
 
     service = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
-    
+
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
 
-    
+
     fixture.detectChanges();
   });
 
@@ -55,24 +55,27 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should send data on submit', () => {
+  it('should send data on submit', async () => {
     const AuthServiceSpy = jasmine.createSpyObj('AuthService',['Login']);
 
-    const stubLogin = 'stub login';
-    AuthServiceSpy.Login.and.returnValue(stubLogin);
+    let fixture = TestBed.createComponent(LoginComponent)
+    let component: LoginComponent = fixture.componentInstance;
+    let element = fixture.nativeElement;
 
-
-
-    // let fixture = TestBed.createComponent(LoginComponent)
-    // let component: LoginComponent = fixture.componentInstance;
-    // let element = fixture.nativeElement;
-
-    // fixture.detectChanges();
+    fixture.detectChanges();
 
     // expect(element.querySelector('#userService-username').value).toEqual(expectedUsername);
-    // element.querySelector('button').click();
 
-    
+    // element.querySelector(component.Loginfunc).toHaveBeenCalled();
+
+    // spyOn(component, 'click').and.returnValue();
+    // let buttonElement = fixture.debugElement.query(By.css('table'));;
+    // spyOn(component, 'click');
+    // await buttonElement.triggerEventHandler('click');
+    // fixture.detectChanges();
+    // expect(component.Loginfunc).toHaveBeenCalled();
+
+
   });
 });
 function expectedUsername(expectedUsername: any) {
