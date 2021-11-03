@@ -27,7 +27,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: './',
       reporters: [
-        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.info' }
       ]
     },
     reporters: ['progress', 'kjhtml', 'coverage'],
