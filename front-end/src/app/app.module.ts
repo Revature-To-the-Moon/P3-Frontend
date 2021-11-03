@@ -11,6 +11,7 @@ import { FollowButtonComponent } from './profile/follow-button/follow-button.com
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RootComponent } from './root/root.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule
   ],
