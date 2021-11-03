@@ -12,6 +12,7 @@ import { ProfilePageComponent } from './profile/profile-page/profile-page.compon
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
     FollowButtonComponent,
     ProfilePageComponent,
     NavBarComponent,
+    FilterBarComponent,
   ],
   imports: [
     BrowserModule,

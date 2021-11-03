@@ -1,0 +1,21 @@
+#nav-text{
+    color: #fdf4f7;
+    font-size: 18px;
+    font-family:Tahoma;
+}
+
+#nav-text:hover{
+    color: #7877cf;
+    cursor: pointer;
+}
+
+.bg-img{
+    background-image: url(../../assets/starrynightmoon.png);
+    min-height: 150px;
+    background-position-x: right;
+
+    
+}
+.navbar-brand{
+    margin-left: 75px;
+}
