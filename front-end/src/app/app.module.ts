@@ -9,6 +9,8 @@ import { ListOfFollowersComponent } from './profile/list-of-followers/list-of-fo
 import { FollowedPostsComponent } from './profile/followed-posts/followed-posts.component';
 import { FollowButtonComponent } from './profile/follow-button/follow-button.component';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RootComponent } from './root/root.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ProfilePageComponent } from './profile/profile-page/profile-page.compon
     FollowedPostsComponent,
     FollowButtonComponent,
     ProfilePageComponent
+    RootComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
