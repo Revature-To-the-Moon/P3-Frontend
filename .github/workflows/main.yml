@@ -32,7 +32,7 @@ jobs:
         run: npm build --if-present
       
       - name: npm test:ci
-        run: npm test:ci
+        run: npm test
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
         continue-on-error: true
