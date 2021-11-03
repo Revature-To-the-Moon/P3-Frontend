@@ -11,7 +11,7 @@
                 <form class="col-10">
                     <input type="search" class="form-control" placeholder="Search To The Moon" aria-label="Search">
                 </form>
-                <a class="btn btn-primary" role="button">Create Post</a>
+                <a class="btn btn-primary" (click)="goToCreatePost()" role="button">Create Post</a>
             </div>
 
             <!-- featured post-->
@@ -38,7 +38,7 @@
             </div>
 
             <!-- filter bar -->
-            <!-- call the filter bar component -->
+            <app-filter-bar></app-filter-bar>
 
             <!-- feed -->
         </div>
