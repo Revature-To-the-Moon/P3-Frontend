@@ -10,6 +10,8 @@ export class FollowButtonComponent implements OnInit {
 
   constructor() { }
 
+  users!:[];
+
   ngOnInit(): void {
   }
 

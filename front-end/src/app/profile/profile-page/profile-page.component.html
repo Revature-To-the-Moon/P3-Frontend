@@ -1,15 +1,7 @@
+<nav-bar></nav-bar>
 <style>
 :root {
     --columnCount: 3;
-}
-
-.navbar {
-    background-color: red;
-}
-.followButton {
-    display: flex;
-    float: right;
-    margin-right: 4%;
 }
 .greeting {
     background-color: yellow;
@@ -38,15 +30,43 @@
     text-align: center;
     display: block;
 }
+.follow{
+    background-color: #291A4A;
+    background-image: linear-gradient(#291A4A, #986AA8, #4d4382);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    margin: 4px 2px;
+    text-decoration: none;
+    display: float;
+    float: right;
+    border-radius: 16px;
+    width: 120px;
+}
+.unFollow{
+    background-color: #4d4382;
+    background-image: linear-gradient(#4d4382, #986AA8, #291A4A);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: float;
+    float: right;
+    border-radius: 16px;
+    width: 120px;
+}
 </style>
 
-<div class="navbar">
-    <p>Nav bar</p>
-</div>
-
-<div class="followButton">
-    <button>Heya!</button>
-</div>
+<form>
+    <button class="follow" [ngClass]="{'follow':isFollow == true,
+        'unFollow':isFollow == false }" (click)="onClick()">
+        {{isFollow == true ? 'unfollow' : (isFollow == false ? 
+        'Follow' : '' )}}
+    </button>
+</form>
 
 <div class="greeting container">
     <p>Greetings!</p>
