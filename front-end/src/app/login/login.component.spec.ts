@@ -30,7 +30,7 @@ describe('LoginComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: activatedRoute 
+          useValue: activatedRoute
         }
       ]
     })
@@ -38,14 +38,14 @@ describe('LoginComponent', () => {
 
     service = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
-    
+
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
 
-    
+
     fixture.detectChanges();
   });
 
@@ -53,17 +53,17 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('loginService Loginfunc() should be called ', fakeAsync(() => {
-    
-    fixture.detectChanges();
-    const button = fixture.debugElement.nativeElement.querySelector('button');
-    button.click();
-    fixture.detectChanges();
+  // it('loginService Loginfunc() should be called ', fakeAsync(() => {
 
-    expect(AuthServiceSpy.login).toHaveBeenCalled();
-  }));
+  //   fixture.detectChanges();
+  //   const button = fixture.debugElement.nativeElement.querySelector('button');
+  //   button.click();
+  //   fixture.detectChanges();
 
-  
+  //   expect(AuthServiceSpy.login).toHaveBeenCalled();
+  // }));
+
+
 
 })
 
