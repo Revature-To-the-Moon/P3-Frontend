@@ -7,6 +7,10 @@
     background-color: rgb(116, 116, 116);
 }
 
+#center {
+    padding-top: 20px;
+}
+
 #right {
     background-color: rgb(116, 116, 116);
 }

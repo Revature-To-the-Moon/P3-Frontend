@@ -16,4 +16,8 @@ export class RootComponent implements OnInit {
   goToCreatePost(): void {
     this.router.navigateByUrl('create-post');
   }
+
+  goToComment(): void {
+    this.router.navigateByUrl('comment');
+  }
 }
