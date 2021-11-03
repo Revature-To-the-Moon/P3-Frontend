@@ -1,0 +1,77 @@
+<style>
+:root {
+    --columnCount: 3;
+}
+
+.navbar {
+    background-color: red;
+}
+.followButton {
+    display: flex;
+    float: right;
+    margin-right: 4%;
+}
+.greeting {
+    background-color: yellow;
+    padding-left: 4%;
+}
+.row {
+    margin: auto;
+    align-content: center;
+    height: 20%;
+    background-color: green;
+}
+.card {
+    border-radius: 10px;
+    display: grid;
+    float: left;
+    border: 3px solid grey;
+    height: 95%;
+    background-color: hotpink;
+}
+.col {
+    width: calc((90%/var(--columnCount)) - 6px);
+    margin-left: calc(5%/var(--columnCount));
+    margin-right: calc(5%/var(--columnCount));
+}
+.container {
+    text-align: center;
+    display: block;
+}
+</style>
+
+<div class="navbar">
+    <p>Nav bar</p>
+</div>
+
+<div class="followButton">
+    <button>Heya!</button>
+</div>
+
+<div class="greeting container">
+    <p>Greetings!</p>
+</div>
+
+<div class="row">
+    <div class="card col">
+        <div class="container">
+            <p>Hello</p>
+            <p>Hello</p>
+            <p>Hello</p>
+        </div>
+    </div>
+    <div class="card col">
+        <div class="container">
+            <p>Hello</p>
+            <p>Hello</p>
+            <p>Hello</p>
+        </div>
+    </div>
+    <div class="card col">
+        <div class="container">
+            <p>Hello</p>
+            <p>Hello</p>
+            <p>Hello</p>
+        </div>
+    </div>
+</div>
