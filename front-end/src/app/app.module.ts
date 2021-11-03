@@ -19,7 +19,7 @@ import { RootComponent } from './root/root.component';
     ListOfFollowersComponent,
     FollowedPostsComponent,
     FollowButtonComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
     RootComponent,
     NavBarComponent,
   ],
