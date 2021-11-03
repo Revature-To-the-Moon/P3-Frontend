@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RootServiceService } from '../service/root-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,9 +13,7 @@ export class RootComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   goToCreatePost(): void {
     this.router.navigateByUrl('create');
   }
-
 }
