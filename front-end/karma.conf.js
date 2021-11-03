@@ -27,7 +27,8 @@ module.exports = function (config) {
     coverageReporter: {
       dir: './',
       reporters: [
-        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
+        { type: 'html' },
+        { type: 'text-summary' }
       ]
     },
     reporters: ['progress', 'kjhtml', 'coverage'],
@@ -35,11 +36,11 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['MyHeadlessChrome'],
-    singleRun: true,
+    browsers: ['Chrome'],
+    singleRun: false,
     customLaunchers: {
       MyHeadlessChrome: {
-        base: 'ChromeHeadless',
+        base: 'Chrome',
         flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
       }
     },
