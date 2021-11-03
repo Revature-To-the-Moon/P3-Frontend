@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { UserCreationService } from '../service/user-creation.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,11 @@ import { DOCUMENT } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document) { }
+  constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
   ngOnInit(): void {
     this.auth.user$.subscribe(
-      (profile) => (console.log(profile)))
+      (profile) => (this.userService.username = profile.nickname))
   }
 
   Loginfunc(){
@@ -22,6 +23,12 @@ export class LoginComponent implements OnInit {
 
   Registerfunc(){
     alert('right here bruv')
+    if(this.userService.username != undefined)
+    {
+    console.log(this.userService.username + ' Larry, it works');
+    this.auth.user$.subscribe(
+      (profile) => (console.log(profile)))
+    }
   }
 
   Logoutfunc(){
