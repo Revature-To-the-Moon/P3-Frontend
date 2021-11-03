@@ -25,14 +25,12 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/front-end'),
-      subdir: '.',
+      dir: './',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
