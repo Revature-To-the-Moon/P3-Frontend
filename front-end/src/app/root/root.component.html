@@ -1,33 +1,48 @@
 <!-- call the nav bar component -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-
-        </div>
-        <div class="col-6">
+<nav-bar></nav-bar>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
+        <div class="col-3" id="left">
         </div>
-        <div class="row col-6">
+        <div class="row col-6" id="center">
             <!-- search bar and create post button -->
-            <div>
+            <div class="search">
                 <form class="col-10">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                    <input type="search" class="form-control" placeholder="Search To The Moon" aria-label="Search">
                 </form>
-                <a class="btn" role="button">Create Post</a>
+                <a class="btn btn-primary" role="button">Create Post</a>
             </div>
 
             <!-- featured post-->
             <h3>Featured Post</h3>
+            <div class="container" id="featured-post">
+                <div class="row">
+                    <div class="col">
+                        <p><span>user.username</span> | Posted post.date</p>
+                    </div>
+                    <div class="col" id="follow-post-btn">
+                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4>root.title</h4>
+                    <h5>root.message root.message root.message root.message root.message</h5>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
+                        <a class="btn btn-outline-primary" role="button">10 Comments</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- filter bar -->
             <!-- call the filter bar component -->
 
             <!-- feed -->
         </div>
-        <div class="col-3">
+        <div class="col-3" id="right">
         </div>
     </div>
 </div>
