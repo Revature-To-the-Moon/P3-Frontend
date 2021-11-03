@@ -7,15 +7,21 @@
 #nav-text:hover{
     color: #7877cf;
     cursor: pointer;
+    text-decoration: underline #7877cf 3px;
 }
 
 .bg-img{
     background-image: url(../../assets/starrynightmoon.png);
-    min-height: 150px;
+    min-height: 120px;
     background-position-x: right;
+    background-repeat: repeat;
 
     
 }
 .navbar-brand{
-    margin-left: 75px;
+    margin-left: 55px;
+}
+
+.container-fluid{
+    padding: 0;
 }

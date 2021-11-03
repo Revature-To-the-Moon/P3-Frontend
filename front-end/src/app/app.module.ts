@@ -14,6 +14,7 @@ import { RootComponent } from './root/root.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { CommentComponent } from './comment/comment.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CommentComponent } from './comment/comment.component';
     NavBarComponent,
     FilterBarComponent,
     CommentComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
