@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 import { UserCreationService } from '../service/user-creation.service';
+import {Injectable} from '@angular/core';
 
 @Component({
   selector: 'app-login',

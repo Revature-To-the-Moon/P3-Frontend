@@ -2,14 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
 import { ActivatedRoute, Params, RouterModule } from '@angular/router';
-import {ActivatedRouteStub} from '../testing/activatedRouteStub';
+
+
 
 
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let activatedRoute: ActivatedRouteStub = new ActivatedRouteStub()
+  let activatedRoute: ActivatedRoute = new ActivatedRoute
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -35,8 +36,8 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', async () => {
-    await fixture.whenRenderingDone()
+  it('should create', () => {
+    
     expect(component).toBeTruthy();
   });
 
