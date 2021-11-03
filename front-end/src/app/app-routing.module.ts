@@ -13,10 +13,9 @@ const routes: Routes = [
 
   {
     path: 'root',
-    component: RootComponent
-  },
-
-]
+    component: RootComponent,
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
