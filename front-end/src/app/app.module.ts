@@ -26,5 +26,6 @@ import { RootComponent } from './root/root.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
