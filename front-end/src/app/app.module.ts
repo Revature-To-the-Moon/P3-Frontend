@@ -13,6 +13,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
     ProfilePageComponent,
     NavBarComponent,
     FilterBarComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
