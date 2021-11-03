@@ -1,0 +1,11 @@
+.followButton {
+    display: flex;
+    float: right;
+}
+.center-text {
+    text-align: center;
+}
+.box {
+    margin-left: 5px;
+    margin-right: 5px;
+}
