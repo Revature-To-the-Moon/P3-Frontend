@@ -11,10 +11,12 @@
     background-color: rgb(116, 116, 116);
 }
 
-.search {
-    display: flex;
-    flex-wrap: wrap;
+.name-create {
     padding: 20px 10px;
+}
+
+#create-btn {
+    float: right;
 }
 
 .btn-primary {
