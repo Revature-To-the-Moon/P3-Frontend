@@ -6,8 +6,10 @@ import { Injectable } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '@auth0/auth0-angular';
 import { AuthModule } from '@auth0/auth0-angular';
+import { Subject } from 'rxjs';
+import { UserCreationService } from '../service/user-creation.service';
 
-const AuthServiceSpy = jasmine.createSpyObj('AuthService',['Login']);
+
 
 
 describe('LoginComponent', () => {
@@ -53,20 +55,27 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('loginService Loginfunc() should be called ', fakeAsync(() => {
+  it('should send data on submit', () => {
+    const AuthServiceSpy = jasmine.createSpyObj('AuthService',['Login']);
 
-  //   fixture.detectChanges();
-  //   const button = fixture.debugElement.nativeElement.querySelector('button');
-  //   button.click();
-  //   fixture.detectChanges();
-
-  //   expect(AuthServiceSpy.login).toHaveBeenCalled();
-  // }));
+    const stubLogin = 'stub login';
+    AuthServiceSpy.Login.and.returnValue(stubLogin);
 
 
 
-})
+    // let fixture = TestBed.createComponent(LoginComponent)
+    // let component: LoginComponent = fixture.componentInstance;
+    // let element = fixture.nativeElement;
 
-function updateForm(username: any, password: any) {
+    // fixture.detectChanges();
+
+    // expect(element.querySelector('#userService-username').value).toEqual(expectedUsername);
+    // element.querySelector('button').click();
+
+
+  });
+});
+function expectedUsername(expectedUsername: any) {
   throw new Error('Function not implemented.');
 }
+
