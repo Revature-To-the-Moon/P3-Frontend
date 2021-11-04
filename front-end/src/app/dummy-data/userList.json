@@ -1,45 +1,62 @@
 {
     "User":[
-    {
-        "id": 1,
-        "name": "Andrew Owen",
-        "email" : "andrew@gmail.com",
-        "followedUsers": [2, 3],
-        "followedPosts": [1]
-    },
-    {
-        "id": 2,
-        "name": "Susan Que",
-        "email" : "Susan@yahoo.net"
-    },
-    {
-        "id": 3,
-        "name": "John Doe",
-        "email" : "DoReMi@gmail.com"
-    }
-],
+        {
+            "id": 1,
+            "name": "Andrew Owen",
+            "email" : "andrew@gmail.com",
+            "followedUsers": [2, 3],
+            "followedPosts": [1]
+        },
+        {
+            "id": 2,
+            "name": "Susan Que",
+            "email" : "Susan@yahoo.net"
+        },
+        {
+            "id": 3,
+            "name": "John Doe",
+            "email" : "DoReMi@gmail.com"
+        }
+    ],
 
-    "Threads":[
-    {
-        "id":1,
-        "parentId":null,
-        "body":"I was walking my duck down the street, when all of a sudden..."
-    },
-    {
-        "id":2,
-        "parentId":1,
-        "body":"my duck started talking to me in Klingon!"
-    },
-    {
-        "id":3,
-        "parentId":1,
-        "body":"he challenged the local bear to a chess match."
-    },
-    {
-        "id":4,
-        "parentId":3,
-        "body":"Obviously, the bear didn't know how to play chess, so my duck won by default."
-    }
+    "Root":[
+        {
+            "Id": 1,
+            "Title": "Duck Walk",
+            "Message": "I was walking my duck downt he street, when all of a sudden...",
+            "TotalVote": 55,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "Andrew Owen"
+        }
+    ],
 
+    "Comment":[
+        {
+            "Id": 1, 
+            "Message": "my duck started talking to me in Klingon!",
+            "TotalVote": 2,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "Susan Que",
+            "RootId": 1,
+            "CommentId": 0
+        },
+        {
+            "Id": 2, 
+            "Message": "he challenged the local bear to a chess match.",
+            "TotalVote": 40,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "John Doe",
+            "RootId": 1,
+            "CommentId": 0
+        },
+        {
+            "Id": 3, 
+            "Message": "Obviously, the bear didn't know how to play chess, so my duck won by default.",
+            "TotalVote": 10,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "Andrew Owen",
+            "RootId": 0,
+            "CommentId": 2
+        }
     ]
 }
