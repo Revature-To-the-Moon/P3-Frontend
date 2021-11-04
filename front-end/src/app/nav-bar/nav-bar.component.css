@@ -1,0 +1,6 @@
+.navbar1 {
+overflow: visible;
+display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }

@@ -1,0 +1,38 @@
+.container
+{
+
+max-width: 970px;
+max-height: 970px;
+
+}
+
+.card {
+    width: 500px;
+    height: 500px;
+    border: none;
+    border-radius: 10px;
+    background-color: #FDF4F7
+}
+
+.button1{
+    position:absolute;
+    bottom: 5%;
+    right:60%;
+}
+
+.button2{
+    position:absolute;
+    bottom: 5%;
+    right:20%;
+}
+
+.wrapper {
+    width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 50px 20px;
+    padding-top: 100px;
+    display: flex;
+    background-image: url(src/assets/loginbg.gif);
+}
