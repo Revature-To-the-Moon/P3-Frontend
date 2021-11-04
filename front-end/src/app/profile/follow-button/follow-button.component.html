@@ -1,5 +1,5 @@
-<ng-button class="follow" [ngClass]="{'follow':isFollow == true,
-'unFollow':isFollow == false }" (click)="onClick()">
-{{isFollow == true ? 'unfollow' : (isFollow == false ? 
+<ng-button class="follow" [ngClass]="{'follow':isFollow == false,
+'unFollow':isFollow == true }" (click)="onClick()">
+{{isFollow == false ? 'Unfollow' : (isFollow == true ? 
 'Follow' : '' )}}
 </ng-button>

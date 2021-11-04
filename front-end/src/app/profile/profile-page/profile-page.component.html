@@ -1,45 +1,25 @@
 <div>
     <nav-bar></nav-bar>
 </div>
-
-<form>
-    <button class="follow" [ngClass]="{'follow':isFollow == true,
-        'unFollow':isFollow == false }" (click)="onClick()">
-        {{isFollow == true ? 'unfollow' : (isFollow == false ? 
-        'Follow' : '' )}}
-    </button>
-</form>
+<button class="follow">
+    <app-follow-button></app-follow-button>
+</button>
 
 <br>
 <div class="greeting container">
-    <p>Welcome! username</p>
+    <p>Welcome! {{currentUser.name}}</p>
 </div>
 <br>
 <div class="container">
     <div class="row center-text">
-        <div class="card col box">
-            <h1>Recent Activity</h1>
-            <body>
-                <p>Hello</p>
-                <p>Hello</p>
-                <p>Hello</p>
-            </body>
+        <div class="col">
+            <app-recent-activity></app-recent-activity>
         </div>
-        <div class="card col box">
-            <h1>Follows</h1>
-            <body>
-                <p>Hello</p>
-                <p>Hello</p>
-                <p>Hello</p>
-            </body>
+        <div class="col">
+            <app-list-of-followers></app-list-of-followers>
         </div>
-        <div class="card col box">
-            <h1>Followed Post</h1>
-            <body>
-                <p>Hello</p>
-                <p>Hello</p>
-                <p>Hello</p>
-            </body>
+        <div class="col">
+            <app-followed-posts></app-followed-posts>
         </div>
     </div>
 </div>

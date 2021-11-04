@@ -22,4 +22,8 @@ describe('FollowButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should click Set button', () => {
+    
+  })
 });
