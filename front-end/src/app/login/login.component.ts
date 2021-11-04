@@ -15,8 +15,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // add this method to buffer component
-    this.auth.user$.subscribe(
-      (profile) => (this.userService.username = profile.preferred_username))
+    if (this.auth.isAuthenticated$)
+    {
+      this.auth.user$.subscribe(
+        (profile) => (this.userService.username = profile.preferred_username))
+    }
   }
 
   Loginfunc(){
