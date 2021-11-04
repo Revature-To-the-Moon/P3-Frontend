@@ -13,15 +13,10 @@ export class LoginComponent implements OnInit {
 
   constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
-
-    username: ''
-
-
-
-
   ngOnInit(): void {
+    // add this method to buffer component
     this.auth.user$.subscribe(
-      (profile) => (this.userService.username = profile.nickname))
+      (profile) => (this.userService.username = profile.preferred_username))
   }
 
   Loginfunc(){
@@ -29,12 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   Registerfunc(){
-    if(this.userService.username != undefined)
-    {
-    console.log(this.userService.username + ' Larry, it works');
-    this.auth.user$.subscribe(
-      (profile) => (console.log(profile)))
-    }
+    this.auth.loginWithRedirect({ screen_hint: 'signup', appState: { target: '/' } });
   }
 
   Logoutfunc(){
