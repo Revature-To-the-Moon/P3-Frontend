@@ -8,6 +8,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { AuthModule } from '@auth0/auth0-angular';
 import { Subject } from 'rxjs';
 import { UserCreationService } from '../service/user-creation.service';
+import {By} from '@angular/platform-browser';
 
 
 
@@ -55,6 +56,19 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have one button with "Login" on the page', () => {
+    const linkDes = fixture.debugElement.queryAll(By.css('button'));
+    const nativeButton: HTMLButtonElement = linkDes[0].nativeElement;
+    expect(nativeButton.textContent).toBe('Login');
+  });
+
+  it('should have one button with "Register" on the page', () => {
+    const linkDes = fixture.debugElement.queryAll(By.css('button'));
+    const nativeButton: HTMLButtonElement = linkDes[1].nativeElement;
+    expect(nativeButton.textContent).toBe('Register');
+  });
+
+
   it('should send data on submit', async () => {
     const AuthServiceSpy = jasmine.createSpyObj('AuthService',['Login']);
 
@@ -77,8 +91,8 @@ describe('LoginComponent', () => {
 
 
   });
+
+
 });
-function expectedUsername(expectedUsername: any) {
-  throw new Error('Function not implemented.');
-}
+
 
