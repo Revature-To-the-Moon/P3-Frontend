@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="d-md-flex justify-content-md-end">
-                    <div *ngIf="postForm.controls['message'].valid && postForm.controls['title'].valid; else invalid">
+                    <div *ngIf="postForm.controls['message']?.valid && postForm.controls['title']?.valid; else invalid">
                         <input class="btn btn-primary rounded-pill" type="submit" value="Post">
                     </div>
                     <ng-template #invalid>
