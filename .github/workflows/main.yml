@@ -22,11 +22,15 @@ jobs:
         with:
           node-version: '14.x'
       
-      - name: npm install, build, test
+      - name: npm install, build
         run: |
           npm ci
           npm build
-          npm tst
+        shell: bash
+        working-directory: ${{env.WORKING_DIRECTORY}}
+        
+      - name: test
+        run: npm tst
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
           
