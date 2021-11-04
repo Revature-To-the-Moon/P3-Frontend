@@ -13,11 +13,11 @@ export class LoginComponent implements OnInit {
 
   constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
-    
-    username: ''
-    
 
-    
+    username: ''
+
+
+
 
   ngOnInit(): void {
     this.auth.user$.subscribe(
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   Registerfunc(){
-    alert('right here bruv')
     if(this.userService.username != undefined)
     {
     console.log(this.userService.username + ' Larry, it works');
