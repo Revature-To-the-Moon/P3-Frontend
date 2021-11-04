@@ -1,8 +1,12 @@
 <div class="card col box">
     <h1>Recent Activity</h1>
-    <body>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-    </body>
+    <table>
+        <tr *ngFor="let follower of activity" id="visual">
+            <td *ngIf="follower[0].Title != undefined" class="edit">{{follower[0].Title}}</td>
+            <td *ngIf="follower[0].Title == undefined" class="edit">{{follower[0].Message.slice(0,20) + '...'}}</td>
+        </tr>
+        <tr *ngIf="(activity == undefined)">
+            No Activity!
+        </tr>
+    </table>
 </div>
