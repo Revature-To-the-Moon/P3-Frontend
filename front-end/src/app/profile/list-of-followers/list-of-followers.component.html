@@ -1,8 +1,8 @@
 <div class="card col box">
     <h1>Followed Users</h1>
     <table>
-        <tr *ngFor="let follower of list" id="visual">
-            <td class="edit"  routerLink="/profile/{{follower}}">{{follower}}</td>
+        <tr *ngFor="let follower of nameList" id="visual">
+            <td class="edit" routerLink="/profile/{{follower}}">{{follower}}</td>
         </tr>
     </table>
 </div>
