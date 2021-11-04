@@ -8,13 +8,13 @@
 
 <br>
 <div class="greeting container">
-    <p>Welcome! {{currentUser.name}}</p>
+    <p>¡¡¡¡Bienvenidos {{currentUser.name}}!!!!</p>
 </div>
 <br>
 <div class="container">
     <div class="row center-text">
         <div class="col">
-            <app-recent-activity></app-recent-activity>
+            <app-recent-activity [id]="id"></app-recent-activity>
         </div>
         <div class="col">
             <app-list-of-followers [id]="id"></app-list-of-followers>
