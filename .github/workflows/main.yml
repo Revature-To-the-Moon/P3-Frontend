@@ -27,14 +27,15 @@ jobs:
         run: npm ci
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
-      
-      - name: npm test
-        run: npm test
-        shell: bash
-        working-directory: ${{env.WORKING_DIRECTORY}}
         
       - name: npm build
         run: npm build --if-present
+      
+      - name: npm test:ci
+        run: npm test --code-coverage
+        shell: bash
+        working-directory: ${{env.WORKING_DIRECTORY}}
+        continue-on-error: true
           
       # Runs the Sonar Cloud Testing
       - name: Cache SonarCloud packages
@@ -57,5 +58,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with: 
-          args: -Dsonar.tests=./front-end/report-lcovonly.txt
