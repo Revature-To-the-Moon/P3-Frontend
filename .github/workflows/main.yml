@@ -26,7 +26,7 @@ jobs:
         run: |
           npm ci
           npm build
-          npm test:ci
+          npm tst
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
           
