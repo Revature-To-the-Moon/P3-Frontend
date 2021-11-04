@@ -1,1 +1,5 @@
-<p>follow-button works!</p>
+<ng-button class="follow" [ngClass]="{'follow':isFollow == true,
+'unFollow':isFollow == false }" (click)="onClick()">
+{{isFollow == true ? 'unfollow' : (isFollow == false ? 
+'Follow' : '' )}}
+</ng-button>

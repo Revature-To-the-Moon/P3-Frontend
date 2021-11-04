@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { users } from '../../models/user';
 
 @Component({
@@ -7,12 +7,16 @@ import { users } from '../../models/user';
   styleUrls: ['./follow-button.component.css']
 })
 export class FollowButtonComponent implements OnInit {
-
+  @Input() buttonConfig: any;
+  
   constructor() { }
-
-  users!:[];
+  public isFollow: boolean = false;
 
   ngOnInit(): void {
+  }
+  
+  onClick() {
+    this.isFollow = !this.isFollow;
   }
 
 }
