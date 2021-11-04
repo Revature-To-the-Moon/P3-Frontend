@@ -56,6 +56,11 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have at least one button on the page', () => {
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
+    expect(buttons.length >= 1).toBeTruthy();
+  });
+
   it('should have one button with "Login" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));
     const nativeButton: HTMLButtonElement = linkDes[0].nativeElement;
