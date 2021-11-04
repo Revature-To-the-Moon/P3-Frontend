@@ -23,20 +23,11 @@ export class ListOfFollowersComponent implements OnInit {
       this.list= result.followedUsers;
       console.log("list id is now "+this.list);
 
-      this.list.forEach(follower => {
-        console.log(follower);
-        console.log(this.getNameof(follower));
-        // this.nameList.push(this.getNameof(follower));
+      this.list.forEach(id => {
+        this.profileService.getUserById(id).then((result: User) => {
+          this.nameList.push(result.name);
+        })
       });
     });
   }
-
-  async getNameof(id: number): Promise<string> {
-    let username = "";
-    this.profileService.getUserById(id).then((result: User) => {
-      username = result.name;
-    });
-    return username;
-  }
-
 }

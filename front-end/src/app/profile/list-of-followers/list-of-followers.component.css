@@ -65,12 +65,13 @@
     padding-bottom: 0%;
 }
 
-.card p{
+.card td{
+    background-color: white;
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
-.card p:hover{
+.card td:hover{
     background-color: #986AA8;
     text-align: center;
     color: white;
