@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --code-coverage",
-    "test:ci": "ng test --code-coverage --karmaconfig=karma-ci.conf.js"
+    "tst": "ng test --code-coverage --karmaconfig=karma-ci.conf.js"
   },
   "private": true,
   "dependencies": {
