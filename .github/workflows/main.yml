@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '14.x'
       
-      - name: npm ci
+      - name: npm install
         run: npm ci
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
@@ -30,7 +30,7 @@ jobs:
       - name: npm build
         run: npm build --if-present
       
-      - name: npm test:ci
+      - name: npm test
         run: npm test
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
