@@ -11,13 +11,18 @@ import { ProfileService } from 'src/app/service/profile.service';
 })
 export class ListOfFollowersComponent implements OnInit {
   @Input() id = 0;
-  @Input() list!: number[];
-  nameList: string[] = [];
+  list!: number[];
+  followedList: User[] = [];
 
 
   constructor(private route: ActivatedRoute,public profileService: ProfileService) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(){
+    console.log("detected a change");
+    this.followedList=[];
     this.profileService.getUserById(this.id).then((result: User) => {
       console.log("Within profileService.getUserById");
       this.list= result.followedUsers;
@@ -25,7 +30,7 @@ export class ListOfFollowersComponent implements OnInit {
 
       this.list.forEach(id => {
         this.profileService.getUserById(id).then((result: User) => {
-          this.nameList.push(result.name);
+          this.followedList.push(result);
         })
       });
     });
