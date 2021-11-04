@@ -13,8 +13,11 @@ export class LoginComponent implements OnInit {
   constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
   ngOnInit(): void {
+    if(this.auth.isAuthenticated$)
+    {
     this.auth.user$.subscribe(
-      (profile) => (this.userService.username = profile.nickname))
+      (profile) => (this.userService.username = profile?.nickname))
+    }
   }
 
   Loginfunc(){
@@ -25,7 +28,7 @@ export class LoginComponent implements OnInit {
     alert('right here bruv')
     if(this.userService.username != undefined)
     {
-    console.log(this.userService.username + ' Larry, it works');
+    console.log(this.userService.username + ' <- that is your username. So Larry, it works');
     this.auth.user$.subscribe(
       (profile) => (console.log(profile)))
     }
