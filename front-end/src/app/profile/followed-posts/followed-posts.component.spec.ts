@@ -22,4 +22,6 @@ describe('FollowedPostsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should ')
 });

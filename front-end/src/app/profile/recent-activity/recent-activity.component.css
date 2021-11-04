@@ -26,12 +26,14 @@
     padding-bottom: 0%;
 }
 
-.card p{
+.card P{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
-.card p:hover{
+.card P:hover{
     background-color: #986AA8;
     text-align: center;
     color: white;
