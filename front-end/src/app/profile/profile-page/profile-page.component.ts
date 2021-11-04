@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/service/profile.service';
-
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -9,14 +10,36 @@ import { ProfileService } from 'src/app/service/profile.service';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private currentRoute: ActivatedRoute, public profileService: ProfileService, private router: Router) { }
 
+  id = 0;
+
+  currentUser: User = {
+    id: 0,
+    username:"",
+    email: "",
+    name: "",
+    followedUsers: []
+  }; 
   public isFollow: boolean = false;
+
+
   ngOnInit(): void {
-    this.profileService.getAll();
+    this.currentRoute.params.subscribe(params => {
+      this.id = params['id'];
+      console.log(this.id);
+
+      this.profileService.getUserById(this.id).then((result: User) => {
+        this.currentUser= result;
+      });
+      console.log(this.currentUser);
+    });
+    
+  //   this.profileService.getAll();
   }
 
   onClick() {
     this.isFollow = !this.isFollow;
   }
+
 }
