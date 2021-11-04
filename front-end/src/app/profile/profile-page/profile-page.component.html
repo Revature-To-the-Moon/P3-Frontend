@@ -16,7 +16,7 @@
             <app-recent-activity></app-recent-activity>
         </div>
         <div class="col">
-            <app-list-of-followers></app-list-of-followers>
+            <app-list-of-followers [id]="id" [list]=currentUser.followedUsers></app-list-of-followers>
         </div>
         <div class="col">
             <app-followed-posts></app-followed-posts>

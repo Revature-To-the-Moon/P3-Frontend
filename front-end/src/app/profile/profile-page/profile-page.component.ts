@@ -31,13 +31,13 @@ export class ProfilePageComponent implements OnInit {
 
       this.profileService.getUserById(this.id).then((result: User) => {
         this.currentUser= result;
+        console.log("followed user" + this.currentUser.followedUsers[1]);
       });
-      console.log(this.currentUser);
     });
+    
     
   //   this.profileService.getAll();
   }
-
   onClick() {
     this.isFollow = !this.isFollow;
   }

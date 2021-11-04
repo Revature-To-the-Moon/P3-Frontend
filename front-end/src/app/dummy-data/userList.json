@@ -3,7 +3,9 @@
     {
         "id": 1,
         "name": "Andrew Owen",
-        "email" : "andrew@gmail.com"
+        "email" : "andrew@gmail.com",
+        "followedUsers": [2, 3],
+        "followedPosts": [1]
     },
     {
         "id": 2,
