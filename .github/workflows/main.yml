@@ -22,19 +22,13 @@ jobs:
         with:
           node-version: '14.x'
       
-      - name: npm install
-        run: npm ci
+      - name: npm install, build, test
+        run: |
+          npm ci
+          npm build
+          npm test
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
-        
-      - name: npm build
-        run: npm build --if-present
-      
-      - name: npm test
-        run: npm test
-        shell: bash
-        working-directory: ${{env.WORKING_DIRECTORY}}
-        continue-on-error: true
           
       # Runs the Sonar Cloud Testing
       - name: Cache SonarCloud packages
