@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { FollowButtonComponent } from './follow-button.component';
 
@@ -23,7 +24,13 @@ describe('FollowButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should click Set button', () => {
-    
+  it('should have isFollow equal to false when button is Follow', () => {
+    spyOn(component, 'onClick');
+    component.onClick();
+
+    fixture.detectChanges();
+
+    let button = fixture.debugElement.query(By.css('button')).nativeElement.click();
+    expect(component.onClick).toHaveBeenCalled();
   })
 });
