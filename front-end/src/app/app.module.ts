@@ -14,6 +14,8 @@ import { RootComponent } from './root/root.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { FormsModule } from '@angular/forms';
+import { CommentComponent } from './comment/comment.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { FormsModule } from '@angular/forms';
     ProfilePageComponent,
     NavBarComponent,
     FilterBarComponent,
+    CommentComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,21 +1,20 @@
-<!-- call the nav bar component -->
-<nav-bar></nav-bar>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-3" id="left">
         </div>
         <div class="row col-6" id="center">
             <!-- search bar and create post button -->
-            <div class="search">
-                <form class="col-10">
-                    <input type="search" class="form-control" placeholder="Search To The Moon" aria-label="Search">
-                </form>
-                <a class="btn btn-primary" (click)="goToCreatePost()" role="button">Create Post</a>
+            <div class="col">
+                <h4>Welcome user.username</h4>
+            </div>
+            <div class="col">
+                <a class="btn btn-primary" id="create-btn" (click)="goToCreatePost()" role="button"><i
+                        class="fa fa-plus"></i> Create
+                    Post</a>
             </div>
 
             <!-- featured post-->
-            <h3>Featured Post</h3>
+            <h3 style="padding-top: 20px;">Featured Post</h3>
             <div class="container" id="featured-post">
                 <div class="row">
                     <div class="col">
@@ -32,7 +31,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" role="button">10 Comments</a>
+                        <a class="btn btn-outline-primary" (click)="goToComment()" role="button">10 Comments</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +56,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" role="button">10 Comments</a>
+                        <a class="btn btn-outline-primary" (click)="goToComment()" role="button">10 Comments</a>
                     </div>
                 </div>
             </div>
@@ -78,7 +77,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" role="button">10 Comments</a>
+                        <a class="btn btn-outline-primary" (click)="goToComment()" role="button">10 Comments</a>
                     </div>
                 </div>
             </div>
@@ -99,7 +98,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" role="button">10 Comments</a>
+                        <a class="btn btn-outline-primary" (click)="goToComment()" role="button">10 Comments</a>
                     </div>
                 </div>
             </div>
@@ -120,7 +119,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" role="button">10 Comments</a>
+                        <a class="btn btn-outline-primary" (click)="goToComment()" role="button">10 Comments</a>
                     </div>
                 </div>
             </div>
