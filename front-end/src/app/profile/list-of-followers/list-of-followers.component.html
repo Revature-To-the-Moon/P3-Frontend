@@ -1,8 +1,11 @@
 <div class="card col box">
     <h1>Followed Users</h1>
     <table>
-        <tr *ngFor="let follower of nameList" id="visual">
-            <td class="edit" routerLink="/profile/{{follower}}">{{follower}}</td>
+        <tr *ngFor="let follower of followedList" id="visual">
+            <td class="edit" routerLink="/profile/{{follower.id}}">{{follower.name}}</td>
+        </tr>
+        <tr *ngIf="(followedList== undefined)">
+            No Followers!
         </tr>
     </table>
 </div>
