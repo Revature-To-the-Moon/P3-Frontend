@@ -16,4 +16,9 @@ export class ProfileService {
     return this.http.get(this.url + '_sort=id&order=desc')
     .pipe();
   }
+
+  getOne(id: number): Observable<any> {
+    return this.http.get(this.url + '/user/' + id)
+    .pipe();
+  }
 }
