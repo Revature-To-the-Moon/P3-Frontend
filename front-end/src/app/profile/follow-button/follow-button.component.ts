@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { users } from '../../models/user';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-follow-button',
@@ -10,7 +10,7 @@ export class FollowButtonComponent implements OnInit {
 
   constructor() { }
 
-  users!:[];
+  User!:[];
 
   ngOnInit(): void {
   }

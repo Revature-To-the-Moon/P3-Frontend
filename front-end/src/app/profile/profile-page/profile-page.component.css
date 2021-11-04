@@ -8,10 +8,10 @@
 .box {
     margin-left: 5px;
     margin-right: 5px;
+    background-color: #291A4A;
 }
 .follow{
     background-color: #291A4A;
-    background-image: linear-gradient(#291A4A, #986AA8, #4d4382);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -25,7 +25,6 @@
 }
 .unFollow{
     background-color: #4d4382;
-    background-image: linear-gradient(#4d4382, #986AA8, #291A4A);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -37,3 +36,44 @@
     border-radius: 16px;
     width: 120px;
 }
+.greeting {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card {
+    text-align: center;
+    padding: 0%;
+    border: 5px solid #291A4A;
+    border-bottom: 10px solid #291A4A;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.card h1 {
+    font-size: 25px;
+    background-color: #291A4A;
+    border-bottom: 5px solid #291A4A;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.card body {
+    text-align: center;
+    padding-bottom: 0%;
+}
+
+.card p{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.card p:hover{
+    background-color: #986AA8;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
