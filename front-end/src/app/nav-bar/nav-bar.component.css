@@ -24,4 +24,19 @@
 
 .container-fluid{
     padding: 0;
+    
+}
+
+.navbar-toggler{
+    border-color:#fdf4f7;
+}
+
+.nav-item{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+img{
+    padding: 0;
 }
