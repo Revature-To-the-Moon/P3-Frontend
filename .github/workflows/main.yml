@@ -1,4 +1,3 @@
-
 name: CI
 
 on:
@@ -32,7 +31,7 @@ jobs:
         run: npm build --if-present
       
       - name: npm test:ci
-        run: npm test --code-coverage
+        run: npm test
         shell: bash
         working-directory: ${{env.WORKING_DIRECTORY}}
         continue-on-error: true
