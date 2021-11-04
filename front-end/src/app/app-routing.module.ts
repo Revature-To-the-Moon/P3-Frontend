@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { RootComponent } from './root/root.component';
+import { CommentComponent } from './comment/comment.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'create-post',
     component: CreatePostComponent
+  },
+  {
+    path: 'comment',
+    component: CommentComponent
   }
 ];
 

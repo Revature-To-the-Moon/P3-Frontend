@@ -46,17 +46,6 @@
     border-color: #4d4382;
 }
 
-#featured-post {
-    padding: 10px;
-    border: 1px solid black;
-}
-
-#feed {
-    padding: 10px;
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
-
 span {
     font-size: 16px;
     color: black;
@@ -69,4 +58,8 @@ p {
 
 #follow-post-btn {
     text-align: right;
+}
+
+hr {
+    margin: 20px 0;
 }
