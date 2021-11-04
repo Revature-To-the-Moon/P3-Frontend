@@ -76,10 +76,6 @@ describe('LoginComponent', () => {
     // expect(component.Loginfunc).toHaveBeenCalled();
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6c0ae8a46162c2d3ee8ae9279ad672a7e81e5288
   });
 });
 function expectedUsername(expectedUsername: any) {

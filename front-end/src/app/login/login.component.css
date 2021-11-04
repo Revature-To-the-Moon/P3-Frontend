@@ -1,6 +1,5 @@
 .container
 {
-text-align: center;
 margin: 0;
 position: absolute;
 top: 50%;
@@ -17,7 +16,6 @@ display: grid;
 }
 
 .wrapper {
-    
     width: 100%;
     width: 100%;
     height: auto;
