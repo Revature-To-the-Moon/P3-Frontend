@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { RecentActivityComponent } from './profile/recent-activity/recent-activity.component';
+import { ListOfFollowersComponent } from './profile/list-of-followers/list-of-followers.component';
+import { FollowedPostsComponent } from './profile/followed-posts/followed-posts.component';
+import { FollowButtonComponent } from './profile/follow-button/follow-button.component';
+import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
 
@@ -13,6 +18,11 @@ import { RootComponent } from './root/root.component';
     AppComponent,
     LoginComponent,
     RootComponent,
+    RecentActivityComponent,
+    ListOfFollowersComponent,
+    FollowedPostsComponent,
+    FollowButtonComponent,
+    ProfilePageComponent,
     NavBarComponent,
   ],
   imports: [
@@ -26,5 +36,6 @@ import { RootComponent } from './root/root.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
