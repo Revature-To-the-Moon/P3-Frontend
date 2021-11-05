@@ -66,7 +66,9 @@ describe('LoginComponent', () => {
     const nativeButton: HTMLButtonElement = linkDes[0].nativeElement;
     expect(nativeButton.textContent).toBe('Login');
   });
+  
 
+  
   it('should have one button with "Register" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));
     const nativeButton: HTMLButtonElement = linkDes[1].nativeElement;
