@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/service/profile.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-page',
@@ -35,8 +35,6 @@ export class ProfilePageComponent implements OnInit {
       });
     });
     
-    
-  //   this.profileService.getAll();
   }
   onClick() {
     this.isFollow = !this.isFollow;
