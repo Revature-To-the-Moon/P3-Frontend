@@ -25,24 +25,26 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: './',
+      dir: require('path').join(__dirname, './coverage/front-end'),
+      subdir: '.',
       reporters: [
-        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
+        { type: 'html' },
+        { type: 'text-summary' }
       ]
     },
-    reporters: ['progress', 'kjhtml', 'coverage'],
+    reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['MyHeadlessChrome'],
     singleRun: false,
-    // customLaunchers: {
-    //   MyHeadlessChrome: {
-    //     base: 'ChromeHeadless',
-    //     flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
-    //   }
-    // },
+    customLaunchers: {
+      MyHeadlessChrome: {
+        base: 'ChromeHeadless',
+        flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
+      }
+    },
     restartOnFileChange: true
   });
 };
