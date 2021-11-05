@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserCreationService } from '../service/user-creation.service';
-import { users } from '../models/user';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-buffer',
@@ -13,25 +13,26 @@ export class BufferComponent implements OnInit {
 
   constructor(private auth: AuthService, private userService: UserCreationService) { }
     
-  userlist: users[] = [];
-    user: users = {
-      user: ''
+  userlist: User[] = [];
+    user: User = {
+      username: ''
     };
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(profile =>
-      {
-        this.userService.userlist().then(result => {
-          for (let i = 0; i < result.length; i++) {
-            if (result[i].username == profile.username) {
-              this.flag = true
-              this.auth.loginWithRedirect({appState: {target: '/userprofile'}});
-            }
-          }
-          if (this.flag !== true) {
-            this.auth.loginWithRedirect({appState: {target: '/user-creation'}});
-          }
-          })
-        })
-      }
-    }
+    // this.auth.user$.subscribe(profile =>
+      // {
+      //   this.userService.userlist().then(result => {
+      //     for (let i = 0; i < result.length; i++) {
+      //       if (result[i].username == profile.username) {
+      //         this.flag = true
+      //         this.auth.loginWithRedirect({appState: {target: '/userprofile'}});
+      //       }
+      //     }
+      //     if (this.flag !== true) {
+      //       this.auth.loginWithRedirect({appState: {target: '/user-creation'}});
+      //     }
+        //   })
+        // })
+      // }
+  }
+}
