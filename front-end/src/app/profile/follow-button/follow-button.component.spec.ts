@@ -1,11 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FollowButtonComponent } from './follow-button.component';
+import { By } from '@angular/platform-browser';
 
 describe('FollowButtonComponent', () => {
   let component: FollowButtonComponent;
   let fixture: ComponentFixture<FollowButtonComponent>;
+  let de: DebugElement;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -18,6 +22,8 @@ describe('FollowButtonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FollowButtonComponent);
     component = fixture.componentInstance;
+    de = fixture.debugElement;
+    httpMock = TestBed.inject(HttpTestingController);
 
     fixture.detectChanges();
   });
@@ -25,4 +31,10 @@ describe('FollowButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change on click', () => {
+    spyOn(component, 'onClick');
+    const el = fixture.debugElement.query(By.css('ng-button')).nativeElement.click();
+    expect(component.onClick).toHaveBeenCalled();
+    });
 });
