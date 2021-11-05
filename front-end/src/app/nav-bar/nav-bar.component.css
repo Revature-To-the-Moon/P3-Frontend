@@ -1,6 +1,42 @@
-.navbar1 {
-overflow: visible;
-display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
-  }
+#nav-text{
+    color: #fdf4f7;
+    font-size: 18px;
+    font-family:Tahoma;
+}
+
+#nav-text:hover{
+    color: #7877cf;
+    cursor: pointer;
+    text-decoration: underline #7877cf 3px;
+}
+
+.bg-img{
+    background-image: url(../../assets/starrynightmoon.png);
+    min-height: 120px;
+    background-position-x: right;
+    background-repeat: repeat;
+
+    
+}
+.navbar-brand{
+    margin-left: 55px;
+}
+
+.container-fluid{
+    padding: 0;
+    
+}
+
+.navbar-toggler{
+    border-color:#fdf4f7;
+}
+
+.nav-item{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+img{
+    padding: 0;
+}

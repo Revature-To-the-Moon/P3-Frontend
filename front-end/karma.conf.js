@@ -38,7 +38,7 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['MyHeadlessChrome'],
-    singleRun: true,
+    singleRun: false,
     customLaunchers: {
       MyHeadlessChrome: {
         base: 'ChromeHeadless',
