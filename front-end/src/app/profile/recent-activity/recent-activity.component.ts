@@ -32,10 +32,13 @@ export class RecentActivityComponent implements OnInit {
         this.profileService.getAllComments().then((comments: Comment[]) => {
           this.user = result;
           this.roots = roots.filter(x => x.Username == this.user.name);
-          
           this.comments = comments.filter(x => x.Username == this.user.name);
-          this.activity.push(this.roots);
-          this.activity.push(this.comments);
+
+          this.activity = (this.roots);
+          this.comments.forEach(comment => {
+            this.activity.push(comment);
+          });
+          console.log(this.activity);
         })
       })
     })
