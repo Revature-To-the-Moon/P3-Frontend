@@ -24,10 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     FollowedPostsComponent,
     FollowButtonComponent,
     ProfilePageComponent,
-<<<<<<< HEAD
     RootComponent,
-=======
->>>>>>> 93d51563defc6612aabc4ca9c7aa295656865c0b
     NavBarComponent,
   ],
   imports: [
