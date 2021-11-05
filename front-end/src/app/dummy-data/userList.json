@@ -1,0 +1,64 @@
+{
+    "User":[
+        {
+            "id": 1,
+            "name": "Andrew Owen",
+            "email" : "andrew@gmail.com",
+            "followedUsers": [2, 3],
+            "followedPosts": [1]
+        },
+        {
+            "id": 2,
+            "name": "Susan Que",
+            "email" : "Susan@yahoo.net",
+            "followedUsers": [1],
+            "followedPosts": [1]
+        },
+        {
+            "id": 3,
+            "name": "John Doe",
+            "email" : "DoReMi@gmail.com"
+        }
+    ],
+
+    "Root":[
+        {
+            "Id": 1,
+            "Title": "Duck Walk",
+            "Message": "I was walking my duck downt he street, when all of a sudden...",
+            "TotalVote": 55,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "Andrew Owen"
+        }
+    ],
+
+    "Comment":[
+        {
+            "Id": 1, 
+            "Message": "my duck started talking to me in Klingon!",
+            "TotalVote": 2,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "Susan Que",
+            "RootId": 1,
+            "CommentId": 0
+        },
+        {
+            "Id": 2, 
+            "Message": "he challenged the local bear to a chess match.",
+            "TotalVote": 40,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "John Doe",
+            "RootId": 1,
+            "CommentId": 0
+        },
+        {
+            "Id": 3, 
+            "Message": "Obviously, the bear didn't know how to play chess, so my duck won by default.",
+            "TotalVote": 10,
+            "Date/Time": "PLACEHOLDER",
+            "Username": "Andrew Owen",
+            "RootId": 0,
+            "CommentId": 2
+        }
+    ]
+}

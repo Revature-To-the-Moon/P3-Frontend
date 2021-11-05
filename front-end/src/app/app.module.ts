@@ -12,25 +12,45 @@ import { FollowButtonComponent } from './profile/follow-button/follow-button.com
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
+<<<<<<< HEAD
 import { BufferComponent } from './buffer/buffer.component';
+=======
+import { CreatePostComponent } from './create-post/create-post.component';
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { FormsModule } from '@angular/forms';
+import { CommentComponent } from './comment/comment.component';
+import { SearchComponent } from './search/search.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> 7a4ce50da55b52acdf9dfa51e74ebcdb71e5adb4
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     RootComponent,
+    CreatePostComponent,
+    LoginComponent,
     RecentActivityComponent,
     ListOfFollowersComponent,
     FollowedPostsComponent,
     FollowButtonComponent,
     ProfilePageComponent,
     NavBarComponent,
+<<<<<<< HEAD
     BufferComponent,
+=======
+    FilterBarComponent,
+    CommentComponent,
+    SearchComponent,
+>>>>>>> 7a4ce50da55b52acdf9dfa51e74ebcdb71e5adb4
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule,
+    RouterModule.forRoot([]),
+    FormsModule,
     AuthModule.forRoot({
       domain: 'dev-0w--5cqa.us.auth0.com',
       clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
@@ -38,6 +58,6 @@ import { BufferComponent } from './buffer/buffer.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }
