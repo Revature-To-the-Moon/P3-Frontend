@@ -18,7 +18,22 @@
                 </div>
             </div>
 
-            <hr>
+            <div class="container-comment">
+                <span><small>Add to the story as <span style="color: brown;"><small>User</small></span></small></span>
+                <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
+                    <div class="form-group mb-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="post.message" name="message" #message="ngModel" required></textarea>
+                    </div>
+                    <div class="d-md-flex justify-content-md-end">
+                        <div *ngIf="postForm.controls['message']?.valid; else invalid">
+                            <input class="btn btn-primary rounded-pill" type="submit" value="Comment">
+                        </div>
+                        <ng-template #invalid>
+                            <input class="btn btn-primary btn-sm rounded-pill disabled" type="submit" value="Comment">
+                        </ng-template>
+                    </div>
+                </form>
+            </div>
 
             <div class="container" id="comments" comment="*ngFor='let comment of comments'">
                 <div class="row">

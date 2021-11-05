@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { post } from '../models/post';
-import { RootServiceService } from '../service/root-service.service';
+//import { RootServiceService } from '../service/root-service.service';
 
 @Component({
   selector: 'app-create-post',
@@ -11,7 +11,7 @@ import { RootServiceService } from '../service/root-service.service';
 })
 export class CreatePostComponent implements OnInit {
   
-  constructor(private router: Router, private rService: RootServiceService) { }
+  constructor(public router: Router) { }
 
   post: post = {
     id: 0,

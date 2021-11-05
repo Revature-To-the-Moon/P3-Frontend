@@ -9,7 +9,7 @@
                         <span *ngIf="postForm.controls['title'].errors?.required" class="form-text">Title is required</span>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="What's on your mind..." rows="3" maxlength="140" [(ngModel)]="post.message" name="message" #message="ngModel" required></textarea>
                     <div *ngIf="postForm.controls['message']?.invalid && postForm.controls['message'].touched">
                         <span *ngIf="postForm.controls['message'].errors?.required" class="form-text">Text body is required</span>
