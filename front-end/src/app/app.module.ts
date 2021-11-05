@@ -12,26 +12,37 @@ import { FollowButtonComponent } from './profile/follow-button/follow-button.com
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { FormsModule } from '@angular/forms';
+import { CommentComponent } from './comment/comment.component';
+import { SearchComponent } from './search/search.component';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     RootComponent,
+    CreatePostComponent,
+    LoginComponent,
     RecentActivityComponent,
     ListOfFollowersComponent,
     FollowedPostsComponent,
     FollowButtonComponent,
     ProfilePageComponent,
-    RootComponent,
     NavBarComponent,
+    FilterBarComponent,
+    CommentComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
+    RouterModule.forRoot([]),
+    FormsModule,
     AuthModule.forRoot({
       domain: 'dev-0w--5cqa.us.auth0.com',
       clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
@@ -39,6 +50,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }
