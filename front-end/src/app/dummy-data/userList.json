@@ -10,7 +10,9 @@
         {
             "id": 2,
             "name": "Susan Que",
-            "email" : "Susan@yahoo.net"
+            "email" : "Susan@yahoo.net",
+            "followedUsers": [1],
+            "followedPosts": [1]
         },
         {
             "id": 3,
