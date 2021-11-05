@@ -1,13 +1,9 @@
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
-import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from '@auth0/auth0-angular';
 import { AuthModule } from '@auth0/auth0-angular';
-import { Subject } from 'rxjs';
-import { UserCreationService } from '../service/user-creation.service';
 import {By} from '@angular/platform-browser';
 
 
@@ -17,8 +13,6 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let activatedRoute: ActivatedRoute = new ActivatedRoute;
-  let service: AuthService;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -38,9 +32,6 @@ describe('LoginComponent', () => {
       ]
     })
     .compileComponents();
-
-    service = TestBed.inject(AuthService);
-    router = TestBed.inject(Router);
 
   });
 

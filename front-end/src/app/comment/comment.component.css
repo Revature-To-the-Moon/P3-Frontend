@@ -1,0 +1,76 @@
+.container-fluid {
+    padding: 0;
+    background-color: rgb(228, 228, 228);
+}
+
+#left {
+    background-color: rgb(116, 116, 116);
+}
+
+#center {
+    padding-top: 20px;
+}
+
+#right {
+    background-color: rgb(116, 116, 116);
+}
+
+.name-create {
+    padding: 20px 10px;
+}
+
+#create-btn {
+    float: right;
+}
+
+.btn-primary {
+    color: #fdf4f7;
+    background-color: #4d4382;
+    border-color: #4d4382;
+}
+
+.btn-primary:hover {
+    color: #fdf4f7;
+    background-color: #291a4a;
+    border-color: #291a4a;
+}
+
+.btn-outline-primary {
+    color: #4d4382;
+    border-color: #4d4382;
+}
+
+.btn-outline-primary:hover {
+    color: #fdf4f7;
+    background-color: #4d4382;
+    border-color: #4d4382;
+}
+
+span {
+    font-size: 16px;
+    color: black;
+}
+
+p {
+    font-size: 14px;
+    color: rgba(20, 20, 20, 0.8);
+}
+
+#follow-post-btn {
+    text-align: right;
+}
+
+hr {
+    margin: 20px 0;
+}
+
+.container-comment {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    border-bottom: solid 1px #666;
+}
+
+textarea{
+    background-color: rgb(228, 228, 228);
+}
