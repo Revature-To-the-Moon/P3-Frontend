@@ -1,0 +1,14 @@
+.container{
+    margin-top: 40px;
+}
+
+h6 {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    width: 75%;
+    border-bottom: solid 1px #666;
+}
+
+.form-text {
+    color: #ee0000;
+}
