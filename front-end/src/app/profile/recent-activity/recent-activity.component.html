@@ -2,8 +2,8 @@
     <h1>Recent Activity</h1>
     <table>
             <tr *ngFor="let follower of activity" id="visual">
-                <td *ngIf="follower[0].Title != undefined" class="edit">{{follower[0].Title}}</td>
-                <td *ngIf="follower[0].Title == undefined" class="edit">{{follower[0].Message.slice(0,20) + '...'}}</td>
+                <td *ngIf="follower.Title !== undefined" class="edit">{{follower.Title}}</td>
+                <td *ngIf="follower.Title === undefined" class="edit">{{follower.Message.slice(0,20) + '...'}}</td>
             </tr>
             <tr *ngIf="(activity == undefined)">
                 No Activity!
