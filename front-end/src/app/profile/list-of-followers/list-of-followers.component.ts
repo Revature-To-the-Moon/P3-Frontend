@@ -1,6 +1,5 @@
 import { Component, OnInit, Input  } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { timeout } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/service/profile.service';
 
@@ -18,6 +17,7 @@ export class ListOfFollowersComponent implements OnInit {
   constructor(private route: ActivatedRoute,public profileService: ProfileService) { }
 
   ngOnInit() {
+    // this is intentional
   }
 
   ngOnChanges(){
@@ -29,8 +29,8 @@ export class ListOfFollowersComponent implements OnInit {
       console.log("list id is now "+this.list);
 
       this.list.forEach(id => {
-        this.profileService.getUserById(id).then((result: User) => {
-          this.followedList.push(result);
+        this.profileService.getUserById(id).then((user: User) => {
+          this.followedList.push(user);
         })
       });
     });
