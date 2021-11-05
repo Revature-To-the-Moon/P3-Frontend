@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ProfileService } from 'src/app/service/profile.service';
 
 @Component({
   selector: 'app-follow-button',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./follow-button.component.css']
 })
 export class FollowButtonComponent implements OnInit {
+  @Input() isFollow = false;
 
-  constructor() { }
+  constructor(public profileService: ProfileService) { }
+
 
   ngOnInit(): void {
+  }
+  
+  onClick() {
+    this.isFollow = !this.isFollow;
   }
 
 }
