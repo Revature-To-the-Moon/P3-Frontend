@@ -1,1 +1,16 @@
-<p>list-of-followers works!</p>
+<div class="card col box">
+    <table>
+        <th>
+            <h1>Followed Users</h1>
+        </th>
+        <caption>
+            The list of people you're following. 
+        </caption>
+        <tr *ngFor="let follower of followedList" id="visual">
+            <td class="edit" routerLink="/profile/{{follower.id}}">{{follower.name}}</td>
+        </tr>
+        <tr *ngIf="(followedList== undefined)">
+            No Followers!
+        </tr>
+    </table>
+</div>
