@@ -20,11 +20,19 @@ export class RecentActivityComponent implements OnInit {
   constructor(private route: ActivatedRoute,public profileService: ProfileService) { }
 
   ngOnInit(): void {
+    
+  }
+  ngOnChanges(){
+    console.log("change detected for recent activity");
+    this.comments = [];
+    this.roots=[];
+    this.activity=[];
     this.profileService.getUserById(this.id).then((result: User) => {
       this.profileService.getAllRoots().then((roots: Root[]) => {
         this.profileService.getAllComments().then((comments: Comment[]) => {
           this.user = result;
           this.roots = roots.filter(x => x.Username == this.user.name);
+          
           this.comments = comments.filter(x => x.Username == this.user.name);
           this.activity.push(this.roots);
           this.activity.push(this.comments);
@@ -32,5 +40,6 @@ export class RecentActivityComponent implements OnInit {
       })
     })
   }
+  
 
 }
