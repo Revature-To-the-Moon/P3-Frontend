@@ -6,6 +6,7 @@ import { CommentComponent } from './comment/comment.component';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { LoginComponent } from './login/login.component';
 import { FollowButtonComponent } from './profile/follow-button/follow-button.component';
+import { BufferComponent } from './buffer/buffer.component';
 
 const routes: Routes = [
   { path: 'root', component: RootComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfilePageComponent },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'comment', component: CommentComponent },
-  { path: '', component: LoginComponent }
+  { path: '', component: LoginComponent },
+  { path: 'buffer', component: BufferComponent }
 ];
 
 @NgModule({
