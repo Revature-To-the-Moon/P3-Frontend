@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { post } from '../models/post';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class RootServiceService {
 
   constructor(private http: HttpClient) { }
 
-  addRoot(post: post): Promise<post> {
+  addRoot(post): Promise<post> {
     return this.http.post<post>(this.rootUrl, post).toPromise();
   }
 
