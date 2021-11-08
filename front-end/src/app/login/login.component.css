@@ -14,13 +14,14 @@ max-height: 970px;
     background-color: #FDF4F7
 }
 
-.button1{
+
+.btn1{
     position:absolute;
     bottom: 5%;
     right:60%;
 }
 
-.button2{
+.btn2{
     position:absolute;
     bottom: 5%;
     right:20%;
