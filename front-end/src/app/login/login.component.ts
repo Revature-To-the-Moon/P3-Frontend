@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
   }
 
   Loginfunc(){
-    this.auth.loginWithRedirect({ appState: { target: '/' } });
+    this.auth.loginWithRedirect({ appState: { target: '/buffer' } });
   }
 
   Registerfunc(){
-    this.auth.loginWithRedirect({ screen_hint: 'signup', appState: { target: '/' } });
+    this.auth.loginWithRedirect({ screen_hint: 'signup', appState: { target: '/buffer' } });
   }
 
   Logoutfunc(){
