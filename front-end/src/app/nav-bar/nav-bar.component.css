@@ -1,7 +1,7 @@
 #nav-text{
     color: #fdf4f7;
     font-size: 18px;
-    font-family:Tahoma;
+    font-family: 'Segoe UI', Tahoma;
 }
 
 #nav-text:hover{
@@ -19,7 +19,7 @@
     
 }
 .navbar-brand{
-    margin-left: 55px;
+    margin-left: 25px;
 }
 
 .container-fluid{
@@ -27,8 +27,16 @@
     
 }
 
+.navbar-nav{
+    margin-right: 50px;
+}
+
 .navbar-toggler{
     border-color:#fdf4f7;
+}
+
+.navbar-toggle :hover{
+    border-color:#fdf4f7 !important;
 }
 
 .nav-item{

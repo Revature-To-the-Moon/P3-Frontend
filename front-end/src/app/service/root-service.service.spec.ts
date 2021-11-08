@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RootServiceService } from './root-service.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { post } from '../models/post'
+import { Post } from '../models/post'
 
 describe('RootServiceService', () => {
   let service: RootServiceService;
@@ -12,7 +12,7 @@ describe('RootServiceService', () => {
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(RootServiceService);
-    httpMock = TestBed.inject(HttpTestingController);
+    
   });
 
   it('should be created', () => {
@@ -41,7 +41,7 @@ describe('RootServiceService', () => {
 
   it('getAllRoots should return array of stories', async() => {
 
-    let fakeData: post[] = [
+    let fakeData: Post[] = [
       {
         id: 1,
         title: 'Walking the Dog',

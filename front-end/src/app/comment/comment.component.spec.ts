@@ -8,6 +8,7 @@ import { RootServiceService } from '../service/root-service.service';
 
 import { CommentComponent } from './comment.component';
 
+
 describe('CommentComponent', () => {
   let component: CommentComponent;
   let fixture: ComponentFixture<CommentComponent>;
@@ -20,9 +21,6 @@ describe('CommentComponent', () => {
       imports: [FormsModule, RouterTestingModule, HttpClientTestingModule]
     })
     .compileComponents();
-
-    service = TestBed.inject(RootServiceService);
-    router = TestBed.inject(Router)
   });
 
   beforeEach(() => {
