@@ -21,9 +21,6 @@ describe('CommentComponent', () => {
       imports: [FormsModule, RouterTestingModule, HttpClientTestingModule]
     })
     .compileComponents();
-
-    service = TestBed.inject(RootServiceService);
-    router = TestBed.inject(Router)
   });
 
   beforeEach(() => {

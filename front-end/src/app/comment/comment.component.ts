@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModel, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
-import { post } from '../models/post';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'app-comment',
@@ -12,7 +12,7 @@ export class CommentComponent implements OnInit {
 
   constructor(public router: Router) { }
 
-  post: post = {
+  post: Post = {
     id: 0,
     title:'',
     message: '',
