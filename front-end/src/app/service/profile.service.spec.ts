@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProfileService } from './profile.service';
 import { User } from '../models/user';
@@ -8,14 +8,12 @@ import { Comment } from '../models/Comment';
 
 describe('ProfileService', () => {
   let service: ProfileService;
-  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(ProfileService);
-    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
@@ -30,7 +28,6 @@ describe('ProfileService', () => {
       username: 'Zoot',
       followedUsers: []
     };
-    // spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
     service.getUserById(1).then((res) => {
       expect(res).toEqual(fakeUser);
       expect(service.getUserById).toHaveBeenCalled();
@@ -46,9 +43,9 @@ describe('ProfileService', () => {
       Time: "PLACEHOLDER",
       Username: "Zoe"
     };
-    // spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
     service.getAllRoots().then((res) => {
       expect(res.length).toEqual(1);
+      expect(res[0]).toEqual(fakeRoot);
     })
   });
 
@@ -62,9 +59,9 @@ describe('ProfileService', () => {
       RootId: 1,
       CommentId: 0
     };
-    // spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
     service.getAllComments().then((res) => {
       expect(res.length).toEqual(1);
+      expect(res[0]).toEqual(fakeComment);
     })
   });
 });
