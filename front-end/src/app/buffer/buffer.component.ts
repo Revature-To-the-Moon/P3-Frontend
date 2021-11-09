@@ -12,9 +12,9 @@ export class BufferComponent implements OnInit {
 
   constructor(private auth: AuthService, private UserCreationService:UserCreationService) { }
 
-    user: User = {
-      username: ''
-    };
+  user: User = {
+    username: ''
+  };
 
   ngOnInit(): void {
     this.auth.user$.subscribe(profile =>
