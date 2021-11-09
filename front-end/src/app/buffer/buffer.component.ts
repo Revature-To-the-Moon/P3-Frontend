@@ -21,6 +21,13 @@ export class BufferComponent implements OnInit {
       {
         this.user.username = profile.preferred_username;
         this.UserCreationService.userName = this.user.username;
+
+        // Service to get all users
+        // Loop through all usernames
+
+        // If username NOT in db
+        // Post this.UserCreationService.userName into the userdb
+
         this.auth.loginWithRedirect({appState: {target: '/root'}});
       }
     )}
