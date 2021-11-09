@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthModule, AuthService } from '@auth0/auth0-angular';
+import { UserCreationService } from '../service/user-creation.service';
 
 import { LoginButtonsComponent } from './login-buttons.component';
 
@@ -8,7 +10,13 @@ describe('LoginButtonsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginButtonsComponent ]
+      imports: [AuthModule.forRoot(
+        {
+          domain: 'dev-0w--5cqa.us.auth0.com',
+          clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
+        }
+      )],
+      declarations: [ LoginButtonsComponent, ]
     })
     .compileComponents();
   });

@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from '../models/post';
+import { Root } from '../models/root';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RootServiceService {
 
-  private rootUrl: string = 'https://tothemoon.azurewebsites.net/api/post';
+  private rootUrl: string = 'https://52.141.211.229/post/api/post';
 
   constructor(private http: HttpClient) { }
 
-  addRoot(post): Promise<Post> {
-    return this.http.post<Post>(this.rootUrl, post).toPromise();
+  addRoot(post): Promise<Root> {
+    return this.http.post<Root>(this.rootUrl, post).toPromise();
   }
 
-  getAllRoots(): Promise<Post[]> {
-    return this.http.get<Post[]>(this.rootUrl).toPromise();
+  getAllRoots(): Promise<Root[]> {
+    return this.http.get<Root[]>(this.rootUrl).toPromise();
   }
 
-  getRootById(id: number): Promise<Post> {
-    return this.http.get<Post>(this.rootUrl + '/' + id).toPromise();
+  getRootById(id: number): Promise<Root> {
+    return this.http.get<Root>(this.rootUrl + '/' + id).toPromise();
   }
 
 }
