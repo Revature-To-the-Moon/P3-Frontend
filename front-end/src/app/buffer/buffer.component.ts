@@ -31,12 +31,18 @@ export class BufferComponent implements OnInit {
           for (let i = 0; i < result.length; i++) {
 
             // If username NOT in db
-            if (result[i].username !== profile.preferred_username) {
+            if (result[i].username == profile.preferred_username) {
               this.flag = true
-              // Post this.UserCreationService.userName into the userdb
-              this.http.post<User>('https://52.141.211.229/user/api/posts' , {title: 'Frontend POST Request to userdb'})
+              
+              
             }
           }
+
+          //ask if this should be !== true since we want to check if the username is NOT there..?
+          if (this.flag == true)
+          { console.log("true")}
+          // Post this.UserCreationService.userName into the userdb
+          //this.http.post<User>('https://52.141.211.229/user/api/posts' , {title: 'Frontend POST Request to userdb'})
         })
           this.auth.loginWithRedirect({appState: {target: '/root'}});
       }
