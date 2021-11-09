@@ -29,8 +29,6 @@ describe('ListOfFollowersComponent', () => {
     expect (component.message).toContain('OnInit Executed:- ');
   });
 
-
-
   it('should test the MANUAL execution of the OnChanges', () => {
     component.id = 4;
     component.ngOnChanges({
@@ -38,7 +36,6 @@ describe('ListOfFollowersComponent', () => {
     });
     fixture.detectChanges();
     expect (component.message).toContain('ngOnChanges Executed');
-
   });
 });
 

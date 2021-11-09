@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { FollowedPostsComponent } from './followed-posts.component';
+import { Component, DebugElement, SimpleChange } from '@angular/core';
 
 describe('FollowedPostsComponent', () => {
   let component: FollowedPostsComponent;
@@ -25,5 +26,14 @@ describe('FollowedPostsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should test the MANUAL execution of the OnChanges', () => {
+    component.id = 4;
+    component.ngOnChanges({
+      id: new SimpleChange(null, component.id, null)
+    });
+    fixture.detectChanges();
+    expect (component.message).toContain('ngOnChanges Executed');
   });
 });
