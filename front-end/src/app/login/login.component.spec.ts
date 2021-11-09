@@ -66,29 +66,13 @@ describe('LoginComponent', () => {
     expect(nativeButton.textContent).toBe('Register');
   });
 
-
-  it('should send data on submit', async () => {
-    const AuthServiceSpy = jasmine.createSpyObj('AuthService',['Login']);
-
-    let fixture = TestBed.createComponent(LoginComponent)
-    let component: LoginComponent = fixture.componentInstance;
-    let element = fixture.nativeElement;
-
-    fixture.detectChanges();
-
-    // expect(element.querySelector('#userService-username').value).toEqual(expectedUsername);
-
-    // element.querySelector(component.Loginfunc).toHaveBeenCalled();
-
-    // spyOn(component, 'click').and.returnValue();
-    // let buttonElement = fixture.debugElement.query(By.css('table'));;
-    // spyOn(component, 'click');
-    // await buttonElement.triggerEventHandler('click');
-    // fixture.detectChanges();
-    // expect(component.Loginfunc).toHaveBeenCalled();
-
-
+  it('should not have a button with "Logout" on the page when user is not logged in', () => {
+    const buttons = fixture.debugElement.queryAll(By.css('.btn3'));
+    expect(buttons.length <= 1).toBeTruthy();
   });
+
+
+  
 
 
 });
