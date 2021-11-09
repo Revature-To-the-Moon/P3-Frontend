@@ -7,12 +7,12 @@ import { Root } from '../models/root';
 })
 export class RootServiceService {
 
-  private rootUrl: string = 'https://52.141.211.229/post/api/post';
+  private rootUrl: string = "https://52.141.211.229/post/api/post";
 
   constructor(private http: HttpClient) { }
 
-  addRoot(post): Promise<Root> {
-    return this.http.post<Root>(this.rootUrl, post).toPromise();
+  addRoot(Root): Promise<Root> {
+    return this.http.post<Root>(this.rootUrl, Root).toPromise();
   }
 
   getAllRoots(): Promise<Root[]> {

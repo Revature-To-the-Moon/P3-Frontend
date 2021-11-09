@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Router} from '@angular/router';
-import { Post } from '../models/post';
+import { Router } from '@angular/router';
+import { Root } from '../models/root';
 
 @Component({
   selector: 'app-create-post',
@@ -9,21 +9,22 @@ import { Post } from '../models/post';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
-  
+
   constructor(public router: Router) { }
 
-  post: Post = {
+  root: Root = {
     id: 0,
-    title:'',
+    title: '',
     message: '',
-    date: new Date(0),
-    username: ''
+    totalVote: 1,
+    dateTime: new Date(0),
+    userName: ''
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(postForm: NgForm){
+  onSubmit(postForm: NgForm) {
     console.log("Post submitted")
   }
 

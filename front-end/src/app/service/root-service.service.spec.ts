@@ -5,7 +5,6 @@ import { Root } from '../models/root'
 
 describe('RootServiceService', () => {
   let service: RootServiceService;
-  let httpMock: HttpTestingController;
 
 
   beforeEach(() => {
@@ -13,7 +12,6 @@ describe('RootServiceService', () => {
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(RootServiceService);
-    httpMock = TestBed.inject(HttpTestingController);
 
   });
 
@@ -22,20 +20,23 @@ describe('RootServiceService', () => {
   });
 
   it('addRoot should add new story', async () => {
-    let fakePost = {
+    let fakeRoot = {
       id: 1,
       title: 'Walking the Dog',
       message: 'It was sunday morning when I...',
-      totalvote: 0,
-      Time: 'November 4, 2021 03:24:00',
-      Username: 'ToTheMoon1234'
+      totalVote: 2,
+      dateTime: new Date('November 4, 2021 03:24:00'),
+      userName: 'ToTheMoon1234'
     }
-    spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakePost));
-    await service.addRoot(fakePost).then((res) => {
+
+    spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakeRoot));
+
+    await service.addRoot(fakeRoot).then((res) => {
       expect(service.addRoot).toHaveBeenCalled();
-      expect(res).toEqual(fakePost);
+      expect(res).toEqual(fakeRoot);
     });
   });
+
 
   it('getAllRoots should return array of stories', async () => {
 
@@ -44,17 +45,17 @@ describe('RootServiceService', () => {
         id: 1,
         title: 'Walking the Dog',
         message: 'It was sunday morning when I...',
-        totalvote: 0,
-        Time: 'November 4, 2021 03:24:00',
-        Username: 'ToTheMoon1234'
+        totalVote: 4,
+        dateTime: new Date('November 4, 2021 03:24:00'),
+        userName: 'ToTheMoon1234'
       },
       {
         id: 2,
         title: 'Late night TV',
         message: 'I watched cartoons last night ...',
-        totalvote: 3,
-        Time: 'January 20, 2021 05:45:00',
-        Username: 'WoWoWubzy456'
+        totalVote: 6,
+        dateTime: new Date('January 20, 2021 05:45:00'),
+        userName: 'WoWoWubzy456'
       }
     ];
     spyOn(service, 'getAllRoots').and.returnValue(Promise.resolve(fakeData));
@@ -66,19 +67,19 @@ describe('RootServiceService', () => {
 
 
   it('getRootById should return a specific root', async () => {
-    let fakePost = {
+    let fakeRoot = {
       id: 1,
       title: 'Walking the Dog',
       message: 'It was sunday morning when I...',
-      totalvote: 0,
-      Time: 'November 4, 2021 03:24:00',
-      Username: 'ToTheMoon1234'
+      totalVote: 1,
+      dateTime: new Date('November 4, 2021 03:24:00'),
+      userName: 'ToTheMoon1234'
     }
-    spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakePost));
+    spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakeRoot));
     await service.getRootById(1).then((res) => {
       expect(service.getRootById).toHaveBeenCalledWith(1);
-      expect(res).toEqual(fakePost);
+      expect(res).toEqual(fakeRoot);
     })
-  })
+  });
 
 });
