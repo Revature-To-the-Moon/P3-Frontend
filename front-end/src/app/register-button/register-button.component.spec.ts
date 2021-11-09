@@ -1,15 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AuthModule, AuthService } from '@auth0/auth0-angular';
-import { LoginButtonsComponent } from '../login-buttons/login-buttons.component';
-import { RegisterButtonComponent } from '../register-button/register-button.component';
-import { SearchComponent } from '../search/search.component';
 import { UserCreationService } from '../service/user-creation.service';
 
-import { NavBarComponent } from './nav-bar.component';
+import { RegisterButtonComponent } from './register-button.component';
 
-describe('NavBarComponent', () => {
-  let component: NavBarComponent;
-  let fixture: ComponentFixture<NavBarComponent>;
+describe('RegisterButtonComponent', () => {
+  let component: RegisterButtonComponent;
+  let fixture: ComponentFixture<RegisterButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,14 +16,13 @@ describe('NavBarComponent', () => {
           clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
         }
       )],
-      declarations: [ NavBarComponent,
-      SearchComponent, LoginButtonsComponent, RegisterButtonComponent ]
+      declarations: [ RegisterButtonComponent, ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavBarComponent);
+    fixture = TestBed.createComponent(RegisterButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

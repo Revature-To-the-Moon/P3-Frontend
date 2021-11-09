@@ -2,8 +2,8 @@ export interface Comment {
     id: number;
     message: string;
     totalvote: number;
-    Time: string;
-    Username: string;
+    dateTime: string;
+    userName: string;
     RootId: number;
     CommentId: number;
 }

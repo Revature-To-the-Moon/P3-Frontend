@@ -39,9 +39,9 @@ describe('ProfileService', () => {
       id: 1,
       title: "Duck Walk",
       message: "We's walkin' a ducky!",
-      totalvote: 55,
-      Time: "PLACEHOLDER",
-      Username: "Zoe"
+      totalVote: 55,
+      dateTime: new Date('November 4, 2021 03:24:00'),
+      userName: "Zoe"
     };
     service.getAllRoots().then((res) => {
       expect(res.length).toEqual(1);

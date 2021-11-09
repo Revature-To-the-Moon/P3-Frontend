@@ -20,6 +20,8 @@ import { CommentComponent } from './comment/comment.component';
 import { SearchComponent } from './search/search.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
+import { RegisterButtonComponent } from './register-button/register-button.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     FilterBarComponent,
     CommentComponent,
     SearchComponent,
+    LoginButtonsComponent,
+    RegisterButtonComponent,
   ],
   imports: [
     BrowserModule,

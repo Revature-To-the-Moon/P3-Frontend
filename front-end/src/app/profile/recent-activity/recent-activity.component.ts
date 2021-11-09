@@ -32,7 +32,7 @@ export class RecentActivityComponent implements OnInit {
         this.profileService.getAllComments().then((comments: Comment[]) => {
           this.user = result;
           this.roots = roots.filter(x => x.userName == this.user.name);
-          this.comments = comments.filter(x => x.Username == this.user.name);
+          this.comments = comments.filter(x => x.userName == this.user.name);
 
           this.activity = (this.roots);
           this.comments.forEach(comment => {

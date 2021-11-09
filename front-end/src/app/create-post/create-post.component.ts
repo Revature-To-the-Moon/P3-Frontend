@@ -21,7 +21,8 @@ export class CreatePostComponent implements OnInit {
     message: '',
     totalVote: 1,
     dateTime: new Date(0),
-    userName: ''
+    userName: '',
+    comments: []
   }
 
   ngOnInit(): void {
