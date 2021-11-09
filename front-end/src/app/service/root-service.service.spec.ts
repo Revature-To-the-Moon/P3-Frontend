@@ -12,7 +12,7 @@ describe('RootServiceService', () => {
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(RootServiceService);
-    
+
   });
 
   it('should be created', () => {
@@ -28,9 +28,7 @@ describe('RootServiceService', () => {
       date: new Date('November 4, 2021 03:24:00'),
       username: 'ToTheMoon1234'
     }
-
-    spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakePost));
-
+    // spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakePost));
     await service.addRoot(fakePost).then((res) => {
       expect(service.addRoot).toHaveBeenCalled();
       expect(res).toEqual(fakePost);
@@ -38,8 +36,7 @@ describe('RootServiceService', () => {
   });
 
   //Get Test//
-
-  it('getAllRoots should return array of stories', async() => {
+  it('getAllRoots should return array of stories', async () => {
 
     let fakeData: Post[] = [
       {
@@ -57,9 +54,7 @@ describe('RootServiceService', () => {
         username: 'WoWoWubzy456'
       }
     ];
-
     spyOn(service, 'getAllRoots').and.returnValue(Promise.resolve(fakeData));
-
     await service.getAllRoots().then((res) => {
       expect(service.getAllRoots).toHaveBeenCalled();
       expect(res.length).toEqual(2);
@@ -67,7 +62,7 @@ describe('RootServiceService', () => {
   });
 
 
-  it('getRootById should return a specific root', async() =>{
+  it('getRootById should return a specific root', async () => {
     let fakePost = {
       id: 1,
       title: 'Walking the Dog',
@@ -75,7 +70,7 @@ describe('RootServiceService', () => {
       date: new Date('November 4, 2021 03:24:00'),
       username: 'ToTheMoon1234'
     }
-    spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakePost));
+    // spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakePost));
     await service.getRootById(1).then((res) => {
       expect(service.getRootById).toHaveBeenCalledWith(1);
       expect(res).toEqual(fakePost);

@@ -12,23 +12,24 @@
 
 .bg-img{
     background-image: url(../../assets/starrynightmoon.png);
-    min-height: 120px;
+    min-height: 3vw;
     background-position-x: right;
     background-repeat: repeat;
 
     
 }
 .navbar-brand{
-    margin-left: 25px;
+    margin-left: 3vw;
 }
 
 .container-fluid{
     padding: 0;
+    margin: 0;
     
 }
 
 .navbar-nav{
-    margin-right: 50px;
+    margin-right: 2vw;
 }
 
 .navbar-toggler{
