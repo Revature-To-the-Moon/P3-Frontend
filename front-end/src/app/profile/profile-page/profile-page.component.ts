@@ -36,8 +36,5 @@ export class ProfilePageComponent implements OnInit {
     });
     
   }
-  onClick() {
-    this.isFollow = !this.isFollow;
-  }
 
 }
