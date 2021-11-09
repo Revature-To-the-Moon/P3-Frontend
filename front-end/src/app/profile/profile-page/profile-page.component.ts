@@ -31,7 +31,6 @@ export class ProfilePageComponent implements OnInit {
 
       this.profileService.getUserById(this.id).then((result: User) => {
         this.currentUser= result;
-        console.log("followed user" + this.currentUser.followedUsers[1]);
       });
     });
     
