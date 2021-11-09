@@ -9,7 +9,7 @@ import { Comment } from '../models/Comment';
 })
 export class ProfileService {
 
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'https://52.141.211.229/user/api';
 
   constructor(private http: HttpClient) { }
   
@@ -20,7 +20,7 @@ export class ProfileService {
 
   getUserById(id: number): Promise<User>  
   {
-    return this.http.get<User>(this.apiUrl + "/user/" + id).toPromise();
+    return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
 
   getAllRoots(): Promise<Root[]>
