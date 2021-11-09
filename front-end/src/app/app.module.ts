@@ -12,6 +12,7 @@ import { FollowButtonComponent } from './profile/follow-button/follow-button.com
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
+import { BufferComponent } from './buffer/buffer.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { FormsModule } from '@angular/forms';
@@ -34,6 +35,7 @@ import { RegisterButtonComponent } from './register-button/register-button.compo
     FollowButtonComponent,
     ProfilePageComponent,
     NavBarComponent,
+    BufferComponent,
     FilterBarComponent,
     CommentComponent,
     SearchComponent,
