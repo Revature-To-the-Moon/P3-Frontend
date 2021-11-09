@@ -5,4 +5,6 @@ export interface Root {
     totalVote: number;
     dateTime: Date;
     userName: string;
+    comments: any;
+
 }

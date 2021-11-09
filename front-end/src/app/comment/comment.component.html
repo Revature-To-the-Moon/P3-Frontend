@@ -6,15 +6,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <p><span>root.username</span> | Posted root.date</p>
+                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
                 <div class="row">
-                    <h4>root.title</h4>
-                    <h5>root.message root.message root.message root.message root.message</h5>
+                    <h4>{{ root.title }}</h4>
+                    <h5>{{ root.message }}</h5>
                 </div>
             </div>
 
@@ -37,14 +37,14 @@
                 </form>
             </div>
 
-            <div class="container" id="comments" comment="*ngFor='let comment of comments'">
+            <div class="container" id="comments" *ngFor='let comment of root.comments'>
                 <div class="row">
-                    <p style="font-size: 13px;"><span style="font-size: 15px;">comment.username</span> | Posted
-                        comment.date
+                    <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> | Posted
+                        {{ comment.dateTime }}
                     </p>
                 </div>
                 <div class="row">
-                    <h6>comment.message comment.message comment.message comment.message comment.message</h6>
+                    <h6>{{ comment.message }}</h6>
                 </div>
                 <div class="row">
                     <div class="col">

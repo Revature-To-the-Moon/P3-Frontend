@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'follow', component: FollowButtonComponent },
   { path: 'profile/:id', component: ProfilePageComponent },
   { path: 'create-post', component: CreatePostComponent },
-  { path: 'comment', component: CommentComponent },
+  { path: 'comment/:id', component: CommentComponent },
   { path: '', component: LoginComponent },
   { path: 'buffer', component: BufferComponent }
 ];
