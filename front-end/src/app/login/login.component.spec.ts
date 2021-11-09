@@ -66,7 +66,7 @@ describe('LoginComponent', () => {
     expect(nativeButton.textContent).toBe('Register');
   });
 
-  it('should not have a button with "Logout" on the page when user is not logged in', () => {
+  it('should not have the logout button on the page when user is not logged in', () => {
     const buttons = fixture.debugElement.queryAll(By.css('.btn3'));
     expect(buttons.length <= 1).toBeTruthy();
   });
