@@ -11,8 +11,8 @@ export class RootServiceService {
 
   constructor(private http: HttpClient) { }
 
-  addRoot(Root): Promise<Root> {
-    return this.http.post<Root>(this.rootUrl, Root).toPromise();
+  addRoot(root: Root): Promise<Root> {
+    return this.http.post<Root>(this.rootUrl, root).toPromise();
   }
 
   getAllRoots(): Promise<Root[]> {
