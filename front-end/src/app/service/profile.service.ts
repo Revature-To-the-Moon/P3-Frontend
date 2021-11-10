@@ -24,6 +24,11 @@ export class ProfileService {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
 
+  getAllUsers(): Promise<User[]>
+  {
+    return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
+  }
+
   getAllRoots(): Promise<Root[]>
   {
     return this.http.get<[]>(this.apiUrl + "/Root/").toPromise();

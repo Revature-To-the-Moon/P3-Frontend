@@ -29,13 +29,27 @@ describe('ListOfFollowersComponent', () => {
     expect (component.message).toContain('OnInit Executed:- ');
   });
 
-  it('should test the MANUAL execution of the OnChanges', () => {
+
+
+  it('should test the manual execution of the OnChanges', () => {
     component.id = 4;
     component.ngOnChanges({
       id: new SimpleChange(null, component.id, null)
     });
     fixture.detectChanges();
     expect (component.message).toContain('ngOnChanges Executed');
+
+  });
+
+  it('should test OnChanges returns an array of users', () => {
+    component.id = 4;
+    component.ngOnChanges({
+      id: new SimpleChange(null, component.id, null)
+    });
+    fixture.detectChanges();
+    spyOn(component.profileService, "getUserById").and.callThrough();
+    component.profileService.getUserById(component.id);
+    expect(component.profileService.getUserById).toHaveBeenCalled();
   });
 });
 
