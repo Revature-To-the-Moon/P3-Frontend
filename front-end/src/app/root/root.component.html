@@ -18,7 +18,7 @@
             <div class="container" id="featured-post">
                 <div class="row">
                     <div class="col">
-                        <p><span>user.username</span> | Posted post.date</p>
+                        <p><span>user.username</span> | post.date</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
@@ -44,7 +44,7 @@
             <div class="container" id="feed" *ngFor="let root of roots">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime }}</p>
+                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime | dateAgo }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>

@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime }}</p>
+                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime | dateAgo }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
@@ -19,11 +19,11 @@
             </div>
 
             <div class="container-comment">
-                <span><small>Add to the story as <span style="color: brown;"><small>User</small></span></small></span>
+                <span><small>Add to the story as <span style="color: brown;"><small>{{user}}</small></span></small></span>
                 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
                     <div class="form-group mb-3">
                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                            placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="root.message"
+                            placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="comment.message"
                             name="message" #message="ngModel" required></textarea>
                     </div>
                     <div class="d-md-flex justify-content-md-end">
@@ -40,7 +40,7 @@
             <div class="container" id="comments" *ngFor='let comment of root.comments'>
                 <div class="row">
                     <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> | Posted
-                        {{ comment.dateTime }}
+                        {{ comment.dateTime | dateAgo }}
                     </p>
                 </div>
                 <div class="row">

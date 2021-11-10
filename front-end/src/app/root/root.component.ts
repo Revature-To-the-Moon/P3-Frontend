@@ -8,6 +8,7 @@ import { RootServiceService } from '../service/root-service.service';
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css']
 })
+
 export class RootComponent implements OnInit {
 
   constructor(private router: Router, private rootService: RootServiceService) { }
@@ -28,5 +29,26 @@ export class RootComponent implements OnInit {
 
   goToComment(id: number): void {
     this.router.navigateByUrl(`comment/` + id);
+  }
+
+  sortPopular(): void {
+    this.rootService.getAllRoots().then(result => {
+      result.sort((a, b) => (a.totalVote > b.totalVote) ? 1 : -1);
+      this.roots = result;
+    })
+  }
+
+  sortNewest(): void {
+    this.rootService.getAllRoots().then(result => {
+      result.sort((a, b) => (a.dateTime < b.dateTime) ? 1 : -1);
+      this.roots = result;
+    })
+  }
+
+  sortOldest(): void {
+    this.rootService.getAllRoots().then(result => {
+      result.sort((a, b) => (a.dateTime > b.dateTime) ? 1 : -1);
+      this.roots = result;
+    })
   }
 }
