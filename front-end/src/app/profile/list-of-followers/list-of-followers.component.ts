@@ -25,9 +25,7 @@ export class ListOfFollowersComponent implements OnInit {
       this.message = 'ngOnChanges Executed'
       this.followedList=[];
       this.profileService.getUserById(this.id).then((result: User) => {
-        console.log("Within profileService.getUserById");
         this.followedList= result.followings;
-        console.log("list id is now "+this.followedList);
       });
   }
 }

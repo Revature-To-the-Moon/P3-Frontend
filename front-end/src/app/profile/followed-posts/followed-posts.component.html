@@ -6,5 +6,8 @@
         <tr *ngFor="let post of followedList" id="visual">
             <td class="edit" routerLink="/profile/{{post.userId}}">{{post.postname}}</td>
         </tr>
+        <tr *ngIf="(followedList== undefined|| followedList.length == 0)">
+            <td>No followed posts!</td>
+        </tr>
     </table>
 </div>
