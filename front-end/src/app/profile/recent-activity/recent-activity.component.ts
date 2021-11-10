@@ -18,32 +18,15 @@ export class RecentActivityComponent implements OnInit {
   comments!: Comment[];
   activity: any[] = [];
 
-  constructor(private route: ActivatedRoute,public profileService: ProfileService) { }
+  constructor(private route: ActivatedRoute, public profileService: ProfileService) { }
 
   ngOnInit(): void {
-    
+
   }
-  ngOnChanges(changes: SimpleChanges): void{
+  ngOnChanges(changes: SimpleChanges): void {
     this.message = 'ngOnChanges Executed'
-    this.comments = [];
-    this.roots=[];
-    this.activity=[];
-    this.profileService.getUserById(this.id).then((result: User) => {
-      this.profileService.getAllRoots().then((roots: Root[]) => {
-        this.profileService.getAllComments().then((comments: Comment[]) => {
-          this.user = result;
-          this.roots = roots.filter(x => x.Username == this.user.name);
-          this.comments = comments.filter(x => x.userName == this.user.name);
-
-          this.activity = (this.roots);
-          this.comments.forEach(comment => {
-            this.activity.push(comment);
-          });
-          console.log(this.activity);
-        })
-      })
-    })
+    this.profileService.getUserById(this.id).then((user: User) => (
+      this.activity = this.profileService.getAllPostsAndCommentsByUser(user.name)
+    ))
   }
-  
-
 }

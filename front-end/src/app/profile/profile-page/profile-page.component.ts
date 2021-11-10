@@ -23,9 +23,7 @@ export class ProfilePageComponent implements OnInit {
     followings: []
   }; 
 
-
   ngOnInit(): void {
-    console.log("ngOnInit for profile-page")
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
 
@@ -37,7 +35,8 @@ export class ProfilePageComponent implements OnInit {
   }
 
   GetPosts(): void {
-    this.profileService.getAllPostsAndCommentsByUser("Bao3");
+    var whatever = this.profileService.getAllPostsAndCommentsByUser("Bao3");
+    console.log(whatever);
   }
 
 }

@@ -4,8 +4,12 @@ import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
 import { Followings } from '../models/Followings';
+=======
+import { Post } from '../models/post';
+>>>>>>> dea1146c40b5348d7bbd35b6b3c7f61b813b287d
 
 @Injectable({
   providedIn: 'root'
@@ -16,30 +20,22 @@ export class ProfileService {
   rootUrl = 'https://52.141.211.229/post/api';
 S
   constructor(private http: HttpClient) { }
-  
+
   // getAll(): Observable<any> {
   //   return this.http.get(this.apiUrl + '_sort=id&order=desc')
   //   .pipe();
   // }
 
-  getUserById(id: number): Promise<User>  
-  {
+  getUserById(id: number): Promise<User> {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
 
-  getAllUsers(): Promise<User[]>
-  {
+  getAllUsers(): Promise<User[]> {
     return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
   }
 
-  getAllRoots(): Promise<Root[]>
-  {
-    return this.http.get<[]>(this.apiUrl + "/Root/").toPromise();
-  }
-
-  getFollowedPostByUserId(id: number): Promise<FollowingPost[]>
-  {
-    return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
+  getAllPosts(): Promise<Post[]> {
+    return this.http.get<[]>(this.rootUrl + "/post/").toPromise();
   }
 
   getAllComments(): Promise<Comment[]>
@@ -47,12 +43,18 @@ S
     return this.http.get<[]>(this.apiUrl + "/Comment/").toPromise();
   }
 
+  getFollowedPostByUserId(id: number): Promise<FollowingPost[]>
+  {
+    return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
+  }
+
+  // testcase for this fails and is commented out. 
   getAllPostsAndCommentsByUser(name: string): any[]
   {
+    var LoC = [] as Array<any>
+
     this.http.get<[]>(this.rootUrl + "/post/").toPromise().then(
       (posts: any[]) => {
-        var LoC = [] as Array<any>
-        
         // posts now has every single post, including comments, in the entire website...
         posts.forEach(posty => {
           if (posty.userName == name)
@@ -63,17 +65,13 @@ S
             LoC = this.addCommentToList(comery, LoC, name);
           });
         });
-        console.log(LoC)
+        LoC.sort((a,b) => (a.dateTime > b.dateTime ? 1 : -1));
       });
-    return [];
+    return LoC;
   }
 
-  addCommentToList(Com: Comment, LoC: Comment[], name: string)
-  {
-    console.log("Got into addCommentToList. Username: " + Com.userName);
-    if (Com.comments)
-    {
-      console.log("It has a comment!");
+  addCommentToList(Com: Comment, LoC: Comment[], name: string) {
+    if (Com.comments) {
       Com.comments.forEach(commy => {
         LoC = this.addCommentToList(commy, LoC, name);
       });

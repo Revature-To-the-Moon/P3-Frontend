@@ -1,11 +1,27 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
 export class UserCreationService {
-  username?: string;
+  userName?: string;
+
   
-  constructor() { }
-  
+
+  constructor(private http: HttpClient) { }
+
+  apiUrl = 'https://52.141.211.229/user/api';
+
+
+  getAllUsers(): Promise<User[]>
+  {
+    return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
+  }
+
+  AddObject(user: User): Promise<User>
+  {
+    return this.http.post<User>(this.apiUrl + "/user/", user).toPromise();
+  }
+
 }
