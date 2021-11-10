@@ -23,10 +23,12 @@ describe('RootServiceService', () => {
   it('addRoot should add new story', async () => {
     let fakePost = {
       id: 1,
-      title: 'Walking the Dog',
-      message: 'It was sunday morning when I...',
-      date: new Date('November 4, 2021 03:24:00'),
-      username: 'ToTheMoon1234'
+    title: 'Walking the Dog',
+    message: 'It was sunday morning when I...',
+    dateTime: null,
+    userName: 'ToTheMoon1234',
+    totalVote: 5,
+    comments:[]
     }
 
     spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakePost));
@@ -44,17 +46,21 @@ describe('RootServiceService', () => {
     let fakeData: Post[] = [
       {
         id: 1,
-        title: 'Walking the Dog',
-        message: 'It was sunday morning when I...',
-        date: new Date('November 4, 2021 03:24:00'),
-        username: 'ToTheMoon1234'
+      title: 'Walking the Dog',
+      message: 'It was sunday morning when I...',
+      dateTime: null,
+      userName: 'ToTheMoon1234',
+      totalVote: 5,
+      comments:[]
       },
       {
         id: 2,
         title: 'Late night TV',
         message: 'I watched cartoons last night ...',
-        date: new Date('January 20, 2021 05:45:00'),
-        username: 'WoWoWubzy456'
+        dateTime: null,
+        userName: 'WoWoWubzy456',
+        totalVote: 5,
+        comments:[]
       }
     ];
 
@@ -72,8 +78,11 @@ describe('RootServiceService', () => {
       id: 1,
       title: 'Walking the Dog',
       message: 'It was sunday morning when I...',
-      date: new Date('November 4, 2021 03:24:00'),
-      username: 'ToTheMoon1234'
+      dateTime: null,
+      userName: 'ToTheMoon1234',
+      totalVote: 5,
+      comments:[]
+
     }
     spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakePost));
     await service.getRootById(1).then((res) => {

@@ -34,10 +34,15 @@ export class ProfilePageComponent implements OnInit {
         console.log("followed user" + this.currentUser.followings[1].followingUserName);
       });
     });
-    this.profileService.getAllUsers().then((result:User[]) => {
-      this.userList = result;
-    })
-    
   }
+
+  GetPosts(): void {
+    console.log(this.profileService.getAllPostsAndCommentsByUser("Hunter"));
+  }
+
+    // this.profileService.getAllUsers().then((result:User[]) => {
+    //   this.userList = result;
+    // })
+  // }
 
 }

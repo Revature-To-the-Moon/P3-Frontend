@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Root } from '../models/root';
+import { Post } from '../models/post';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
 
@@ -11,6 +12,7 @@ import { FollowingPost } from '../models/FollowingPost';
 export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
+  rootUrl = 'https://52.141.211.229/post/api';
 
   constructor(private http: HttpClient) { }
   
@@ -42,5 +44,34 @@ export class ProfileService {
   getAllComments(): Promise<Comment[]>
   {
     return this.http.get<[]>(this.apiUrl + "/Comment/").toPromise();
+  }
+
+  getAllPostsAndCommentsByUser(name: string): any[]
+  {
+    var posts = {} as Array<any>;
+    var result = this.http.get<[]>(this.rootUrl + "/post/");
+    result.forEach(post => {
+      posts.push(post);
+    });
+    
+    // posts now has every single post, including comments, in the entire website...
+    return [];
+  }
+
+  addCommentToList(Com: Comment, LoC: Comment[], name: string)
+  {
+    if (Com.comments)
+    {
+      Com.comments.forEach(commy => {
+        this.addCommentToList(commy, LoC, name);
+      });
+    }
+    // final comment, or already went through the children
+    if (Com.Username == name)
+    {
+      LoC.push(Com);
+    }
+
+    return LoC;
   }
 }
