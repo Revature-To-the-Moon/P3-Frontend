@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime }}</p>
+                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime | dateAgo }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
@@ -40,7 +40,7 @@
             <div class="container" id="comments" *ngFor='let comment of root.comments'>
                 <div class="row">
                     <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> | Posted
-                        {{ comment.dateTime }}
+                        {{ comment.dateTime | dateAgo }}
                     </p>
                 </div>
                 <div class="row">

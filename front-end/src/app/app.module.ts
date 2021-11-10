@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RegisterButtonComponent } from './register-button/register-button.compo
     SearchComponent,
     LoginButtonsComponent,
     RegisterButtonComponent,
+    DateAgoPipe,
   ],
   imports: [
     BrowserModule,
