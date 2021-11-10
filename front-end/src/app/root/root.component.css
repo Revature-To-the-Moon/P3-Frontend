@@ -70,3 +70,13 @@ p {
 #follow-post-btn {
     text-align: right;
 }
+
+#filter-btn {
+    border: none;
+}
+
+#filter-col {
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
