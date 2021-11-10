@@ -6,9 +6,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthModule } from '@auth0/auth0-angular';
 import {By} from '@angular/platform-browser';
 
-
-
-
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
@@ -57,8 +54,6 @@ describe('LoginComponent', () => {
     const nativeButton: HTMLButtonElement = linkDes[0].nativeElement;
     expect(nativeButton.textContent).toBe('Log into Cadmus');
   });
-
-
 
   it('should have one button with "Register" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));

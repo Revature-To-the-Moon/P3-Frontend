@@ -31,8 +31,7 @@ export class FollowedPostsComponent implements OnInit {
     this.message = 'ngOnChanges Executed'
     this.followedList = [];
     this.profileService.getFollowedPostByUserId(this.id).then((result: [FollowingPost]) => {
-      console.log("Within profileService.getUserById");
-      this.followedList = result;
+      this.followedList= result;
     });
   }
 
