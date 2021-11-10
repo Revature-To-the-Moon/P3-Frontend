@@ -6,5 +6,4 @@ export interface Root {
     dateTime: Date;
     userName: string;
     comments: any;
-
 }

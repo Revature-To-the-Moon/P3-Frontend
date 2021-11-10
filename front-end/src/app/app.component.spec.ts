@@ -6,12 +6,13 @@ import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
 import { SearchComponent } from './search/search.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule, AuthModule.forRoot(
+        HttpClientTestingModule, RouterTestingModule, AuthModule.forRoot(
           {
             domain: 'dev-0w--5cqa.us.auth0.com',
             clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'

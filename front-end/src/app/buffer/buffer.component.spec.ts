@@ -46,4 +46,6 @@ describe('BufferComponent', () => {
     const buttons = fixture.debugElement.queryAll(By.css('.buffer'));
     expect(buttons.length >= 1).toBeTruthy();
   });
+
+  
 });

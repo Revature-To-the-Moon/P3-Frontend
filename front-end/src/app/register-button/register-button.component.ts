@@ -16,7 +16,7 @@ export class RegisterButtonComponent implements OnInit {
     if (this.auth.isAuthenticated$)
     {
       this.auth.user$.subscribe(
-        (profile) => (this.userService.username = profile.preferred_username))
+        (profile) => (this.userService.userName = profile.preferred_username))
     }
   }
 
