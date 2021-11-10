@@ -33,7 +33,7 @@ export class RootComponent implements OnInit {
 
   sortPopular(): void {
     this.rootService.getAllRoots().then(result => {
-      result.sort((a, b) => (a.totalVote > b.totalVote) ? 1 : -1);
+      result.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
       this.roots = result;
     })
   }

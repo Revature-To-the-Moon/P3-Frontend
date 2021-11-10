@@ -38,13 +38,33 @@
             </div>
 
             <!-- filter bar -->
-            <app-filter-bar></app-filter-bar>
+            <!-- <app-filter-bar></app-filter-bar> -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col" id="filter-col">
+                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                            (click)="sortPopular()"><em
+                                class="fa fa-fire"></em> Hot</button>
+                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                            (click)="sortPopular()"><em
+                                class="fa fa-star"></em> Popular</button>
+                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                            (click)="sortNewest()"><em
+                                class="fa fa-hourglass-start"></em>
+                            Newest</button>
+                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                            (click)="sortOldest()"><em
+                                class="fa fa-hourglass-end"></em>
+                            Oldest</button>
+                    </div>
+                </div>
+            </div>
 
             <!-- feed -->
             <div class="container" id="feed" *ngFor="let root of roots">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime | dateAgo }}</p>
+                        <p><span>{{ root.userName }}</span> | {{ root.dateTime | dateAgo }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
@@ -59,6 +79,7 @@
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
                         <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}"
                             role="button">{{ (root.comments).length }} Comments</a>
+                        <p style="float: right;">{{ root.totalVote }} Votes</p>
                     </div>
                 </div>
             </div>
