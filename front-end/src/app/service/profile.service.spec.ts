@@ -26,7 +26,7 @@ describe('ProfileService', () => {
       email: 'Zoot@zooter.com',
       name: 'Zambie',
       username: 'Zoot',
-      followedUsers: []
+      followings: []
     };
     service.getUserById(1).then((res) => {
       expect(res).toEqual(fakeUser);
@@ -54,10 +54,12 @@ describe('ProfileService', () => {
       id: 1,
       message: "We's still walkin' a ducky!",
       totalvote: 32,
-      Time: "PLACEHOLDER",
+      dateTime: null,
       Username: "Zoe",
-      RootId: 1,
-      CommentId: 0
+      parentId: 1,
+      rootId: 1,
+      votes: [],
+      comments: [],
     };
     service.getAllComments().then((res) => {
       expect(res.length).toEqual(1);
