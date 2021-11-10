@@ -34,7 +34,10 @@ export class ProfilePageComponent implements OnInit {
         console.log("followed user" + this.currentUser.followedUsers[1]);
       });
     });
-    
+  }
+
+  GetPosts(): void {
+    console.log(this.profileService.getAllPostsAndCommentsByUser("Hunter"));
   }
 
 }
