@@ -29,5 +29,5 @@ describe('ProfilePageComponent', () => {
 
   it('user should be created', () => {
     expect(component.currentUser).toBeTruthy();
-  })
+  });
 });

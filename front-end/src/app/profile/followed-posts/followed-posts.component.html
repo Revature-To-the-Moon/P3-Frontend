@@ -1,6 +1,8 @@
 <div class="card col box">
     <h1>Followed Posts</h1>
-    <table>
+    <table summary="a table of followed post">
+        <th>
+        </th>
         <tr *ngFor="let post of followedList" id="visual">
             <td class="edit" routerLink="/profile/{{post.userId}}">{{post.postname}}</td>
         </tr>

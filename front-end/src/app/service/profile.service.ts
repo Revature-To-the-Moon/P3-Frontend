@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Root } from '../models/root';
-import { Post } from '../models/post';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
 
@@ -13,7 +12,7 @@ export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
   rootUrl = 'https://52.141.211.229/post/api';
-
+S
   constructor(private http: HttpClient) { }
   
   // getAll(): Observable<any> {

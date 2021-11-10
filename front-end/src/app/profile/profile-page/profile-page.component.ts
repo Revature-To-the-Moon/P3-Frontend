@@ -40,9 +40,4 @@ export class ProfilePageComponent implements OnInit {
     this.profileService.getAllPostsAndCommentsByUser("Bao3");
   }
 
-    // this.profileService.getAllUsers().then((result:User[]) => {
-    //   this.userList = result;
-    // })
-  // }
-
 }
