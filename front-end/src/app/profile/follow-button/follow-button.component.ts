@@ -22,15 +22,4 @@ export class FollowButtonComponent implements OnInit {
   onClick() {
     this.isFollow = !this.isFollow;
   }
-
-  followingStatus(following: Followings[], followingUserName: string): void {
-    let j = 0;
-    for (let i = 0; i <= following.length; i++){
-      const follow = following[i];
-      if(follow.followingUserName !== followingUserName){
-        following[j] = follow;
-        j++;
-      }
-    }
-  }
 }

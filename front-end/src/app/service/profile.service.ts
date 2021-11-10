@@ -4,6 +4,8 @@ import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
+import { Observable } from 'rxjs';
+import { Followings } from '../models/Followings';
 
 @Injectable({
   providedIn: 'root'
@@ -83,5 +85,9 @@ S
     }
 
     return LoC;
+  }
+
+  follow(follow: Followings): Observable<Followings> {
+    return this.http.post<Followings>(this.apiUrl + "/follow/");
   }
 }
