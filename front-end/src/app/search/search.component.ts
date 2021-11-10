@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Root } from '../models/root';
+import { RootServiceService } from '../service/root-service.service';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service: RootServiceService) { }
+  roots:Root[] = []
   ngOnInit(): void {
+    this.service.getRoots().subscribe
+    (
+      data =>
+      {
+        this.roots = data;
+      }
+    )
   }
 
 }

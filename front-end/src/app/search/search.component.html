@@ -3,3 +3,9 @@
         <input type="search" class="form-control" placeholder="Search To The Moon" aria-label="Search">
     </form>
 </div>
+
+<select>
+    <option *ngFor='let root of roots' [value]="root.title" >
+        {{root.title}}
+    </option>
+</select>

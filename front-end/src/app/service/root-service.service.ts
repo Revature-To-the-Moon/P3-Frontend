@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class RootServiceService {
 
   getRootById(id: number): Promise<Root> {
     return this.http.get<Root>(this.rootUrl + '/' + id).toPromise();
+  }
+
+  getRoots(): Observable<any>{
+    return this.http.get<any>(this.rootUrl);
   }
 
 }
