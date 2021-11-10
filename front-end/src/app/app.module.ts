@@ -21,8 +21,6 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
-import { ListFilterPipe } from './pipes/list-filter.pipe';
-import { SearchResultComponent } from './search-result/search-result.component';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
@@ -42,8 +40,6 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
     SearchComponent,
     LoginButtonsComponent,
     RegisterButtonComponent,
-    ListFilterPipe,
-    SearchResultComponent,
     DateAgoPipe,
   ],
   imports: [
