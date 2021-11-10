@@ -12,8 +12,7 @@ export class FollowButtonComponent implements OnInit {
   constructor(public profileService: ProfileService) { }
 
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   
   onClick() {
     this.isFollow = !this.isFollow;
