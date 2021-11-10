@@ -58,14 +58,11 @@ describe('LoginComponent', () => {
     expect(nativeButton.textContent).toBe('Login');
   });
   
-
-  
   it('should have one button with "Register" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));
     const nativeButton: HTMLButtonElement = linkDes[1].nativeElement;
     expect(nativeButton.textContent).toBe('Register');
   });
-
 
   it('should send data on submit', async () => {
     const AuthServiceSpy = jasmine.createSpyObj('AuthService',['Login']);
@@ -86,8 +83,6 @@ describe('LoginComponent', () => {
     // await buttonElement.triggerEventHandler('click');
     // fixture.detectChanges();
     // expect(component.Loginfunc).toHaveBeenCalled();
-
-
   });
 
 

@@ -35,14 +35,14 @@ S
     return this.http.get<[]>(this.apiUrl + "/Root/").toPromise();
   }
 
-  getFollowedPostByUserId(id: number): Promise<FollowingPost[]>
-  {
-    return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
-  }
-
   getAllComments(): Promise<Comment[]>
   {
     return this.http.get<[]>(this.apiUrl + "/Comment/").toPromise();
+  }
+
+  getFollowedPostByUserId(id: number): Promise<FollowingPost[]>
+  {
+    return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
   }
 
   // testcase for this fails and is commented out. 
