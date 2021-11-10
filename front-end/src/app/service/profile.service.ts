@@ -12,7 +12,7 @@ import { FollowingPost } from '../models/FollowingPost';
 export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
-  rootUrl = 'https://52.141.211.229/root/api';
+  rootUrl = 'https://52.141.211.229/post/api';
 
   constructor(private http: HttpClient) { }
   
