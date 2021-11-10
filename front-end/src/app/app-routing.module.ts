@@ -11,13 +11,13 @@ import { AuthGuard } from '@auth0/auth0-angular';
 
 
 const routes: Routes = [
-  { path: 'root', component: RootComponent },
-  { path: 'follow', component: FollowButtonComponent },
+  { path: 'root', component: RootComponent, canActivate: [AuthGuard] },
+  { path: 'follow', component: FollowButtonComponent, canActivate: [AuthGuard] },
   { path: 'profile/:id', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
-  { path: 'comment/:id', component: CommentComponent },
+  { path: 'comment/:id', component: CommentComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent },
-  { path: 'buffer', component: BufferComponent }
+  { path: 'buffer', component: BufferComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
