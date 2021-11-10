@@ -37,7 +37,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   GetPosts(): void {
-    console.log(this.profileService.getAllPostsAndCommentsByUser("Hunter"));
+    this.profileService.getAllPostsAndCommentsByUser("Bao3");
   }
 
 }
