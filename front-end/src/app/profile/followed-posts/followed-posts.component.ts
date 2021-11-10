@@ -2,7 +2,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from 'src/app/models/Comment';
 import { Root } from 'src/app/models/root';
-import { FollowingPost } from 'src/app/models/followingPost';
+import { FollowingPost } from 'src/app/models/FollowingPost';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/service/profile.service';
 

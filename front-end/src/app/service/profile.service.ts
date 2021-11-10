@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
-import { FollowingPost } from '../models/followingPost';
+import { FollowingPost } from '../models/FollowingPost';
 
 @Injectable({
   providedIn: 'root'
