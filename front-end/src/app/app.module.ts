@@ -22,6 +22,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
+import { ListFilterPipe } from './pipes/list-filter.pipe';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { RegisterButtonComponent } from './register-button/register-button.compo
     SearchComponent,
     LoginButtonsComponent,
     RegisterButtonComponent,
+    ListFilterPipe,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
