@@ -16,8 +16,10 @@ export class CommentComponent implements OnInit {
     id: 0,
     title:'',
     message: '',
-    date: new Date(0),
-    username: ''
+    totalVote: 0,
+    dateTime: new Date(0),
+    userName: '',
+    comments: []
   }
 
   ngOnInit(): void {

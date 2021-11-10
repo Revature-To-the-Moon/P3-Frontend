@@ -1,8 +1,10 @@
+
 .box {
     margin-left: 5px;
     margin-right: 5px;
     background-color: #291A4A;
 }
+
 .card {
     text-align: center;
     padding: 0%;
@@ -25,13 +27,14 @@
     padding-bottom: 0%;
 }
 
-.card p{
+.card td{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
-.card p:hover{
+.card td:hover{
     background-color: #986AA8;
     text-align: center;
     color: white;
