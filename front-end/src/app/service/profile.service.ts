@@ -4,7 +4,7 @@ import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Post } from '../models/post';
 import { Comment } from '../models/Comment';
-import { FollowingPost } from '../models/followingPost';
+import { FollowingPost } from '../models/FollowingPost';
 
 @Injectable({
   providedIn: 'root'

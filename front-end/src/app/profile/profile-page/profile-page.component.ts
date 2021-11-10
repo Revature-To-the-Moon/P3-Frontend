@@ -14,13 +14,13 @@ export class ProfilePageComponent implements OnInit {
   constructor(private currentRoute: ActivatedRoute, public profileService: ProfileService, private router: Router) { }
   isFollow = false;
   id = 0;
-
+  userList:User[];
   currentUser: User = {
     id: 0,
     username:"",
     email: "",
     name: "",
-    followedUsers: []
+    followings: []
   }; 
 
 
@@ -31,7 +31,7 @@ export class ProfilePageComponent implements OnInit {
 
       this.profileService.getUserById(this.id).then((result: User) => {
         this.currentUser= result;
-        console.log("followed user" + this.currentUser.followedUsers[1]);
+        console.log("followed user" + this.currentUser.followings[1].followingUserName);
       });
     });
   }
@@ -39,5 +39,10 @@ export class ProfilePageComponent implements OnInit {
   GetPosts(): void {
     console.log(this.profileService.getAllPostsAndCommentsByUser("Hunter"));
   }
+
+    // this.profileService.getAllUsers().then((result:User[]) => {
+    //   this.userList = result;
+    // })
+  // }
 
 }

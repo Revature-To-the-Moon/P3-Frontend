@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Followings } from 'src/app/models/Followings';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/service/profile.service';
 
@@ -11,8 +12,7 @@ import { ProfileService } from 'src/app/service/profile.service';
 export class ListOfFollowersComponent implements OnInit {
   @Input() id = 0;
   message: string;
-  list!: number[];
-  followedList: User[] = [];
+  followedList!: Followings[];
 
 
   constructor(private route: ActivatedRoute,public profileService: ProfileService) { }
@@ -26,14 +26,8 @@ export class ListOfFollowersComponent implements OnInit {
       this.followedList=[];
       this.profileService.getUserById(this.id).then((result: User) => {
         console.log("Within profileService.getUserById");
-        this.list= result.followedUsers;
-        console.log("list id is now "+this.list);
-  
-        this.list.forEach(id => {
-          this.profileService.getUserById(id).then((user: User) => {
-            this.followedList.push(user);
-          })
-        });
+        this.followedList= result.followings;
+        console.log("list id is now "+this.followedList);
       });
   }
 }
