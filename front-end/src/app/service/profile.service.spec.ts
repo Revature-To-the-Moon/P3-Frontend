@@ -56,20 +56,21 @@ describe('ProfileService', () => {
   });
 
   it('should get all roots', async () => {
-    let fakeRoot: Root[] = [ {
+    let fakePost: Post[] = [ {
       id: 1,
       title: "Duck Walk",
       message: "We's walkin' a ducky!",
-      totalvote: 55,
-      Time: "PLACEHOLDER",
-      Username: "Zoe"
+      totalVote: 55,
+      dateTime: null,
+      userName: "Zoe",
+      comments: []
     } ];
 
-    spyOn(service, 'getAllRoots').and.returnValue(Promise.resolve(fakeRoot));
+    spyOn(service, 'getAllPosts').and.returnValue(Promise.resolve(fakePost));
 
-    service.getAllRoots().then((res) => {
+    service.getAllPosts().then((res) => {
       expect(res.length).toEqual(1);
-      expect(res[0]).toEqual(fakeRoot[0]);
+      expect(res[0]).toEqual(fakePost[0]);
     })
   });
 
@@ -77,7 +78,7 @@ describe('ProfileService', () => {
     let fakeComment: Comment[] = [ {
       id: 1,
       message: "We's still walkin' a ducky!",
-      totalvote: 32,
+      totalVote: 32,
       dateTime: null,
       userName: "Zoe",
       parentId: 1,
@@ -114,7 +115,7 @@ describe('ProfileService', () => {
     let fakeComment: Comment[] = [ {
       id: 1,
       message: "We's still walkin' a ducky!",
-      totalvote: 32,
+      totalVote: 32,
       dateTime: null,
       userName: "Zoe",
       parentId: 1,
@@ -135,7 +136,7 @@ describe('ProfileService', () => {
     let fakeComment: Comment = {
       id: 1,
       message: "We's still walkin' a ducky!",
-      totalvote: 32,
+      totalVote: 32,
       dateTime: null,
       userName: "Zoe",
       parentId: 1,

@@ -4,6 +4,7 @@ import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
+import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root'
@@ -14,25 +15,22 @@ export class ProfileService {
   rootUrl = 'https://52.141.211.229/post/api';
 S
   constructor(private http: HttpClient) { }
-  
+
   // getAll(): Observable<any> {
   //   return this.http.get(this.apiUrl + '_sort=id&order=desc')
   //   .pipe();
   // }
 
-  getUserById(id: number): Promise<User>  
-  {
+  getUserById(id: number): Promise<User> {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
 
-  getAllUsers(): Promise<User[]>
-  {
+  getAllUsers(): Promise<User[]> {
     return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
   }
 
-  getAllRoots(): Promise<Root[]>
-  {
-    return this.http.get<[]>(this.apiUrl + "/Root/").toPromise();
+  getAllPosts(): Promise<Post[]> {
+    return this.http.get<[]>(this.rootUrl + "/post/").toPromise();
   }
 
   getAllComments(): Promise<Comment[]>
@@ -67,10 +65,8 @@ S
     return LoC;
   }
 
-  addCommentToList(Com: Comment, LoC: Comment[], name: string)
-  {
-    if (Com.comments)
-    {
+  addCommentToList(Com: Comment, LoC: Comment[], name: string) {
+    if (Com.comments) {
       Com.comments.forEach(commy => {
         LoC = this.addCommentToList(commy, LoC, name);
       });

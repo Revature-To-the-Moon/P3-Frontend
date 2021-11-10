@@ -1,19 +1,30 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthModule } from '@auth0/auth0-angular';
 import { AppComponent } from './app.component';
+import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RegisterButtonComponent } from './register-button/register-button.component';
 import { SearchComponent } from './search/search.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        HttpClientTestingModule, RouterTestingModule, AuthModule.forRoot(
+          {
+            domain: 'dev-0w--5cqa.us.auth0.com',
+            clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
+          }
+        )
       ],
       declarations: [
         AppComponent,
         NavBarComponent,
-        SearchComponent
+        SearchComponent,
+        LoginButtonsComponent,
+        RegisterButtonComponent
       ],
     }).compileComponents();
   });
