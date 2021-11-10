@@ -2,7 +2,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from 'src/app/models/Comment';
 import { Root } from 'src/app/models/root';
-import { FollowingPost } from 'src/app/models/followingPost';
+import { FollowingPost } from 'src/app/models/FollowingPost';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/service/profile.service';
 
@@ -13,6 +13,7 @@ import { ProfileService } from 'src/app/service/profile.service';
 })
 export class FollowedPostsComponent implements OnInit {
   @Input() id = 0;
+  message: string;
   user!: User;
   roots!: Root[];
   comments!: Comment[];
@@ -27,6 +28,7 @@ export class FollowedPostsComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void{
+    this.message = 'ngOnChanges Executed'
     this.followedList=[];
     this.profileService.getFollowedPostByUserId(this.id).then((result: [FollowingPost]) => {
       console.log("Within profileService.getUserById");

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
-import { FollowingPost } from '../models/followingPost';
+import { FollowingPost } from '../models/FollowingPost';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,11 @@ export class ProfileService {
   getUserById(id: number): Promise<User>  
   {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
+  }
+
+  getAllUsers(): Promise<User[]>
+  {
+    return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
   }
 
   getAllRoots(): Promise<Root[]>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from 'src/app/models/Comment';
 import { Root } from 'src/app/models/root';
@@ -12,6 +12,7 @@ import { ProfileService } from 'src/app/service/profile.service';
 })
 export class RecentActivityComponent implements OnInit {
   @Input() id = 0;
+  message: string;
   user!: User;
   roots!: Root[];
   comments!: Comment[];
@@ -22,8 +23,8 @@ export class RecentActivityComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  ngOnChanges(){
-    console.log("change detected for recent activity");
+  ngOnChanges(changes: SimpleChanges): void{
+    this.message = 'ngOnChanges Executed'
     this.comments = [];
     this.roots=[];
     this.activity=[];
