@@ -19,11 +19,11 @@
             </div>
 
             <div class="container-comment">
-                <span><small>Add to the story as <span style="color: brown;"><small>User</small></span></small></span>
+                <span><small>Add to the story as <span style="color: brown;"><small>{{user}}</small></span></small></span>
                 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
                     <div class="form-group mb-3">
                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                            placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="root.message"
+                            placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="comment.message"
                             name="message" #message="ngModel" required></textarea>
                     </div>
                     <div class="d-md-flex justify-content-md-end">
