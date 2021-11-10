@@ -54,6 +54,24 @@ export class ProfileService {
       posts.push(post);
     });
     
-    return posts;
+    // posts now has every single post, including comments, in the entire website...
+    return [];
+  }
+
+  addCommentToList(Com: Comment, LoC: Comment[], name: string)
+  {
+    if (Com.comments)
+    {
+      Com.comments.forEach(commy => {
+        this.addCommentToList(commy, LoC, name);
+      });
+    }
+    // final comment, or already went through the children
+    if (Com.Username == name)
+    {
+      LoC.push(Com);
+    }
+
+    return LoC;
   }
 }
