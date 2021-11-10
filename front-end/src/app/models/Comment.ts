@@ -7,7 +7,7 @@ export interface Comment {
     message: string;
     totalvote: number;
     dateTime: Date;
-    Username: string;
+    userName: string;
     votes: votes[]
     comments: Comment[]
 }

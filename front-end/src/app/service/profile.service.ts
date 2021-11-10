@@ -48,26 +48,37 @@ export class ProfileService {
 
   getAllPostsAndCommentsByUser(name: string): any[]
   {
-    var posts = {} as Array<any>;
-    var result = this.http.get<[]>(this.rootUrl + "/post/");
-    result.forEach(post => {
-      posts.push(post);
-    });
-    
-    // posts now has every single post, including comments, in the entire website...
+    this.http.get<[]>(this.rootUrl + "/post/").toPromise().then(
+      (posts: any[]) => {
+        var LoC = [] as Array<any>
+        
+        // posts now has every single post, including comments, in the entire website...
+        posts.forEach(posty => {
+          if (posty.userName == name)
+          {
+            LoC.push(posty);
+          }
+          posty.comments.forEach(comery => {
+            LoC = this.addCommentToList(comery, LoC, name);
+          });
+        });
+        console.log(LoC)
+      });
     return [];
   }
 
   addCommentToList(Com: Comment, LoC: Comment[], name: string)
   {
+    console.log("Got into addCommentToList. Username: " + Com.userName);
     if (Com.comments)
     {
+      console.log("It has a comment!");
       Com.comments.forEach(commy => {
-        this.addCommentToList(commy, LoC, name);
+        LoC = this.addCommentToList(commy, LoC, name);
       });
     }
     // final comment, or already went through the children
-    if (Com.Username == name)
+    if (Com.userName == name)
     {
       LoC.push(Com);
     }
