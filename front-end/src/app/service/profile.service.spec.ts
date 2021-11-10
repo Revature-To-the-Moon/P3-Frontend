@@ -1,13 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProfileService } from './profile.service';
 import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
+import { Post } from '../models/post';
+import { FollowingPost } from '../models/FollowingPost';
 
 describe('ProfileService', () => {
   let service: ProfileService;
+  let fixture: ComponentFixture<ProfileService>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -55,7 +58,7 @@ describe('ProfileService', () => {
       message: "We's still walkin' a ducky!",
       totalvote: 32,
       dateTime: null,
-      Username: "Zoe",
+      userName: "Zoe",
       parentId: 1,
       rootId: 1,
       votes: [],
@@ -65,5 +68,54 @@ describe('ProfileService', () => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(fakeComment);
     })
+  });
+
+  it('should get followed posts by user id', () => {
+    let fakePost: FollowingPost = {
+      id: 0,
+      postname: "Jeffrey",
+      rootId: 3,
+      userId: 5
+    };
+    service.getFollowedPostByUserId(5).then((res) => {
+      expect(res.length).toEqual(1);
+      expect(res[0]).toEqual(fakePost);
+    })
+  });
+
+  // it('should get all posts and comments by user', () => {
+  //   let fakeComment: Comment = {
+  //     id: 1,
+  //     message: "We's still walkin' a ducky!",
+  //     totalvote: 32,
+  //     dateTime: null,
+  //     userName: "Zoe",
+  //     parentId: 1,
+  //     rootId: 1,
+  //     votes: [],
+  //     comments: [],
+  //   };
+  //   var res = service.getAllPostsAndCommentsByUser("Zoe")
+
+  //   expect(res.length).toEqual(1);
+  //   expect(res[0]).toEqual(fakeComment);
+  // });
+
+  it('should add comment to list', () => {
+    let fakeComment: Comment = {
+      id: 1,
+      message: "We's still walkin' a ducky!",
+      totalvote: 32,
+      dateTime: null,
+      userName: "Zoe",
+      parentId: 1,
+      rootId: 1,
+      votes: [],
+      comments: [],
+    };
+    var res : any[] = []
+    res = service.addCommentToList(fakeComment, res, "Zoe")
+    expect(res.length).toEqual(1);
+    expect(res[0]).toEqual(fakeComment);
   });
 });

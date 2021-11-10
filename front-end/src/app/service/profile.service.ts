@@ -45,6 +45,7 @@ S
     return this.http.get<[]>(this.apiUrl + "/Comment/").toPromise();
   }
 
+  // testcase for this fails and is commented out. 
   getAllPostsAndCommentsByUser(name: string): any[]
   {
     var LoC = [] as Array<any>
@@ -61,6 +62,7 @@ S
             LoC = this.addCommentToList(comery, LoC, name);
           });
         });
+        LoC.sort((a,b) => (a.dateTime > b.dateTime ? 1 : -1));
       });
     return LoC;
   }

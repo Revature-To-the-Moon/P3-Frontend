@@ -23,7 +23,6 @@ export class ProfilePageComponent implements OnInit {
     followings: []
   }; 
 
-
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
