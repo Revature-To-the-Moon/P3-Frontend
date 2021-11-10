@@ -47,10 +47,10 @@ S
 
   getAllPostsAndCommentsByUser(name: string): any[]
   {
+    var LoC = [] as Array<any>
+
     this.http.get<[]>(this.rootUrl + "/post/").toPromise().then(
       (posts: any[]) => {
-        var LoC = [] as Array<any>
-        
         // posts now has every single post, including comments, in the entire website...
         posts.forEach(posty => {
           if (posty.userName == name)
@@ -61,17 +61,14 @@ S
             LoC = this.addCommentToList(comery, LoC, name);
           });
         });
-        console.log(LoC)
       });
-    return [];
+    return LoC;
   }
 
   addCommentToList(Com: Comment, LoC: Comment[], name: string)
   {
-    console.log("Got into addCommentToList. Username: " + Com.userName);
     if (Com.comments)
     {
-      console.log("It has a comment!");
       Com.comments.forEach(commy => {
         LoC = this.addCommentToList(commy, LoC, name);
       });

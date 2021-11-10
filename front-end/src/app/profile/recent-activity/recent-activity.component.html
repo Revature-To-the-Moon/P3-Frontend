@@ -7,8 +7,10 @@
             Recent activity you've performed. 
         </caption>
         <tr *ngFor="let follower of activity" id="visual">
-            <td *ngIf="follower.Title !== undefined" class="edit">{{follower.Title}}</td>
-            <td *ngIf="follower.Title === undefined" class="edit">{{follower.Message.slice(0,20) + '...'}}</td>
+            <td>{{follower.Message}}</td>
+            <script>console.log(follower)</script>
+            <!-- <td *ngIf="follower.Title !== undefined" class="edit">{{follower.Title}}</td>
+            <td *ngIf="follower.Title === undefined" class="edit">{{follower.Message.slice(0,20) + '...'}}</td> -->
         </tr>
         <tr *ngIf="(activity == undefined)">
             No Activity!
