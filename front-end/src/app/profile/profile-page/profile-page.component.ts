@@ -40,9 +40,4 @@ export class ProfilePageComponent implements OnInit {
     console.log(this.profileService.getAllPostsAndCommentsByUser("Hunter"));
   }
 
-    // this.profileService.getAllUsers().then((result:User[]) => {
-    //   this.userList = result;
-    // })
-  // }
-
 }
