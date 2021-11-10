@@ -31,18 +31,12 @@ export class BufferComponent implements OnInit {
         // Service to get all users
         this.UserCreationService.getAllUsers().then((result:User[]) => {
           this.userList = result;
-          
-
           for (let i = 0; i < this.userList.length; i++) {
-        
-            if (this.userList[i].username != profile.preferred_username && i == this.userList.length) {
+            if (this.userList[i].username != profile.preferred_username && i + 1 == this.userList.length) {
               console.log(profile.preferred_username)
-                  
-                 //this.UserCreationService.AddObject(this.user)
-                
-          
+              console.log(this.user);
+                 this.UserCreationService.AddObject(this.user)
               }
-  
             }
         })
       

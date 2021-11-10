@@ -19,9 +19,9 @@ export class UserCreationService {
     return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
   }
 
-  // AddObject(user: User): Promise<User>
-  // {
-  //   return this.http.post<User>(this.apiUrl + "/user/", user).toPromise();
-  // }
+  AddObject(user: User): Promise<User>
+  {
+    return this.http.post<User>(this.apiUrl + "/user/", user).toPromise();
+  }
 
 }
