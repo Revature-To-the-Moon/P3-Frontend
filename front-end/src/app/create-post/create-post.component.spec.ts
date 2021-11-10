@@ -7,6 +7,7 @@ import { RootServiceService } from '../service/root-service.service';
 import { CreatePostComponent } from './create-post.component';
 import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
+import { AuthModule } from '@auth0/auth0-angular';
 
 describe('CreatePostComponent', () => {
   let component: CreatePostComponent;
@@ -16,10 +17,13 @@ describe('CreatePostComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreatePostComponent ],
-      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule]
+      declarations: [CreatePostComponent],
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule, AuthModule.forRoot({
+        domain: 'dev-0w--5cqa.us.auth0.com',
+        clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
+      })]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

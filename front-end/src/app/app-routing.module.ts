@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'follow', component: FollowButtonComponent },
   { path: 'profile/:id', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
-  { path: 'comment', component: CommentComponent },
+  { path: 'comment/:id', component: CommentComponent },
   { path: '', component: LoginComponent },
   { path: 'buffer', component: BufferComponent }
 ];
