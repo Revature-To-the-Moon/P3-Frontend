@@ -40,8 +40,8 @@ export class CommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe((user) =>{
-      if(user?.preferred_username){
+    this.auth.user$.subscribe((user) => {
+      if (user?.preferred_username) {
         this.user = user.preferred_username
       }
     })
@@ -59,8 +59,8 @@ export class CommentComponent implements OnInit {
   onSubmit(postForm: NgForm) {
     console.log("Comment submitted")
 
-    this.auth.user$.subscribe((user) =>{
-      if(user?.preferred_username){
+    this.auth.user$.subscribe((user) => {
+      if (user?.preferred_username) {
         this.comment.userName = user.preferred_username
       }
 
@@ -77,6 +77,6 @@ export class CommentComponent implements OnInit {
         location.reload()
       })
     })
-}
+  }
 
 }

@@ -26,7 +26,8 @@ describe('RootServiceService', () => {
       message: 'It was sunday morning when I...',
       totalVote: 2,
       dateTime: new Date('November 4, 2021 03:24:00'),
-      userName: 'ToTheMoon1234'
+      userName: 'ToTheMoon1234',
+      comments: []
     }
 
     spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakeRoot));
@@ -47,7 +48,8 @@ describe('RootServiceService', () => {
         message: 'It was sunday morning when I...',
         totalVote: 4,
         dateTime: new Date('November 4, 2021 03:24:00'),
-        userName: 'ToTheMoon1234'
+        userName: 'ToTheMoon1234',
+        comments: []
       },
       {
         id: 2,
@@ -55,7 +57,8 @@ describe('RootServiceService', () => {
         message: 'I watched cartoons last night ...',
         totalVote: 6,
         dateTime: new Date('January 20, 2021 05:45:00'),
-        userName: 'WoWoWubzy456'
+        userName: 'WoWoWubzy456',
+        comments: []
       }
     ];
     spyOn(service, 'getAllRoots').and.returnValue(Promise.resolve(fakeData));
@@ -73,7 +76,8 @@ describe('RootServiceService', () => {
       message: 'It was sunday morning when I...',
       totalVote: 1,
       dateTime: new Date('November 4, 2021 03:24:00'),
-      userName: 'ToTheMoon1234'
+      userName: 'ToTheMoon1234',
+      comments: []
     }
     spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakeRoot));
     await service.getRootById(1).then((res) => {
