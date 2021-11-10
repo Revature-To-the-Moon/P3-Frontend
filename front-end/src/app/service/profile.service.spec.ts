@@ -39,9 +39,10 @@ describe('ProfileService', () => {
       id: 1,
       title: "Duck Walk",
       message: "We's walkin' a ducky!",
-      totalvote: 55,
-      Time: "PLACEHOLDER",
-      Username: "Zoe"
+      totalVote: 55,
+      dateTime: new Date('November 4, 2021 03:24:00'),
+      userName: "Zoe",
+      comments: []
     };
     service.getAllRoots().then((res) => {
       expect(res.length).toEqual(1);
@@ -53,9 +54,9 @@ describe('ProfileService', () => {
     let fakeComment: Comment = {
       id: 1,
       message: "We's still walkin' a ducky!",
-      totalvote: 32,
+      totalVote: 32,
       dateTime: null,
-      Username: "Zoe",
+      userName: "Zoe",
       parentId: 1,
       rootId: 1,
       votes: [],

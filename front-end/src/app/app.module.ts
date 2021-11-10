@@ -14,12 +14,14 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RootComponent } from './root/root.component';
 import { BufferComponent } from './buffer/buffer.component';
 import { CreatePostComponent } from './create-post/create-post.component';
-import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { FormsModule } from '@angular/forms';
 import { CommentComponent } from './comment/comment.component';
 import { SearchComponent } from './search/search.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
+import { RegisterButtonComponent } from './register-button/register-button.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,11 @@ import { HttpClientModule } from '@angular/common/http';
     ProfilePageComponent,
     NavBarComponent,
     BufferComponent,
-    FilterBarComponent,
     CommentComponent,
     SearchComponent,
+    LoginButtonsComponent,
+    RegisterButtonComponent,
+    DateAgoPipe,
   ],
   imports: [
     BrowserModule,

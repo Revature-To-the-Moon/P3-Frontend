@@ -21,19 +21,19 @@ export class FollowedPostsComponent implements OnInit {
   followedList: FollowingPost[];
 
 
-  constructor(private route: ActivatedRoute,public profileService: ProfileService) { }
+  constructor(private route: ActivatedRoute, public profileService: ProfileService) { }
 
   ngOnInit(): void {
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void{
+  ngOnChanges(changes: SimpleChanges): void {
     this.message = 'ngOnChanges Executed'
-    this.followedList=[];
+    this.followedList = [];
     this.profileService.getFollowedPostByUserId(this.id).then((result: [FollowingPost]) => {
       console.log("Within profileService.getUserById");
-      this.followedList= result;
+      this.followedList = result;
     });
-}
+  }
 
 }
