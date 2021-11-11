@@ -4,9 +4,13 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ProfileService } from './profile.service';
 import { User } from '../models/user';
 import { Root } from '../models/root';
+import { Followings } from '../models/Followings';
 import { Comment } from '../models/Comment';
 import { Post } from '../models/post';
 import { FollowingPost } from '../models/FollowingPost';
+import { ListOfFollowersComponent } from '../profile/list-of-followers/list-of-followers.component';
+import { execPath, getMaxListeners } from 'process';
+import { HttpClient } from '@angular/common/http';
 
 describe('ProfileService', () => {
   let service: ProfileService;
@@ -148,5 +152,22 @@ describe('ProfileService', () => {
     res = service.addCommentToList(fakeComment, res, "Zoe")
     expect(res.length).toEqual(1);
     expect(res[0]).toEqual(fakeComment);
+  });
+
+  it('should follow user', () => {
+    let fakeFollower: Followings = {
+      id: 1,
+      followerUserId: 2,
+      followingUserId: 3,
+      followingUserName: "bob"
+    };
+
+  spyOn(service, 'followUser').and.returnValue(Promise.resolve(fakeFollower));
+
+    var res = service.followUser(fakeFollower);
+    res => {
+      expect(service.followUser).toHaveBeenCalled();
+      expect(res).toEqual(fakeFollower);
+    }
   });
 });
