@@ -5,6 +5,7 @@ import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
 import { Post } from '../models/post';
+import { Followings } from '../models/Followings';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,12 @@ S
   {
     return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
   }
+
+  //we can use updateUser to follow/unfollow both posts and other users, since both following models are contained within the user
+  updateUser(updatedUser: User): Promise<User> {
+    return this.http.post<User>(this.apiUrl+'/user/', updatedUser).toPromise();
+  }
+  
 
   // testcase for this fails and is commented out. 
   getAllPostsAndCommentsByUser(name: string): any[]
