@@ -9,5 +9,5 @@ export interface Comment {
     dateTime: Date;
     userName: string;
     votes: Vote[];
-    comments?: [];
+    comments?: Comment[];
 }

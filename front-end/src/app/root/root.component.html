@@ -5,7 +5,7 @@
         <div class="row col-6" id="center">
             <!-- search bar and create post button -->
             <div class="col">
-                <h4>Welcome user.username</h4>
+                <h4 style="font-size: 2rem;">Welcome <span id="username-span">{{ user }}</span></h4>
             </div>
             <div class="col">
                 <a class="btn btn-primary" id="create-btn" (click)="goToCreatePost()" role="button"><em
@@ -18,41 +18,41 @@
             <div class="container" id="featured-post">
                 <div class="row">
                     <div class="col">
-                        <p><span>user.username</span> | post.date</p>
+                        <p style="font-size: 16px;"><span style="font-size: 18px;">{{ popular[0].userName }}</span> • {{
+                            popular[0].dateTime |
+                            date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
-                <div class="row">
-                    <h4>root.title</h4>
-                    <h5>root.message root.message root.message root.message root.message</h5>
+                <div class="row" style="margin-top: -10px;">
+                    <h1>{{ popular[0].title }}</h1>
+                    <h3>{{ popular[0].message }}</h3>
                 </div>
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <!-- <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}" role="button">10
-                            Comments</a> -->
+                        <a class="btn btn-outline-primary" routerLink="/comment/{{popular[0].id}}" role="button">{{
+                            (popular[0].comments).length }} Comments</a>
                     </div>
                 </div>
             </div>
 
-            <!-- filter bar -->
-            <!-- <app-filter-bar></app-filter-bar> -->
-            <div class="container-fluid">
+            <div class="container-fluid" id="filter-bar">
                 <div class="row">
                     <div class="col" id="filter-col">
-                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                        <button type="button" class="btn btn-outline-light btn-lg" id="filter-btn"
                             (click)="sortPopular()"><em
                                 class="fa fa-fire"></em> Hot</button>
-                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                        <button type="button" class="btn btn-outline-light btn-lg" id="filter-btn"
                             (click)="sortPopular()"><em
                                 class="fa fa-star"></em> Popular</button>
-                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                        <button type="button" class="btn btn-outline-light btn-lg" id="filter-btn"
                             (click)="sortNewest()"><em
                                 class="fa fa-hourglass-start"></em>
                             Newest</button>
-                        <button type="button" class="btn btn-outline-dark btn-lg" id="filter-btn"
+                        <button type="button" class="btn btn-outline-light btn-lg" id="filter-btn"
                             (click)="sortOldest()"><em
                                 class="fa fa-hourglass-end"></em>
                             Oldest</button>
@@ -64,21 +64,21 @@
             <div class="container" id="feed" *ngFor="let root of roots">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> | {{ root.dateTime | dateAgo }}</p>
+                        <p><span>{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
-                <div class="row">
-                    <h4>{{ root.title }}</h4>
+                <div class="row" style="margin-top: -10px;">
+                    <h2>{{ root.title }}</h2>
                     <h5>{{ root.message }}</h5>
                 </div>
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}"
-                            role="button">{{ (root.comments).length }} Comments</a>
+                        <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}" role="button">{{
+                            (root.comments).length }} Comments</a>
                         <p style="float: right;">{{ root.totalVote }} Votes</p>
                     </div>
                 </div>
