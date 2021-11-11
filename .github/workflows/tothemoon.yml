@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: frontend-tothemoon
-        image: yellenick/frontend-tothemoon:11102119
+        image: yellenick/frontend-tothemoon:${{gihub.run_number}}
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 80
         resources:
