@@ -50,7 +50,7 @@ describe('BufferComponent', () => {
   });
 
   it('Should navigate to /root', fakeAsync(() => {
-    router.navigate(["/root"]).then(() => {
+    router.navigateByUrl("/root").then(() => {
       expect(location.path()).toBe("/root");
     })
   }))
