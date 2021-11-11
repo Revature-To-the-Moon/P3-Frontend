@@ -25,6 +25,9 @@ S
   getUserById(id: number): Promise<User> {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
+  getUserByName(username: string): Promise<User> {
+    return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
+  }
 
   getAllUsers(): Promise<User[]> {
     return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
