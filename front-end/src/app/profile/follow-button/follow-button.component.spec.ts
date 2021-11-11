@@ -43,10 +43,4 @@ describe('FollowButtonComponent', () => {
       component.onClick();
       expect(component.isFollow).toBe(true);
     });
-
-    it('should unfollow', () => {
-      component.isFollow = true;
-      component.onClick();
-      expect(component.isFollow).toBe(false);
-    });
 });
