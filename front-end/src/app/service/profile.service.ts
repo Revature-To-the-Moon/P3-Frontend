@@ -37,9 +37,14 @@ export class ProfileService {
     return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
   }
 
-  getAllRoots(): Promise<Root[]>
+  getAllPosts(): Promise<Root[]>
   {
-    return this.http.get<[]>(this.apiUrl + "/Root/").toPromise();
+    return this.http.get<[]>(this.apiUrl + "/post/").toPromise();
+  }
+
+  getAllComments(): Promise<Comment[]>
+  {
+    return this.http.get<[]>(this.apiUrl + "/comment/").toPromise();
   }
 
   getFollowedPostByUserId(id: number): Promise<FollowingPost[]>
