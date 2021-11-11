@@ -5,6 +5,8 @@ import { NestedComponent } from './nested.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthModule } from '@auth0/auth0-angular';
 
+import { FormsModule } from '@angular/forms';
+
 
 describe('NestedComponent', () => {
   let component: NestedComponent;
@@ -13,7 +15,7 @@ describe('NestedComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NestedComponent ],
-      imports: [RouterModule, RouterTestingModule, HttpClientTestingModule, AuthModule.forRoot(
+      imports: [RouterModule, FormsModule, RouterTestingModule, HttpClientTestingModule, AuthModule.forRoot(
         {
           domain: 'dev-0w--5cqa.us.auth0.com',
           clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
@@ -28,8 +30,8 @@ describe('NestedComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-/*
+
   it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  });
 });

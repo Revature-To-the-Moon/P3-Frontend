@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DateAgoPipe } from '../pipes/date-ago.pipe';
 import { AuthModule } from '@auth0/auth0-angular';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 describe('RootComponent', () => {
   let component: RootComponent;
@@ -34,6 +35,7 @@ describe('RootComponent', () => {
   });
 /*
   it('should create', () => {
+    component.roots = [];
     expect(component).toBeTruthy();
   });
 
