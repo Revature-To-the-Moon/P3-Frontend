@@ -121,6 +121,20 @@ describe('ProfileService', () => {
     })
   });
 
+  it('should update users', async () => {
+    let fakeUser: User = {
+      id: 1,
+      username: "Tenzin"
+    };
+
+    spyOn(service, 'updateUser').and.returnValue(Promise.resolve(fakeUser));
+
+    service.updateUser(fakeUser).then((res) => {
+      expect(res).toEqual(fakeUser);
+      expect(service.getAllPosts).toHaveBeenCalled();
+    })
+  })
+
   it('should get all posts and comments by user', async () => {
     let fakeComment: Comment[] = [ {
       id: 1,

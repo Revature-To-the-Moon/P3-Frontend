@@ -5,6 +5,7 @@ import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
 import { Post } from '../models/post';
+import { Followings } from '../models/Followings';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,9 @@ export class ProfileService {
 
   getUserById(id: number): Promise<User> {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
+  }
+  getUserByName(username: string): Promise<User> {
+    return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
   }
 
   getAllUsers(): Promise<User[]> {
@@ -43,6 +47,11 @@ export class ProfileService {
     return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
   }
 
+  //we can use updateUser to follow/unfollow both posts and other users, since both following models are contained within the user
+  updateUser(updatedUser: User): Promise<User> {
+    return this.http.post<User>(this.apiUrl+'/user/', updatedUser).toPromise();
+  }
+  
   getAllPostsAndCommentsByUser(name: string): any[]
   {
     var LoC = [] as Array<any>
