@@ -7,6 +7,7 @@ import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
 import { Post } from '../models/post';
 import { FollowingPost } from '../models/FollowingPost';
+import {Followings} from '../models/Followings';
 
 describe('ProfileService', () => {
   let service: ProfileService;
@@ -177,4 +178,23 @@ describe('ProfileService', () => {
     expect(res[0]).toEqual(fakeComment[0]);
     expect(service.addCommentToList).toHaveBeenCalled();
   });
+
+  it('should follow user', () => {
+    let fakeFollower: Followings = {
+      id: 1,
+      followerUserId: 2,
+      followingUserId: 3,
+      followingUserName: "bob"
+    };
+
+  spyOn(service, 'followUser').and.returnValue(Promise.resolve(fakeFollower));
+
+    var res = service.followUser(fakeFollower);
+    res => {
+      expect(service.followUser).toHaveBeenCalled();
+      expect(res).toEqual(fakeFollower);
+    }
+  });
+
+  
 });

@@ -95,8 +95,4 @@ export class ProfileService {
   followUser(follow: Followings): Observable<Followings> {
     return this.http.post<Followings>(this.apiUrl, follow);
   }
-
-  unfollowUser(unfollow: Followings): Observable<Followings>{
-    return this.http.post<Followings>(this.apiUrl, unfollow);
-  }
 }
