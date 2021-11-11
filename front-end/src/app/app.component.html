@@ -1,2 +1,4 @@
-<nav-bar></nav-bar>
+<div *ngIf="(auth.isAuthenticated$ | async) === true">
+  <nav-bar></nav-bar>
+</div>
 <router-outlet></router-outlet>
