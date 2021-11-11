@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { FollowedPostsComponent } from './followed-posts.component';
-import { Component, DebugElement, SimpleChange } from '@angular/core';
+import { SimpleChange } from '@angular/core';
 
 describe('FollowedPostsComponent', () => {
   let component: FollowedPostsComponent;

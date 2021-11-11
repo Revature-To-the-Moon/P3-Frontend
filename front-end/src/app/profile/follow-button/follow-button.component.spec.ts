@@ -22,8 +22,8 @@ describe('FollowButtonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FollowButtonComponent);
     component = fixture.componentInstance;
-    de = fixture.debugElement;
-    httpMock = TestBed.inject(HttpTestingController);
+    fixture.debugElement;
+    TestBed.inject(HttpTestingController);
 
     fixture.detectChanges();
   });
@@ -34,7 +34,7 @@ describe('FollowButtonComponent', () => {
 
   it('should change on click', () => {
     spyOn(component, 'onClick');
-    const el = fixture.debugElement.query(By.css('ng-button')).nativeElement.click();
+    fixture.debugElement.query(By.css('ng-button')).nativeElement.click();
     expect(component.onClick).toHaveBeenCalled();
     });
 
@@ -42,11 +42,5 @@ describe('FollowButtonComponent', () => {
       component.isFollow = false;
       component.onClick();
       expect(component.isFollow).toBe(true);
-    });
-
-    it('should unfollow', () => {
-      component.isFollow = true;
-      component.onClick();
-      expect(component.isFollow).toBe(false);
     });
 });

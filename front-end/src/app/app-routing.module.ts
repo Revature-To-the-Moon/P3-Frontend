@@ -8,16 +8,17 @@ import { LoginComponent } from './login/login.component';
 import { FollowButtonComponent } from './profile/follow-button/follow-button.component';
 import { BufferComponent } from './buffer/buffer.component';
 import { AuthGuard } from '@auth0/auth0-angular';
-
+import { NestedComponent } from './nested/nested.component';
 
 const routes: Routes = [
   { path: 'root', component: RootComponent, canActivate: [AuthGuard] },
   { path: 'follow', component: FollowButtonComponent, canActivate: [AuthGuard] },
-  { path: 'profile/:id', component: ProfilePageComponent, canActivate: [AuthGuard]},
-  { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
+  { path: 'profile/:id', component: ProfilePageComponent, canActivate: [AuthGuard] },
+  { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
   { path: 'comment/:id', component: CommentComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent },
-  { path: 'buffer', component: BufferComponent, canActivate: [AuthGuard] }
+  { path: 'buffer', component: BufferComponent, canActivate: [AuthGuard] },
+  { path: 'nest/:id', component: NestedComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

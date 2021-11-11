@@ -32,4 +32,8 @@ export class RootServiceService {
     return this.http.get<Root>(this.rootUrl + '/' + id).toPromise();
   }
 
+  getCommentById(id: number): Promise<Comment> {
+    return this.http.get<Comment>(this.rootUrl_1 + '/' + id).toPromise();
+  }
+
 }

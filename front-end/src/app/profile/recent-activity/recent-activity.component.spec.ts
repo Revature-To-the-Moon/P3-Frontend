@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { RecentActivityComponent } from './recent-activity.component';
-import { Component, DebugElement, SimpleChange } from '@angular/core';
+import { DebugElement, SimpleChange } from '@angular/core';
 
 
 describe('RecentActivityComponent', () => {
@@ -22,7 +22,7 @@ describe('RecentActivityComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RecentActivityComponent);
     component = fixture.componentInstance;
-    de = fixture.debugElement;
+    fixture.debugElement;
     fixture.detectChanges();
   });
 
