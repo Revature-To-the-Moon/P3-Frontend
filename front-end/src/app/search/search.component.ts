@@ -8,17 +8,24 @@ import { RootServiceService } from '../service/root-service.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+  searchText: string = "";
+  value = '';
   constructor(private service: RootServiceService) { }
-  roots:Root[] = []
-  ngOnInit(): void {
-    this.service.getRoots().subscribe
-    (
-      data =>
-      {
-        this.roots = data;
-      }
-    )
+  roots:Root[] = [];
+  result;
+
+  onEnter(value: string) { this.value = value; 
+  this.result = this.roots.filter(res => res.title.toLocaleLowerCase().includes(this.value.toLocaleLowerCase()) || 
+  res.userName.toLocaleLowerCase().includes(this.value.toLocaleLowerCase()))
   }
+
+
+  ngOnInit(): void {
+    this.service.getAllRoots().then(result =>{
+      this.roots =result;
+    })
+  }
+  
+  
 
 }

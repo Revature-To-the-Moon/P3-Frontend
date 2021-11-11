@@ -1,11 +1,18 @@
-<div class="search">
-    <form>
-        <input type="search" class="form-control" placeholder="Search To The Moon" aria-label="Search">
-    </form>
+<div class="md-form">
+    <div class="search">
+        <form>
+            <input #box (keyup.enter)="onEnter(box.value)" type="search" class="form-control"
+                placeholder="Search Cadmus" aria-label="Search">
+        </form>
+    </div>
 </div>
+<br>
 
-<select>
-    <option *ngFor='let root of roots' [value]="root.title" >
-        {{root.title}}
-    </option>
-</select>
+<div *ngFor="let res of result">
+    <div class="row searchResult">
+        <p>{{res.id}}</p>
+        <p>{{res.title}}</p>
+        <p>{{res.userName}}</p>
+        <p>{{res.message}}</p>
+    </div>
+</div>

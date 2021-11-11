@@ -40,7 +40,7 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
     SearchComponent,
     LoginButtonsComponent,
     RegisterButtonComponent,
-    DateAgoPipe,
+    DateAgoPipe
   ],
   imports: [
     BrowserModule,
