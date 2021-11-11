@@ -33,8 +33,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" routerLink="/comment/{{popular[0].id}}" role="button"
-                            [class.disabled]="(popular[0].comments).length == 0">{{
+                        <a class="btn btn-outline-primary" routerLink="/comment/{{popular[0].id}}" role="button">{{
                             (popular[0].comments).length }} Comments</a>
                     </div>
                 </div>
@@ -73,14 +72,13 @@
                 </div>
                 <div class="row" style="margin-top: -10px;">
                     <h2>{{ root.title }}</h2>
-                    <h4>{{ root.message }}</h4>
+                    <h5>{{ root.message }}</h5>
                 </div>
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}"
-                            role="button" [class.disabled]="(root.comments).length == 0">{{ (root.comments).length }}
-                            Comments</a>
+                        <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}" role="button">{{
+                            (root.comments).length }} Comments</a>
                         <p style="float: right;">{{ root.totalVote }} Votes</p>
                     </div>
                 </div>

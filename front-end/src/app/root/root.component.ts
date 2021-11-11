@@ -41,10 +41,6 @@ export class RootComponent implements OnInit {
     this.router.navigateByUrl('create-post');
   }
 
-  goToComment(id: number): void {
-    this.router.navigateByUrl(`comment/` + id);
-  }
-
   sortPopular(): void {
     this.rootService.getAllRoots().then(result => {
       result.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
