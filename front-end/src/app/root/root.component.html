@@ -20,20 +20,21 @@
                     <div class="col">
                         <p style="font-size: 16px;"><span style="font-size: 18px;">{{ popular[0].userName }}</span> • {{
                             popular[0].dateTime |
-                            dateAgo }}</p>
+                            date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
-                <div class="row">
-                    <h3>{{ popular[0].title }}</h3>
-                    <h4>{{ popular[0].message }}</h4>
+                <div class="row" style="margin-top: -10px;">
+                    <h1>{{ popular[0].title }}</h1>
+                    <h3>{{ popular[0].message }}</h3>
                 </div>
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" routerLink="/comment/{{popular[0].id}}" role="button">{{
+                        <a class="btn btn-outline-primary" routerLink="/comment/{{popular[0].id}}" role="button"
+                            [class.disabled]="(popular[0].comments).length == 0">{{
                             (popular[0].comments).length }} Comments</a>
                     </div>
                 </div>
@@ -64,21 +65,22 @@
             <div class="container" id="feed" *ngFor="let root of roots">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> • {{ root.dateTime | dateAgo }}</p>
+                        <p><span>{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
-                <div class="row">
-                    <h4>{{ root.title }}</h4>
-                    <h5>{{ root.message }}</h5>
+                <div class="row" style="margin-top: -10px;">
+                    <h2>{{ root.title }}</h2>
+                    <h4>{{ root.message }}</h4>
                 </div>
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
                         <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}"
-                            role="button">{{ (root.comments).length }} Comments</a>
+                            role="button" [class.disabled]="(root.comments).length == 0">{{ (root.comments).length }}
+                            Comments</a>
                         <p style="float: right;">{{ root.totalVote }} Votes</p>
                     </div>
                 </div>
