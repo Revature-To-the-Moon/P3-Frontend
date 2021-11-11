@@ -1,9 +1,13 @@
+import { Vote } from "./vote";
+
 export interface Comment {
     id: number;
+    parentId: number;
+    rootId: number;
     message: string;
-    totalvote: number;
-    Time: string;
-    Username: string;
-    RootId: number;
-    CommentId: number;
+    totalVote: number;
+    dateTime: Date;
+    userName: string;
+    votes: Vote[];
+    comments?: [];
 }

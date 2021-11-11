@@ -14,30 +14,29 @@ export class ProfilePageComponent implements OnInit {
   constructor(private currentRoute: ActivatedRoute, public profileService: ProfileService, private router: Router) { }
   isFollow = false;
   id = 0;
-
+  userList:User[];
   currentUser: User = {
     id: 0,
     username:"",
     email: "",
     name: "",
-    followedUsers: []
+    followings: []
   }; 
 
-
   ngOnInit(): void {
-    console.log("ngOnInit for profile-page")
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
 
       this.profileService.getUserById(this.id).then((result: User) => {
         this.currentUser= result;
-        console.log("followed user" + this.currentUser.followedUsers[1]);
+        console.log("followed user" + this.currentUser.followings[1].followingUserName);
       });
     });
-    
   }
-  onClick() {
-    this.isFollow = !this.isFollow;
+
+  GetPosts(): void {
+    var whatever = this.profileService.getAllPostsAndCommentsByUser("Bao3");
+    console.log(whatever);
   }
 
 }

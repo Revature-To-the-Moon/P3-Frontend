@@ -7,10 +7,10 @@
             The list of people you're following. 
         </caption>
         <tr *ngFor="let follower of followedList" id="visual">
-            <td class="edit" routerLink="/profile/{{follower.id}}">{{follower.name}}</td>
+            <td class="edit" routerLink="/profile/{{follower.followingUserId}}">{{follower.followingUserName}}</td>
         </tr>
-        <tr *ngIf="(followedList== undefined)">
-            No Followers!
+        <tr *ngIf="(followedList== undefined|| followedList.length == 0)">
+            <td>No Followers!</td>
         </tr>
     </table>
 </div>

@@ -6,23 +6,25 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <p><span>root.username</span> | Posted root.date</p>
+                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime | dateAgo }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
                 <div class="row">
-                    <h4>root.title</h4>
-                    <h5>root.message root.message root.message root.message root.message</h5>
+                    <h4>{{ root.title }}</h4>
+                    <h5>{{ root.message }}</h5>
                 </div>
             </div>
 
             <div class="container-comment">
-                <span><small>Add to the story as <span style="color: brown;"><small>User</small></span></small></span>
+                <span><small>Add to the story as <span style="color: brown;"><small>{{user}}</small></span></small></span>
                 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
                     <div class="form-group mb-3">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="post.message" name="message" #message="ngModel" required></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                            placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="comment.message"
+                            name="message" #message="ngModel" required></textarea>
                     </div>
                     <div class="d-md-flex justify-content-md-end">
                         <div *ngIf="postForm.controls['message']?.valid; else invalid">
@@ -35,14 +37,14 @@
                 </form>
             </div>
 
-            <div class="container" id="comments" comment="*ngFor='let comment of comments'">
+            <div class="container" id="comments" *ngFor='let comment of root.comments'>
                 <div class="row">
-                    <p style="font-size: 13px;"><span style="font-size: 15px;">comment.username</span> | Posted
-                        comment.date
+                    <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> | Posted
+                        {{ comment.dateTime | dateAgo }}
                     </p>
                 </div>
                 <div class="row">
-                    <h6>comment.message comment.message comment.message comment.message comment.message</h6>
+                    <h6>{{ comment.message }}</h6>
                 </div>
                 <div class="row">
                     <div class="col">
