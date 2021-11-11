@@ -4,7 +4,11 @@ import { User } from '../models/user';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
 import { FollowingPost } from '../models/FollowingPost';
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
+=======
+import { Post } from '../models/post';
+>>>>>>> 7de31c1caa90d01f7089c6914dcb350863da6a04
 import { Followings } from '../models/Followings';
 
 @Injectable({
@@ -14,6 +18,11 @@ export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
   rootUrl = 'https://52.141.211.229/post/api';
+<<<<<<< HEAD
+=======
+
+  constructor(private http: HttpClient) { }
+>>>>>>> 7de31c1caa90d01f7089c6914dcb350863da6a04
 
   constructor(private http: HttpClient) { }
   
@@ -25,6 +34,9 @@ export class ProfileService {
   getUserById(id: number): Promise<User>  
   {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
+  }
+  getUserByName(username: string): Promise<User> {
+    return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
   }
 
   getAllUsers(): Promise<User[]>
@@ -42,7 +54,16 @@ export class ProfileService {
     return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
   }
 
+<<<<<<< HEAD
   getAllComments(): Promise<Comment[]>
+=======
+  //we can use updateUser to follow/unfollow both posts and other users, since both following models are contained within the user
+  updateUser(updatedUser: User): Promise<User> {
+    return this.http.post<User>(this.apiUrl+'/user/', updatedUser).toPromise();
+  }
+  
+  getAllPostsAndCommentsByUser(name: string): any[]
+>>>>>>> 7de31c1caa90d01f7089c6914dcb350863da6a04
   {
     return this.http.get<[]>(this.apiUrl + "/Comment/").toPromise();
   }
