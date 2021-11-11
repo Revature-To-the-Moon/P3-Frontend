@@ -23,6 +23,7 @@ import { LoginButtonsComponent } from './login-buttons/login-buttons.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { NestedComponent } from './nested/nested.component';
+import { ReadRootComponent } from './read-root/read-root.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NestedComponent } from './nested/nested.component';
     RegisterButtonComponent,
     DateAgoPipe,
     NestedComponent,
+    ReadRootComponent,
   ],
   imports: [
     BrowserModule,
