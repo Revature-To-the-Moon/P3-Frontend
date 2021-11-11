@@ -55,7 +55,7 @@ describe('LoginComponent', () => {
   it('should have one button with "Login" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));
     const nativeButton: HTMLButtonElement = linkDes[0].nativeElement;
-    expect(nativeButton.textContent).toBe('Login');
+    expect(nativeButton.textContent).toBe('Log into Cadmus');
   });
   
 
@@ -63,7 +63,7 @@ describe('LoginComponent', () => {
   it('should have one button with "Register" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));
     const nativeButton: HTMLButtonElement = linkDes[1].nativeElement;
-    expect(nativeButton.textContent).toBe('Register');
+    expect(nativeButton.textContent).toBe('Create new account');
   });
 
   it('should not have the logout button on the page when user is not logged in', () => {

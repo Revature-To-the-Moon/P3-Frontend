@@ -5,11 +5,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthModule } from '@auth0/auth0-angular';
 import {By} from '@angular/platform-browser';
 import { BufferComponent } from './buffer.component';
+import {Router} from '@angular/router';
 
 describe('BufferComponent', () => {
   let component: BufferComponent;
   let fixture: ComponentFixture<BufferComponent>;
   let activatedRoute: ActivatedRoute = new ActivatedRoute;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -47,5 +49,11 @@ describe('BufferComponent', () => {
     expect(buttons.length >= 1).toBeTruthy();
   });
 
+  it('Should navigate to /root', () => {
+    spyOn(router, 'navigateByUrl');
+    expect(router.navigateByUrl).toHaveBeenCalledWith(router.createUrlTree(['/root']),
+    
+  )
   
-});
+  })
+})

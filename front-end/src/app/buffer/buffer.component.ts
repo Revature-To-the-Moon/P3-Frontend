@@ -16,7 +16,7 @@ export class BufferComponent implements OnInit {
 
 
 
-  constructor(private auth: AuthService, private http: HttpClient, private UserCreationService:UserCreationService, private router: Router) { }
+  constructor(private auth: AuthService, private http: HttpClient, private UserCreationService: UserCreationService, private router: Router) { }
 
   userList: User[];
   user: User = {
