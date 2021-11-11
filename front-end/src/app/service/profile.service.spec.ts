@@ -12,6 +12,8 @@ describe('ProfileService', () => {
   let service: ProfileService;
   let fixture: ComponentFixture<ProfileService>;
   let httpMock: HttpTestingController;
+  let apiUrl = 'https://52.141.211.229/user/api';
+  let rootUrl = 'https://52.141.211.229/post/api';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -19,6 +21,10 @@ describe('ProfileService', () => {
     });
     service = TestBed.inject(ProfileService);
     httpMock = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -52,6 +58,7 @@ describe('ProfileService', () => {
     service.getAllUsers().then((res) => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(fakeUser[0]);
+      expect(service.getAllUsers).toHaveBeenCalled();
     })
   });
 
@@ -71,6 +78,7 @@ describe('ProfileService', () => {
     service.getAllPosts().then((res) => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(fakePost[0]);
+      expect(service.getAllPosts).toHaveBeenCalled();
     })
   });
 
@@ -92,6 +100,7 @@ describe('ProfileService', () => {
     service.getAllComments().then((res) => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(fakeComment[0]);
+      expect(service.getAllComments).toHaveBeenCalled();
     })
   });
 
@@ -108,6 +117,7 @@ describe('ProfileService', () => {
     service.getFollowedPostByUserId(5).then((res) => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(fakePost[0]);
+      expect(service.getFollowedPostByUserId).toHaveBeenCalled();
     })
   });
 
@@ -130,10 +140,11 @@ describe('ProfileService', () => {
     
     expect(res.length).toEqual(1);
     expect(res[0]).toEqual(fakeComment[0]);
+    expect(service.getAllPostsAndCommentsByUser).toHaveBeenCalled();
   });
 
   it('should add comment to list', () => {
-    let fakeComment: Comment = {
+    let fakeComment: Comment[] = [ {
       id: 1,
       message: "We's still walkin' a ducky!",
       totalVote: 32,
@@ -143,10 +154,13 @@ describe('ProfileService', () => {
       rootId: 1,
       votes: [],
       comments: [],
-    };
+    } ];
+    spyOn(service, 'addCommentToList').and.returnValue(fakeComment);
+
     var res : any[] = []
-    res = service.addCommentToList(fakeComment, res, "Zoe")
+    res = service.addCommentToList(fakeComment[0], res, "Zoe")
     expect(res.length).toEqual(1);
-    expect(res[0]).toEqual(fakeComment);
+    expect(res[0]).toEqual(fakeComment[0]);
+    expect(service.addCommentToList).toHaveBeenCalled();
   });
 });

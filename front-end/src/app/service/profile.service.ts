@@ -13,7 +13,7 @@ export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
   rootUrl = 'https://52.141.211.229/post/api';
-S
+
   constructor(private http: HttpClient) { }
 
   // getAll(): Observable<any> {
@@ -43,7 +43,6 @@ S
     return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
   }
 
-  // testcase for this fails and is commented out. 
   getAllPostsAndCommentsByUser(name: string): any[]
   {
     var LoC = [] as Array<any>
