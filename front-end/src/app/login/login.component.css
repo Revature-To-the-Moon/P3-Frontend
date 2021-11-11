@@ -6,6 +6,10 @@ max-height: 500px;
 
 }
 
+img {
+    margin: auto;
+    display: block;
+}
 
 .btn1{
     text-align: center;

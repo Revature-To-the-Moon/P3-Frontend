@@ -37,6 +37,10 @@ export class BufferComponent implements OnInit {
             if (this.userList[i].username != profile.preferred_username && i + 1 == this.userList.length) {
                 this.UserCreationService.AddObject(this.user)
               }
+              else if(this.userList[i].username == profile.preferred_username)
+              {
+                console.log("you're already in db")
+              }
             }
             this.router.navigateByUrl('/root');
         })
