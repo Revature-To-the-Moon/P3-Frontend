@@ -1,10 +1,7 @@
 .container-fluid {
     padding: 0;
     background-color: #f7f2ff;
-}
-
-.container {
-    background-color: white;
+    background-size: cover;
 }
 
 #left {
@@ -18,16 +15,6 @@
 
 #right {
     background-color: #f7f2ff;
-}
-
-#username-span {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #4d4382;
-}
-
-#create-btn {
-    float: right;
 }
 
 .btn-primary {
@@ -53,19 +40,6 @@
     border-color: #4d4382;
 }
 
-#featured-post {
-    padding: 10px;
-    border: 1px solid rgb(100, 100, 100);
-    border-radius: 5px;
-}
-
-#feed {
-    padding: 10px;
-    border: 1px solid rgb(100, 100, 100);
-    border-radius: 5px;
-    margin-bottom: 2vh;
-}
-
 span {
     font-size: 16px;
     color: black;
@@ -81,18 +55,44 @@ p {
     text-align: right;
 }
 
-#filter-bar {
-    margin: 5vh 0 2vh 0;
-    background-color: #291a4a;
-    border-radius: 5px;
+hr {
+    margin: 20px 0;
 }
 
-#filter-btn {
+.container-comment {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    border-bottom: solid 1px rgb(100, 100, 100);
+}
+
+textarea{
+    background-color: white;
+}
+
+.allComments {
+    background-color: white;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    margin-bottom: 3vh;
+}
+
+#comments {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    padding: 20px 10px;
+}
+
+#comments:last-child {
     border: none;
 }
 
-#filter-col {
+#root {
     padding: 10px;
-    display: flex;
-    justify-content: space-evenly;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    margin-bottom: 1vh;
+}
+
+.container {
+    background-color: white;
 }
