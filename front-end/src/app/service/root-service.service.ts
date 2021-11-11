@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Root } from '../models/root';
 import { Comment } from '../models/Comment';
+import { Observable } from 'rxjs';
+import { User } from '@auth0/auth0-spa-js';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ export class RootServiceService {
 
   private rootUrl: string = "https://52.141.211.229/post/api/post";
   private rootUrl_1: string = "https://52.141.211.229/post/api/Comment";
+  private userUrl: string = "https://52.141.211.229/user/api/user";
 
   story: string[]
 
