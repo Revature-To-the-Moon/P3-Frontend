@@ -5,8 +5,12 @@
     margin: 0;
     align-items: flex-start;
 }
-input{
+/* input{
     width: 30vw;
+} */
+
+.form-control{
+    width: 20vw;
 }
 
 .searchResult{
@@ -15,4 +19,17 @@ input{
 }
 li{
     list-style: none;
+}
+
+/* #clearButton{
+    float: right;
+} */
+
+.btn-primary{
+    background-color: #7977CF;
+    border-color: #7977CF;
+}
+
+.btn-primary:active{
+    border: none;
 }
