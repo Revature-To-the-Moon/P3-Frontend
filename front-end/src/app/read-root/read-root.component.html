@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" id="left">
+        </div>
+        <div class="row col-6" id="center">
+            <div class="container" id="root">
+                <div class="row">
+                    <div class="col">
+                        <p><span>{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
+                    </div>
+                    <div class="col" id="follow-post-btn">
+                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: -10px;">
+                    <h2>{{ root.title }}</h2>
+                    <h4>{{ root.message }}</h4>
+                </div>
+            </div>
+
+            <div class="allComments">
+                <div class="container" id="comments" *ngFor='let comment of root.comments'>
+                    <div class="row">
+                        <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> • {{
+                            comment.dateTime | date:'short' }}
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>{{ comment.message }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" *ngFor="let part of story">
+                <p>{{part}}</p>
+            </div>
+        </div>
+        <div class="col-3" id="right">
+        </div>
+    </div>
+</div>
