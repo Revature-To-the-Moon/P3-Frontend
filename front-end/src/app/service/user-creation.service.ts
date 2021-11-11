@@ -7,7 +7,7 @@ import { User } from '../models/user';
 export class UserCreationService {
   userName?: string;
 
-  
+
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,10 @@ export class UserCreationService {
   getAllUsers(): Promise<User[]>
   {
     return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
+  }
+
+  getUserByName(username: string): Promise<User> {
+    return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
   }
 
   AddObject(user: User): Promise<User>

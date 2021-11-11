@@ -1,31 +1,36 @@
 .container
 {
 
-max-width: 500px;
-max-height: 500px;
+max-width: 700px;
+max-height: 900px;
 
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-bottom: 50px;
+}
 
 .btn1{
-    text-align: center;
     height: 8vh;
     width: 15vw;
-    margin: 15px;
+    
 }
 
 .btn2{
-    text-align: center;
+    
     height: 8vh;
     width: 15vw;
-    margin: 15px;
-}
-
-.btn3{
-    text-align: center;
-    height: 8vh;
-    width: 15vw;
-    margin: 15px;
+    
 }
 
 .wrapper {
