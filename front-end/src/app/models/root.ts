@@ -1,3 +1,5 @@
+import { Comment } from "./Comment";
+
 export interface Root {
     id: number;
     title: string;
@@ -5,5 +7,5 @@ export interface Root {
     totalVote: number;
     dateTime: Date;
     userName: string;
-    comments: any;
+    comments: Comment[];
 }

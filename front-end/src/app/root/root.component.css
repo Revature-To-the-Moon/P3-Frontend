@@ -21,9 +21,14 @@
 }
 
 #username-span {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #4d4382;
+    cursor: pointer;
+}
+
+#username-span:hover {
+    text-decoration: underline;
 }
 
 #create-btn {
@@ -79,6 +84,22 @@ p {
 
 #follow-post-btn {
     text-align: right;
+}
+
+#up{
+    cursor: pointer;
+    /* filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); */
+}
+
+#down{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+#vote{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #filter-bar {

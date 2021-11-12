@@ -17,7 +17,7 @@ export class ReadRootComponent implements OnInit {
   id = 0;
   user: string = '';
   roots: Root[] = [];
-  story: string[];
+  topStory: Comment[];
 
   comment: Comment = {
     id: 0,
@@ -67,10 +67,11 @@ export class ReadRootComponent implements OnInit {
         this.root = result;
         result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
         if (this.popular.comments != null) {
-          this.popular = result.comments[0]
-          this.story = this.rootService.RecursiveFunction(this.popular);
+          this.popular = result.comments[0];
+          this.topStory= [this.popular];
+          this.topStory = this.topStory.concat(this.rootService.RecursiveFunction(this.popular));
           console.log("story:")
-          console.log(this.story)
+          console.log(this.topStory)
         }
       })
     })

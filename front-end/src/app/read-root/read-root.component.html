@@ -12,27 +12,18 @@
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
-                <div class="row" style="margin-top: -10px;">
-                    <h2>{{ root.title }}</h2>
-                    <h4>{{ root.message }}</h4>
-                </div>
-            </div>
-
-            <div class="allComments">
-                <div class="container" id="comments" *ngFor='let comment of root.comments'>
-                    <div class="row">
-                        <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> • {{
-                            comment.dateTime | date:'short' }}
-                        </p>
+                <div class="row" style="padding: 10px;">
+                    <h1>{{ root.title }}</h1>
+                    <div class="split"></div>
+                    <div class="part" style="padding-top: 0px;">
+                        <p>{{ root.userName }}</p>
+                        <h5>{{ root.message }}</h5>
                     </div>
-                    <div class="row">
-                        <h5>{{ comment.message }}</h5>
+                    <div class="part" *ngFor="let part of topStory">
+                        <p>{{ part.userName }}</p>
+                        <h5>{{ part.message }}</h5>
                     </div>
                 </div>
-            </div>
-
-            <div class="container" *ngFor="let part of story">
-                <p>{{part}}</p>
             </div>
         </div>
         <div class="col-3" id="right">
