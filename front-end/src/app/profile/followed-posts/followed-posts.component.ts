@@ -20,7 +20,6 @@ export class FollowedPostsComponent implements OnInit {
   activity: any[] = [];
   followedList: FollowingPost[];
 
-
   constructor(private route: ActivatedRoute, public profileService: ProfileService) { }
 
   ngOnInit(): void {

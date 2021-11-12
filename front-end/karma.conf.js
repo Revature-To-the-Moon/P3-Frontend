@@ -29,7 +29,8 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'text-summary' },
+        { type: 'lcov' }
       ]
     },
     reporters: ['progress', 'kjhtml'],
@@ -37,8 +38,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['MyHeadlessChrome'],
-    singleRun: true,
+    browsers: ['Chrome'],
+    singleRun: false,
     customLaunchers: {
       MyHeadlessChrome: {
         base: 'ChromeHeadless',

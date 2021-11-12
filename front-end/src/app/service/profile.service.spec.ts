@@ -24,11 +24,7 @@ describe('ProfileService', () => {
     });
     service = TestBed.inject(ProfileService);
     httpMock = TestBed.inject(HttpTestingController);
-  });
-
-  afterEach(() => {
-    httpMock.verify();
-  });
+  }); 
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -134,7 +130,7 @@ describe('ProfileService', () => {
 
     service.updateUser(fakeUser).then((res) => {
       expect(res).toEqual(fakeUser);
-      expect(service.getAllPosts).toHaveBeenCalled();
+      expect(service.updateUser).toHaveBeenCalled();
     })
   })
 
@@ -180,6 +176,7 @@ describe('ProfileService', () => {
     expect(res[0]).toEqual(fakeComment[0]);
     expect(service.addCommentToList).toHaveBeenCalled();
   });
+  
   it('should return follow user', () => {
     let fakefollower: Followings = {
       id: 1,

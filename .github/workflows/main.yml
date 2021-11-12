@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI_CD
 
 on:
   push:
@@ -50,6 +50,9 @@ jobs:
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
           
+      - name: Workspace path
+        run: sed -i 's/\/home\/runner\/work\/P3-Frontend\/P3-Frontend\//\/github\/workspace\//' P3-Frontend/front-end/lcov.info
+    
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
