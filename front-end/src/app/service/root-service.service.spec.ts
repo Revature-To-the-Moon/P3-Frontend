@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { RootServiceService } from './root-service.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Post } from '../models/post'
+import { Comment } from '../models/Comment'
+import { Vote } from '../models/vote'
 
 describe('RootServiceService', () => {
   let service: RootServiceService;
@@ -82,13 +84,52 @@ describe('RootServiceService', () => {
       userName: 'ToTheMoon1234',
       totalVote: 5,
       comments:[]
-
     }
     spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakePost));
     await service.getRootById(1).then((res) => {
       expect(service.getRootById).toHaveBeenCalledWith(1);
       expect(res).toEqual(fakePost);
     })
-  })
+  });
+
+  //comment tests//
+  
+  it('addComment should post new comment', async() => {
+    let fakeComment = {
+    id: 8,
+    parentId: -1,
+    rootId: 1,
+    message: 'My dog ran into the store...',
+    totalVote: 12,
+    dateTime: null,
+    userName: 'ToTheMoon1234',
+    votes: [],
+    comments: []
+    }
+    spyOn(service, 'addComment').and.returnValue(Promise.resolve(fakeComment));
+    await service.addComment(fakeComment).then((res) => {
+      expect(service.addComment).toHaveBeenCalled();
+      expect(res).toEqual(fakeComment);
+    });
+  });
+
+  it('getCommentById should return specific comment', async()=> {
+    let fakeComment = {
+      id: 8,
+      parentId: -1,
+      rootId: 1,
+      message: 'My dog ran into the store...',
+      totalVote: 12,
+      dateTime: null,
+      userName: 'ToTheMoon1234',
+      votes: [],
+      comments: []
+      }
+    spyOn(service, 'getCommentById').and.returnValue(Promise.resolve(fakeComment));
+    await service.getCommentById(8).then((res) => {
+    expect(service.getCommentById).toHaveBeenCalledWith(8);
+    expect(res).toEqual(fakeComment);
+    })
+  });
 
 });
