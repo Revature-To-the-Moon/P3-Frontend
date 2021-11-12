@@ -1,0 +1,60 @@
+.container-fluid {
+    padding: 0;
+    background-color: #f7f2ff;
+    background-size: cover;
+}
+
+#left {
+    background-color: #f7f2ff;
+}
+
+#center {
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+#right {
+    background-color: #f7f2ff;
+}
+
+.btn-primary {
+    color: #fdf4f7;
+    background-color: #4d4382;
+    border-color: #4d4382;
+}
+
+.btn-primary:hover {
+    color: #fdf4f7;
+    background-color: #291a4a;
+    border-color: #291a4a;
+}
+
+span {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+
+p {
+    font-size: 14px;
+    color: rgba(20, 20, 20, 0.8);
+}
+
+#follow-post-btn {
+    text-align: right;
+}
+
+#root {
+    padding: 10px;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    margin-bottom: 1vh;
+}
+
+.container {
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+}
