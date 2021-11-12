@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ProfileService } from 'src/app/service/profile.service';
+
 import { Followings } from 'src/app/models/Followings';
 
 @Component({
