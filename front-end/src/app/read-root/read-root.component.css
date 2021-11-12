@@ -55,3 +55,23 @@ p {
 h1 {
     text-align: center;
 }
+
+.split {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    margin: 2vh 0;
+}
+
+.part {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+    padding: 10px
+}
+
+.part:last-child {
+    border-bottom: none;
+}
+
+h5 {
+    padding-left: 1vw;
+}
