@@ -4,7 +4,7 @@
         <th>
         </th>
         <tr *ngFor="let post of followedList" id="visual">
-            <td class="edit" routerLink="/profile/{{post.userId}}">{{post.postname}}</td>
+            <td class="edit" routerLink="/comment/{{post.rootId}}">{{post.postname}}</td>
         </tr>
         <tr *ngIf="(followedList== undefined|| followedList.length == 0)">
             <td>No followed posts!</td>
