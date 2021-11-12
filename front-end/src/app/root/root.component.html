@@ -5,7 +5,8 @@
         <div class="row col-6" id="center">
             <!-- search bar and create post button -->
             <div class="col">
-                <h5 style="font-size: 1.5rem;">Welcome, <span id="username-span" routerLink="/profile/{{currentUser.id}}">{{ currentUser.username }}</span></h5>
+                <h5 style="font-size: 1.5rem;">Welcome, <span id="username-span"
+                        routerLink="/profile/{{currentUser.id}}">{{ currentUser.username }}</span></h5>
             </div>
             <div class="col">
                 <a class="btn btn-primary" id="create-btn" (click)="goToCreatePost()" role="button"><em
@@ -18,7 +19,8 @@
             <div class="container" id="featured-post">
                 <div class="row">
                     <div class="col">
-                        <p style="font-size: 13px;"><span style="font-size: 13px;" (click)="goToUserProfile(popular[0].userName)">{{ popular[0]?.userName }}</span> • {{
+                        <p style="font-size: 13px;"><span style="font-size: 13px;"
+                                (click)="goToUserProfile(popular[0].userName)">{{ popular[0]?.userName }}</span> • {{
                             popular[0]?.dateTime |
                             date:'short' }}</p>
                     </div>
@@ -46,9 +48,6 @@
                     <div class="col" id="filter-col">
                         <button type="button" class="btn btn-outline-light btn-lg" id="filter-btn"
                             (click)="sortPopular()"><em
-                                class="fa fa-fire"></em> Hot</button>
-                        <button type="button" class="btn btn-outline-light btn-lg" id="filter-btn"
-                            (click)="sortPopular()"><em
                                 class="fa fa-star"></em> Popular</button>
                         <button type="button" class="btn btn-outline-light btn-lg" id="filter-btn"
                             (click)="sortNewest()"><em
@@ -66,7 +65,9 @@
             <div class="container" id="feed" *ngFor="let root of roots">
                 <div class="row">
                     <div class="col">
-                        <p style="font-size: 13px;"><span style="font-size: 13px;" (click)="goToUserProfile(root.userName)">{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
+                        <p style="font-size: 13px;"><span style="font-size: 13px;"
+                                (click)="goToUserProfile(root.userName)">{{ root.userName }}</span> • {{ root.dateTime |
+                            date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
