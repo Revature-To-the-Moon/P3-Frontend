@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/service/profile.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-profile-page',
@@ -9,10 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./profile-page.component.css'],
   providers: [ProfileService]
 })
+
 export class ProfilePageComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, public profileService: ProfileService, private router: Router) { }
-  isFollow = false;
   id = 0;
   userList:User[];
   currentUser: User = {

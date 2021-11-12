@@ -14,10 +14,10 @@ import { Followings } from '../models/Followings';
 export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
+  followUrl = 'https://52.141.211.229/user/api/following';
   rootUrl = 'https://52.141.211.229/post/api';
 
   constructor(private http: HttpClient) { }
-
   
   // getAll(): Observable<any> {
   //   return this.http.get(this.apiUrl + '_sort=id&order=desc')
@@ -98,6 +98,10 @@ export class ProfileService {
   }
   
   followUser(follow: Followings): Observable<Followings> {
-    return this.http.post<Followings>(this.apiUrl, follow);
+    return this.http.post<Followings>(this.followUrl, follow);
+  }
+
+  unfollowUser(follow: Followings): Observable<Followings> {
+    return this.http.delete<Followings>(this.followUrl + "/id/"+ follow.id);
   }
 }
