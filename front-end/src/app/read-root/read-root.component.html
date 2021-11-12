@@ -12,10 +12,10 @@
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="padding: 10px;">
                     <h1>{{ root.title }}</h1>
                     <h5>{{ root.message }}</h5>
-                    <div class="container" *ngFor="let part of topStory">
+                    <div *ngFor="let part of topStory">
                         <h5>{{ part.message }}</h5>
                     </div>
                 </div>
