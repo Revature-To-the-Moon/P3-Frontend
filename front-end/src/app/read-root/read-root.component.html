@@ -21,9 +21,9 @@
             <div class="allComments">
                 <div class="container" id="comments" *ngFor='let comment of root.comments'>
                     <div class="row">
-                        <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> • {{
+                        <!-- <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> • {{
                             comment.dateTime | date:'short' }}
-                        </p>
+                        </p> -->
                     </div>
                     <div class="row">
                         <h5>{{ comment.message }}</h5>
@@ -31,8 +31,8 @@
                 </div>
             </div>
 
-            <div class="container" *ngFor="let part of story">
-                <p>{{part}}</p>
+            <div class="container" *ngFor="let part of topStory">
+                <p>{{part.message}}</p>
             </div>
         </div>
         <div class="col-3" id="right">

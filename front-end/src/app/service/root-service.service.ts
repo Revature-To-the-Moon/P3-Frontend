@@ -57,14 +57,18 @@ export class RootServiceService {
     return this.http.get<Root>(this.rootUrl + '/' + id).toPromise();
   }
 
-  RecursiveFunction(chosenComment: Comment) {
-    chosenComment.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
+  RecursiveFunction(chosenComment: Comment): Comment[]{
+    if (chosenComment.comments.length > 1) {
+    chosenComment.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);}
+    //sorts by popularity
     let winningComment = chosenComment.comments[0];
+    let commentArray: Comment []= [winningComment];
+    //selects most popular
     chosenComment.comments = [winningComment];
     if (winningComment.comments.length > 0) {
-      this.RecursiveFunction(winningComment);
+      let childrenCommentChain = this.RecursiveFunction(winningComment);
+      commentArray = commentArray.concat(childrenCommentChain)
     }
-    this.story.push(chosenComment.message)
-    return this.story;
+    return commentArray;
   }
 }
