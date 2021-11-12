@@ -1,17 +1,20 @@
-<div class="md-form">
-    <div class="search">
-        <form>
+<div class="search">
+    <form class="form-inline">
+        <div class="md-form">
             <input #box (keyup.enter)="onEnter(box.value)" type="search" class="form-control"
                 placeholder="Search Cadmus" aria-label="Search">
-        </form>
-    </div>
+        </div>
+        <span><button type="reset" class="btn btn-primary" id="clearButton" (click)="onClear()"
+                value="reset">clear</button></span>
+
+    </form>
 </div>
+
 <br>
 
 <div *ngFor="let res of result">
     <div class="row searchResult">
-        <p>{{res.id}}</p>
-        <p>{{res.title}}</p>
+        <p><a class="badge badge-dark" routerLink="/comment/{{res.id}}">{{res.title}}</a></p>
         <p>{{res.userName}}</p>
         <p>{{res.message}}</p>
     </div>

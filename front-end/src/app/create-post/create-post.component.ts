@@ -18,7 +18,7 @@ export class CreatePostComponent implements OnInit {
     id: 0,
     title: '',
     message: '',
-    totalVote: 1,
+    totalVote: 0,
     dateTime: new Date(0),
     userName: '',
     comments: []
@@ -40,8 +40,6 @@ export class CreatePostComponent implements OnInit {
         alert("Post successfully created")
         this.router.navigateByUrl('root');
       })
-
-      //console.log(formatDate(this.root.dateTime, "yyyy-MM-ddTHH:mm:ss", "en-US"))
 
     })
 
