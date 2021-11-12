@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
   ngOnInit(): void {
-    console.log("Welcome to Cadmus!")
+    //empty on purpose
   }
 
   Loginfunc(){
