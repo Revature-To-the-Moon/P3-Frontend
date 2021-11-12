@@ -8,8 +8,9 @@ import { Followings } from 'src/app/models/Followings';
   templateUrl: './follow-button.component.html',
   styleUrls: ['./follow-button.component.css']
 })
+
 export class FollowButtonComponent implements OnInit {
-  isFollow = true;
+  isFollow = false;
   @Input() follower: Followings;
   @Input() id = 0;
   @Output() toggle = new EventEmitter<boolean>();
