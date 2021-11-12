@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: -10px;">
-                    <h2>{{ root.title }}</h2>
+                    <h1>{{ root.title }}</h1>
                     <h4>{{ root.message }}</h4>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                         </div>
                         <ng-template #invalid>
                             <input class="btn btn-primary btn-sm rounded-pill disabled" type="submit" value="Comment">
-                        </ng-template> 
+                        </ng-template>
                     </div>
                 </form>
             </div>
@@ -53,26 +53,34 @@
                             <span *ngIf="comment.votes.length !== 0 else zero">
                                 <span *ngIf="checkIfCommentIsLiked(comment.votes) else notTouched">
                                     <span *ngIf="checkIfCommentIsLikedValue(comment.votes) else disliked">
-                                        <img src="../../assets/arrowdark-upward.png" alt="" width="20px" id="upLiked" (click)="likeComment(comment.id)">
+                                        <img src="../../assets/arrowdark-upward.png" alt="" width="20px" id="upLiked"
+                                            (click)="likeComment(comment.id)">
                                         <span id="vote">{{comment.totalVote}}</span>
-                                        <img src="../../assets/arrow-downward.png" alt="" width="20px" id="downLiked"  (click)="unLikeComment(comment.id)">
+                                        <img src="../../assets/arrow-downward.png" alt="" width="20px" id="downLiked"
+                                            (click)="unLikeComment(comment.id)">
                                     </span>
                                     <ng-template #disliked>
-                                        <img src="../../assets/arrow-upward.png" alt="" width="20px" id="upDisliked" (click)="likeComment(comment.id)">
+                                        <img src="../../assets/arrow-upward.png" alt="" width="20px" id="upDisliked"
+                                            (click)="likeComment(comment.id)">
                                         <span id="vote">{{comment.totalVote}}</span>
-                                        <img src="../../assets/arrowdark-downward.png" alt="" width="20px" id="downDisliked"  (click)="unLikeComment(comment.id)">
+                                        <img src="../../assets/arrowdark-downward.png" alt="" width="20px"
+                                            id="downDisliked" (click)="unLikeComment(comment.id)">
                                     </ng-template>
-                                </span> 
+                                </span>
                                 <ng-template #notTouched>
-                                    <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likeComment(comment.id)">
+                                    <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up"
+                                        (click)="likeComment(comment.id)">
                                     <span id="vote">{{comment.totalVote}}</span>
-                                    <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikeComment(comment.id)">
+                                    <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"
+                                        (click)="unLikeComment(comment.id)">
                                 </ng-template>
                             </span>
                             <ng-template #zero>
-                                <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likeComment(comment.id)">
+                                <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up"
+                                    (click)="likeComment(comment.id)">
                                 <span id="vote">{{comment.totalVote}}</span>
-                                <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikeComment(comment.id)">
+                                <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"
+                                    (click)="unLikeComment(comment.id)">
                             </ng-template>
                             <a class="btn btn-outline-primary" routerLink="/nest/{{ comment.id }}"
                                 role="button">{{(comment.comments).length}} Comments</a>
@@ -82,7 +90,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         <div class="col-3" id="right">
         </div>
