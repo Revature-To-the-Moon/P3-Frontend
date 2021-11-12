@@ -74,3 +74,30 @@ hr {
 textarea{
     background-color: rgb(228, 228, 228);
 }
+
+#up{
+    cursor: pointer;
+}
+#upLiked{
+    cursor: pointer;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); 
+}
+#upDisliked{
+    cursor: pointer;
+}
+
+#down#downLiked{
+    cursor: pointer;
+}
+#downDisliked{
+    cursor: pointer;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); 
+}
+#downLiked{
+    cursor: pointer;
+}
+
+#vote{
+    margin-left: 5px;
+    margin-right: 5px;
+}

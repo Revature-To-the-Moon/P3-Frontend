@@ -28,11 +28,11 @@
                     </div>
                     <div class="d-md-flex justify-content-md-end">
                         <div *ngIf="postForm.controls['message']?.valid; else invalid">
-                            <input class="btn btn-primary rounded-pill" type="submit" value="Comment">
+                            <input class="btn btn-primary btn-sm rounded-pill" type="submit" value="Comment">
                         </div>
                         <ng-template #invalid>
                             <input class="btn btn-primary btn-sm rounded-pill disabled" type="submit" value="Comment">
-                        </ng-template>
+                        </ng-template> 
                     </div>
                 </form>
             </div>
@@ -46,11 +46,47 @@
                 <div class="row">
                     <h6>{{ comment.message }}</h6>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
+                <div *ngIf="comment.votes.length !== 0 else zero">
+                    <div *ngIf="checkIfCommentIsLiked(comment.votes) else notTouched">
+                        <div *ngIf="checkIfCommentIsLikedValue(comment.votes) else disliked">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="../../assets/arrowdark-upward.png" alt="" width="20px" id="upLiked" (click)="likeComment(comment.id)">
+                                    <span id="vote">{{comment.totalVote}}</span>
+                                    <img src="../../assets/arrow-downward.png" alt="" width="20px" id="downLiked"  (click)="unLikeComment(comment.id)">
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #disliked>
+                            <div class="row">
+                                <div class="col">
+                                    <img src="../../assets/arrow-upward.png" alt="" width="20px" id="upDisliked" (click)="likeComment(comment.id)">
+                                    <span id="vote">{{comment.totalVote}}</span>
+                                    <img src="../../assets/arrowdark-downward.png" alt="" width="20px" id="downDisliked"  (click)="unLikeComment(comment.id)">
+                                </div>
+                            </div>
+                        </ng-template>
                     </div>
+    
+                    <ng-template #notTouched>
+                        <div class="row">
+                            <div class="col">
+                                <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likeComment(comment.id)">
+                                <span id="vote">{{comment.totalVote}}</span>
+                                <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikeComment(comment.id)">
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
+                <ng-template #zero>
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likeComment(comment.id)">
+                            <span id="vote">{{comment.totalVote}}</span>
+                            <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikeComment(comment.id)">
+                        </div>
+                    </div>
+                </ng-template>
             </div>
         </div>
         <div class="col-3" id="right">

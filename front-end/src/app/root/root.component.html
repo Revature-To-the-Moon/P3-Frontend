@@ -56,7 +56,10 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
+                        <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likePost(root.id)">
+                        <span id="vote">{{root.totalVote}}</span>
+                        <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikePost(root.id)">
+                        <!-- <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button> -->
                         <a class="btn btn-outline-primary" routerLink="/comment/{{root.id}}"
                             role="button">{{ (root.comments).length }} Comments</a>
                     </div>
