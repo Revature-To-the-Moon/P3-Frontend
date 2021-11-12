@@ -26,7 +26,7 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
       this.id = params['id'];
-
+      
       this.profileService.getUserById(this.id).then((result: User) => {
         this.currentUser= result;
       });

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
@@ -48,18 +48,18 @@ describe('ProfilePageComponent', () => {
 
   it('should assign result to currentUser', async () => {
     let fakeUser: User = {
-      id: 5,
+      id: 55,
       username: "Tenzin",
       email: "",
       name: "",
       followings: []
     };
-
+    
     spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
     
     await component.ngOnInit();
     
-    expect(service.getUserById).toHaveBeenCalledWith(1);
+    expect(service.getUserById).toHaveBeenCalledWith(55);
     expect(component.currentUser).toEqual(fakeUser);
   })
 });
