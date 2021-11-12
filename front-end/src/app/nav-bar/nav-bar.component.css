@@ -11,12 +11,11 @@
 }
 
 .bg-img{
-    background-image: url(../../assets/starrynightmoon.png);
+    background-image: url(../../assets/starrynightmoon.png), url(../../assets/starrynight2.png);
     min-height: 3vw;
     background-position-x: right;
-    background-repeat: repeat;
-
-    
+    background-repeat: no-repeat, repeat;
+  
 }
 .navbar-brand{
     margin-left: 3vw;

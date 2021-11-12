@@ -1,5 +1,21 @@
 <div class="search">
-    <form>
-        <input type="search" class="form-control" placeholder="Search To The Moon" aria-label="Search">
+    <form class="form-inline">
+        <div class="md-form">
+            <input #box (keyup.enter)="onEnter(box.value)" type="search" class="form-control"
+                placeholder="Search Cadmus" aria-label="Search">
+        </div>
+        <span><button type="reset" class="btn btn-primary" id="clearButton" (click)="onClear()"
+                value="reset">clear</button></span>
+
     </form>
+</div>
+
+<br>
+
+<div *ngFor="let res of result">
+    <div class="row searchResult">
+        <p><a class="badge badge-dark" routerLink="/comment/{{res.id}}">{{res.title}}</a></p>
+        <p>{{res.userName}}</p>
+        <p>{{res.message}}</p>
+    </div>
 </div>

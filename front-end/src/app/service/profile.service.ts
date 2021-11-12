@@ -15,6 +15,7 @@ export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
   rootUrl = 'https://52.141.211.229/post/api';
+  followUrl = 'https://52.141.211.229/user/api/following';
 
   constructor(private http: HttpClient) { }
 
@@ -26,42 +27,42 @@ export class ProfileService {
 
   getUserById(id: number): Promise<User>  
   {
-    return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
+    return this.http.get<User>(this.apiUrl + "/user/id" + id).toPromise();
   }
   getUserByName(username: string): Promise<User> {
-    return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
+    return this.http.get<User>(this.apiUrl + "/user/username" + username).toPromise();
   }
 
   getAllUsers(): Promise<User[]>
   {
-    return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
+    return this.http.get<[]>(this.apiUrl + "/user").toPromise();
   }
 
   getAllPosts(): Promise<Root[]>
   {
-    return this.http.get<[]>(this.apiUrl + "/post/").toPromise();
+    return this.http.get<Root[]>(this.rootUrl + "/post").toPromise();
   }
 
   getAllComments(): Promise<Comment[]>
   {
-    return this.http.get<[]>(this.apiUrl + "/comment/").toPromise();
+    return this.http.get<[]>(this.rootUrl + "/comment").toPromise();
   }
 
   getFollowedPostByUserId(id: number): Promise<FollowingPost[]>
   {
-    return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
+    return this.http.get<[]>(this.apiUrl + "/followingpost/userid"+ id).toPromise();
   }
 
   //we can use updateUser to follow/unfollow both posts and other users, since both following models are contained within the user
   updateUser(updatedUser: User): Promise<User> {
-    return this.http.post<User>(this.apiUrl+'/user/', updatedUser).toPromise();
+    return this.http.post<User>(this.apiUrl+'/user', updatedUser).toPromise();
   }
   
   getAllPostsAndCommentsByUser(name: string): any[]
   {
     var LoC = [] as Array<any>
 
-    this.http.get<[]>(this.rootUrl + "/post/").toPromise().then(
+    this.http.get<[]>(this.rootUrl + "/post").toPromise().then(
       (posts: any[]) => {
         // posts now has every single post, including comments, in the entire website...
         posts.forEach(posty => {
@@ -96,8 +97,39 @@ export class ProfileService {
 
     return LoC;
   }
+
+  checkFollowingPost(followedPostId: number, currentUser:number): boolean{
+
+    var doesFollow = false;
+    this.getFollowedPostByUserId(currentUser).then((result: FollowingPost[]) => {
+      let listOfFollowings = result;
+      console.log("followedPostId is "+followedPostId+", userID is "+currentUser)
+      console.log(listOfFollowings)
+      for(let i = 0; i < listOfFollowings.length; i++){
+        if (listOfFollowings[i].rootId == followedPostId){
+          console.log("returning true")
+          doesFollow = true;
+        }
+      }
+    })
+    console.log("final decision is: "+doesFollow)
+    return doesFollow;
+}
+
+  followPost(followedPost: FollowingPost): Promise<FollowingPost> {
+    return this.http.post<FollowingPost>(this.apiUrl+"/FollowingPost/", followedPost).toPromise();
+  }
+  
+  unfollowPost(id: number) {
+    return this.http.delete<FollowingPost>(this.apiUrl+"/FollowingPost/id/"+id).toPromise();
+  }
   
   followUser(follow: Followings): Observable<Followings> {
-    return this.http.post<Followings>(this.apiUrl, follow);
+    return this.http.post<Followings>(this.followUrl, follow);
   }
+
+  unfollowUser(follow: Followings): Observable<Followings> {
+    return this.http.delete<Followings>(this.followUrl + "/id/"+ follow.id);
+  }
+  
 }
