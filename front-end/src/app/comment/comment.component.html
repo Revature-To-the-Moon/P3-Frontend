@@ -6,15 +6,15 @@
             <div class="container" id="root">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
+                        <p style="font-size: 13px;"><span style="font-size: 13px;">{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
                 <div class="row" style="margin-top: -10px;">
-                    <h2>{{ root.title }}</h2>
-                    <h4>{{ root.message }}</h4>
+                    <h5>{{ root.title }}</h5>
+                    <h6>{{ root.message }}</h6>
                 </div>
             </div>
 
@@ -24,7 +24,7 @@
                 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
                     <div class="form-group mb-3">
                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                            placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="comment.message"
+                            placeholder="What are you thinking?" rows="5" cols="50" maxlength="140" [(ngModel)]="comment.message"
                             name="message" #message="ngModel" required></textarea>
                     </div>
                     <div class="d-md-flex justify-content-md-end">
@@ -41,12 +41,12 @@
             <div class="allComments">
                 <div class="container" id="comments" *ngFor='let comment of root.comments'>
                     <div class="row">
-                        <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> • {{
+                        <p style="font-size: 13px;"><span style="font-size: 13px;">{{ comment.userName }}</span> • {{
                             comment.dateTime | date:'short' }}
                         </p>
                     </div>
-                    <div class="row">
-                        <h5>{{ comment.message }}</h5>
+                    <div class="row" style="margin-bottom: 5px;">
+                        <h6>{{ comment.message }}</h6>
                     </div>
                     <div class="row">
                         <div class="col">

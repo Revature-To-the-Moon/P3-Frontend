@@ -5,7 +5,7 @@
         <div class="row col-6" id="center">
             <!-- search bar and create post button -->
             <div class="col">
-                <h4 style="font-size: 2rem;">Welcome <span id="username-span">{{ user }}</span></h4>
+                <h5 style="font-size: 1.5rem;">Welcome <span id="username-span">{{ user }}</span></h5>
             </div>
             <div class="col">
                 <a class="btn btn-primary" id="create-btn" (click)="goToCreatePost()" role="button"><em
@@ -18,8 +18,8 @@
             <div class="container" id="featured-post">
                 <div class="row">
                     <div class="col">
-                        <p style="font-size: 16px;"><span style="font-size: 18px;">{{ popular[0].userName }}</span> • {{
-                            popular[0].dateTime |
+                        <p style="font-size: 13px;"><span style="font-size: 13px;">{{ popular[0]?.userName }}</span> • {{
+                            popular[0]?.dateTime |
                             date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
@@ -27,16 +27,15 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: -10px;">
-                    <h1>{{ popular[0].title }}</h1>
-                    <h3>{{ popular[0].message }}</h3>
+                    <h5>{{ popular[0]?.title }}</h5>
+                    <h6>{{ popular[0]?.message }}</h6>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
-                        <a class="btn btn-outline-primary" routerLink="/comment/{{popular[0].id}}" role="button"
+                        <a class="btn btn-outline-primary" routerLink="/comment/{{popular[0]?.id}}" role="button"
                             style="margin-right: 5px;">{{
-                            (popular[0].comments).length }} Comments</a>
-                        <a class="btn btn-primary" routerLink="/read-root/{{popular[0].id}}" role="button"> Read
+                            (popular[0]?.comments).length }} Comments</a>
+                        <a class="btn btn-primary" routerLink="/read-root/{{popular[0]?.id}}" role="button"> Read
                             Story</a>
                     </div>
                 </div>
@@ -74,8 +73,8 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: -10px;">
-                    <h2>{{ root.title }}</h2>
-                    <h5>{{ root.message }}</h5>
+                    <h5>{{ root.title }}</h5>
+                    <h6>{{ root.message }}</h6>
                 </div>
                 <div class="row">
                     <div class="col">

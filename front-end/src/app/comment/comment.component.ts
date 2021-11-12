@@ -127,19 +127,15 @@ export class CommentComponent implements OnInit {
   }
 
   likeComment(id: number){
-    this.auth.user$.subscribe((user) =>{
-      if(user?.preferred_username){
-        this.user = user.preferred_username
-      }
-
-      this.rootService.getCommentById(id).then(result => {
+    console.log(this.user)
+    this.rootService.getCommentById(id).then(result => {
         console.log(result)
         if(result.votes.length !== 0){
           for(let vote of result.votes){
             if(vote.userName === this.user){
-              console.log("Vote updated")
-              this.status = true
-              this.rootService.deleteVote(vote.id).then(res =>{
+              if(vote.value === 1){
+                this.status = true
+                this.rootService.deleteVote(vote.id).then(res =>{
                   this.currentRoute.params.subscribe(params => {
                     this.id = params['id'];
               
@@ -156,64 +152,114 @@ export class CommentComponent implements OnInit {
                       }
                     })
                   })
-              })
+                })
+              }
+              else if(vote.value === -1){
+                this.status = true
+                vote.value = 1
+
+                this.rootService.updateVote(vote).then(res => {
+                  console.log("Vote added")
+
+                  this.currentRoute.params.subscribe(params => {
+                    this.id = params['id'];
+              
+                    this.rootService.getRootById(this.id).then((result: Root) => {
+                      this.root = result;
+
+                      for(let comment of this.root.comments){
+                        comment.totalVote = 0;
+                        this.counter = 0;
+                        for(let vote of comment.votes){
+                          this.counter = this.counter + vote.value;
+                        }
+                        comment.totalVote = this.counter;
+                      }
+                    })
+                  })
+                })
+              }
+              else{
+                this.status = false;
+              }
+              
             }
           }
         }
         
-        if(this.status === false){
-          console.log("Reached here too")
-          this.vote.value = 1
-          this.vote.userName = this.user
-          this.vote.commentId = id
+    if(this.status === false){
+      console.log("Reached here too")
+      this.vote.value = 1
+      this.vote.userName = this.user
+      this.vote.commentId = id
 
-          this.rootService.addVote(this.vote).then(res => {
-            console.log("Vote added")
+      this.rootService.addVote(this.vote).then(res => {
+        console.log("Vote added")
 
-            this.currentRoute.params.subscribe(params => {
-              this.id = params['id'];
-        
-              this.rootService.getRootById(this.id).then((result: Root) => {
-                this.root = result;
+        this.currentRoute.params.subscribe(params => {
+          this.id = params['id'];
+    
+          this.rootService.getRootById(this.id).then((result: Root) => {
+            this.root = result;
 
-                for(let comment of this.root.comments){
-                  comment.totalVote = 0;
-                  this.counter = 0;
-                  for(let vote of comment.votes){
-                    this.counter = this.counter + vote.value;
-                  }
-                  comment.totalVote = this.counter;
-                }
-              })
-            })
+            for(let comment of this.root.comments){
+              comment.totalVote = 0;
+              this.counter = 0;
+              for(let vote of comment.votes){
+                this.counter = this.counter + vote.value;
+              }
+              comment.totalVote = this.counter;
+            }
           })
-        }
-
-        this.status = false
+        })
       })
-    })
+    }
+
+    this.status = false
+  })
     
   }
 
   unLikeComment(id: number){
-    this.auth.user$.subscribe((user) =>{
-      if(user?.preferred_username){
-        this.user = user.preferred_username
-      }
-
-      this.rootService.getCommentById(id).then(result => {
+    console.log(this.user)
+    this.rootService.getCommentById(id).then(result => {
         if(result.votes.length !== 0){
           for(let vote of result.votes){
             if(vote.userName === this.user){
-              console.log("Vote updated")
-              this.status = true
-              this.rootService.deleteVote(vote.id).then(res =>{
+              if(vote.value === -1){
+                this.status = true
+                this.rootService.deleteVote(vote.id).then(res =>{
+                    this.currentRoute.params.subscribe(params => {
+                      this.id = params['id'];
+                
+                      this.rootService.getRootById(this.id).then((result: Root) => {
+                        this.root = result;
+    
+                        for(let comment of this.root.comments){
+                          comment.totalVote = 0;
+                          this.counter = 0;
+                          for(let vote of comment.votes){
+                            this.counter = this.counter + vote.value;
+                          }
+                          comment.totalVote = this.counter;
+                        }
+                      })
+                    })
+                })
+              }
+              else if(vote.value === 1){
+                this.status = true
+                vote.value = -1
+
+                this.rootService.updateVote(vote).then(res => {
+                  console.log("Vote added")
+
                   this.currentRoute.params.subscribe(params => {
                     this.id = params['id'];
               
                     this.rootService.getRootById(this.id).then((result: Root) => {
                       this.root = result;
-  
+
                       for(let comment of this.root.comments){
                         comment.totalVote = 0;
                         this.counter = 0;
@@ -224,42 +270,45 @@ export class CommentComponent implements OnInit {
                       }
                     })
                   })
-              })
+                })
+              }
+              else{
+                this.status = false;
+              }
             }
           }
         }
         
-        if(this.status === false){
-          console.log("Reached here too")
-          this.vote.value = -1
-          this.vote.userName = this.user
-          this.vote.commentId = id
+    if(this.status === false){
+      console.log("Reached here too")
+      this.vote.value = -1
+      this.vote.userName = this.user
+      this.vote.commentId = id
 
-          this.rootService.addVote(this.vote).then(res => {
-            console.log("Vote added")
+      this.rootService.addVote(this.vote).then(res => {
+        console.log("Vote added")
 
-            this.currentRoute.params.subscribe(params => {
-              this.id = params['id'];
-        
-              this.rootService.getRootById(this.id).then((result: Root) => {
-                this.root = result;
+        this.currentRoute.params.subscribe(params => {
+          this.id = params['id'];
+    
+          this.rootService.getRootById(this.id).then((result: Root) => {
+            this.root = result;
 
-                for(let comment of this.root.comments){
-                  comment.totalVote = 0;
-                  this.counter = 0;
-                  for(let vote of comment.votes){
-                    this.counter = this.counter + vote.value;
-                  }
-                  comment.totalVote = this.counter;
-                }
-              })
-            })
+            for(let comment of this.root.comments){
+              comment.totalVote = 0;
+              this.counter = 0;
+              for(let vote of comment.votes){
+                this.counter = this.counter + vote.value;
+              }
+              comment.totalVote = this.counter;
+            }
           })
-        }
-
-        this.status = false
+        })
       })
-    })
+    }
+
+    this.status = false
+  })
   }
 
 }
