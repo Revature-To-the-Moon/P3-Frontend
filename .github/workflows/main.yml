@@ -50,6 +50,10 @@ jobs:
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
           
+      - name: fix code coverage paths
+        working-directory: ${{env.WORKING_DIRECTORY}}
+        run: sed -i 's/\/home\/runner\/work\/P3-Frontend\/P3-Frontend\//\/github\/workspace\//g' lcov.info
+    
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
