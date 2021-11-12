@@ -1,3 +1,6 @@
+.bg {
+    background-color: #f7f2ff;
+}
 .followButton {
     display: flex;
     float: right;
@@ -11,7 +14,7 @@
     background-color: #291A4A;
 }
 .follow{
-    background-color: #291A4A;
+    background-color: #4d4382;
     color: white;
     border: none;
     padding: 10px 20px;

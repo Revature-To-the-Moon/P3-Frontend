@@ -8,11 +8,11 @@ import { Followings } from 'src/app/models/Followings';
   styleUrls: ['./follow-button.component.css']
 })
 export class FollowButtonComponent implements OnInit {
-  isFollow = false;
+  @Input() isFollow = false;
   @Input() follower: Followings;
   @Output() toggle = new EventEmitter<boolean>();
 
-  follow: Followings = {
+  follows: Followings = {
     id: 0,
     followerUserId: 0,
     followingUserId: 0,
@@ -25,6 +25,6 @@ export class FollowButtonComponent implements OnInit {
   ngOnInit(): void { }
   
   onClick() {
-    this.isFollow = true;
+    this.isFollow = !this.isFollow;
   }
 }
