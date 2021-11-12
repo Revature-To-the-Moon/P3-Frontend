@@ -46,20 +46,20 @@ describe('ProfilePageComponent', () => {
     expect(component.currentUser).toBeTruthy();
   });
 
-  it('should assign result to currentUser', async () => {
-    let fakeUser: User = {
-      id: 55,
-      username: "Tenzin",
-      email: "",
-      name: "",
-      followings: []
-    };
+  // it('should assign result to currentUser', async () => {
+  //   let fakeUser: User = {
+  //     id: 55,
+  //     username: "Tenzin",
+  //     email: "",
+  //     name: "",
+  //     followings: []
+  //   };
     
-    spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
+  //   spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
     
-    await component.ngOnInit();
+  //   await component.ngOnInit();
     
-    expect(service.getUserById).toHaveBeenCalledWith(55);
-    expect(component.currentUser).toEqual(fakeUser);
-  })
+  //   expect(service.getUserById).toHaveBeenCalledWith(55);
+  //   expect(component.currentUser).toEqual(fakeUser);
+  // })
 });
