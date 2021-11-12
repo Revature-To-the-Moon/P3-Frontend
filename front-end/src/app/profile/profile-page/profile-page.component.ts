@@ -29,14 +29,7 @@ export class ProfilePageComponent implements OnInit {
 
       this.profileService.getUserById(this.id).then((result: User) => {
         this.currentUser= result;
-        console.log("followed user" + this.currentUser.followings[1].followingUserName);
       });
     });
   }
-
-  GetPosts(): void {
-    var whatever = this.profileService.getAllPostsAndCommentsByUser("Bao3");
-    console.log(whatever);
-  }
-
 }
