@@ -81,6 +81,22 @@ p {
     text-align: right;
 }
 
+#up{
+    cursor: pointer;
+    /* filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); */
+}
+
+#down{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+#vote{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 #filter-bar {
     margin: 5vh 0 2vh 0;
     background-color: #291a4a;

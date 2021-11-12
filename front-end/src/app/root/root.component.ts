@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Root } from '../models/root';
 import { RootServiceService } from '../service/root-service.service';
 import { AuthService } from '@auth0/auth0-angular';
+import { Vote } from '../models/vote';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,15 @@ export class RootComponent implements OnInit {
   constructor(private router: Router, private rootService: RootServiceService, public auth: AuthService) { }
 
   roots: Root[] = [];
+  votes: Vote[] = [];
+
+  vote: Vote = {
+    id: 0,
+    userName: '',
+    value: 0,
+    commentId: 0
+  }
+  counter: number = 0;
   popular: Root[] = [];
   user: string = '';
 
@@ -25,6 +35,8 @@ export class RootComponent implements OnInit {
       console.log(result);
     })
 
+    this.rootService.getAllVotes().then(result => {
+      this.votes = result;
     this.rootService.getAllRoots().then(result => {
       result.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
       this.popular = result;
@@ -35,7 +47,8 @@ export class RootComponent implements OnInit {
         this.user = user.preferred_username
       }
     })
-  }
+  })
+}
 
   goToCreatePost(): void {
     this.router.navigateByUrl('create-post');
@@ -61,4 +74,5 @@ export class RootComponent implements OnInit {
       this.roots = result;
     })
   }
+
 }
