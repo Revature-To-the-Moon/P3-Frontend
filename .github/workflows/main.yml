@@ -49,9 +49,6 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-          
-      - name: Workspace path
-        run: sed -i 's/\/home\/runner\/work\/P3-Frontend\/P3-Frontend\//\/github\/workspace\//' /front-end/lcov.info
     
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
