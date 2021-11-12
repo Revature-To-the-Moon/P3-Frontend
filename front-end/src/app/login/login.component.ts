@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("Welcome to Cadmus!")
+  }
 
   Loginfunc(){
     this.auth.loginWithRedirect({ appState: { target: '/buffer' } });
