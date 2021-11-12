@@ -15,6 +15,7 @@ export class ProfileService {
 
   apiUrl = 'https://52.141.211.229/user/api';
   rootUrl = 'https://52.141.211.229/post/api';
+  followUrl = 'https://52.141.211.229/user/api/following';
 
   constructor(private http: HttpClient) { }
 
@@ -28,7 +29,6 @@ export class ProfileService {
   {
     return this.http.get<User>(this.apiUrl + "/user/id" + id).toPromise();
   }
-
   getUserByName(username: string): Promise<User> {
     return this.http.get<User>(this.apiUrl + "/user/username" + username).toPromise();
   }
@@ -97,8 +97,39 @@ export class ProfileService {
 
     return LoC;
   }
+
+  checkFollowingPost(followedPostId: number, currentUser:number): boolean{
+
+    var doesFollow = false;
+    this.getFollowedPostByUserId(currentUser).then((result: FollowingPost[]) => {
+      let listOfFollowings = result;
+      console.log("followedPostId is "+followedPostId+", userID is "+currentUser)
+      console.log(listOfFollowings)
+      for(let i = 0; i < listOfFollowings.length; i++){
+        if (listOfFollowings[i].rootId == followedPostId){
+          console.log("returning true")
+          doesFollow = true;
+        }
+      }
+    })
+    console.log("final decision is: "+doesFollow)
+    return doesFollow;
+}
+
+  followPost(followedPost: FollowingPost): Promise<FollowingPost> {
+    return this.http.post<FollowingPost>(this.apiUrl+"/FollowingPost/", followedPost).toPromise();
+  }
+  
+  unfollowPost(id: number) {
+    return this.http.delete<FollowingPost>(this.apiUrl+"/FollowingPost/id/"+id).toPromise();
+  }
   
   followUser(follow: Followings): Observable<Followings> {
-    return this.http.post<Followings>(this.apiUrl, follow);
+    return this.http.post<Followings>(this.followUrl, follow);
   }
+
+  unfollowUser(follow: Followings): Observable<Followings> {
+    return this.http.delete<Followings>(this.followUrl + "/id/"+ follow.id);
+  }
+  
 }

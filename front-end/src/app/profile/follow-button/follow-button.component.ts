@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ProfileService } from 'src/app/service/profile.service';
+
 import { Followings } from 'src/app/models/Followings';
 
 @Component({
@@ -8,23 +9,42 @@ import { Followings } from 'src/app/models/Followings';
   styleUrls: ['./follow-button.component.css']
 })
 export class FollowButtonComponent implements OnInit {
-  isFollow = false;
+  isFollow = true;
   @Input() follower: Followings;
+  @Input() id = 0;
   @Output() toggle = new EventEmitter<boolean>();
 
-  follow: Followings = {
+  follows: Followings = {
     id: 0,
     followerUserId: 0,
-    followingUserId: 0,
-    followingUserName: ''
+    followingUserId: this.id,
+    followingUserName: 'bob'
   }
 
   constructor(private profileService: ProfileService) { }
 
-
   ngOnInit(): void { }
   
   onClick() {
-    this.isFollow = true;
+    this.isFollow = !this.isFollow;
+    if(this.isFollow == true){
+      console.log(this.isFollow);
+      console.log(this.id);
+      this.profileService.followUser(this.follows).subscribe(
+        data => {
+          this.isFollow = true;
+          this.toggle.emit(false);
+        }
+      );
+    } else if (this.isFollow == false) {
+      console.log(this.isFollow);
+      console.log(this.id);
+      this.profileService.unfollowUser(this.follows).subscribe(
+        data => {
+          this.isFollow = false;
+          this.toggle.emit(true);
+        }
+      );
+    }
   }
 }

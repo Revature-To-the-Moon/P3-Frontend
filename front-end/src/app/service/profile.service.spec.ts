@@ -197,7 +197,4 @@ describe('ProfileService', () => {
     let req = httpMock.expectOne({method: "POST", url: apiUrl});
     expect(req.request.body).toEqual(fakefollower);
   });
-
-
-  
 });
