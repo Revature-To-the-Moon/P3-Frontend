@@ -21,6 +21,7 @@ export class CommentComponent implements OnInit {
   counter: number = 0;
   status: boolean = false;
   liked: boolean = false;
+  comments: Comment[] = [];
 
   comment: Comment = {
     id: 0,
@@ -30,7 +31,8 @@ export class CommentComponent implements OnInit {
     totalVote: 0,
     dateTime: new Date(0),
     userName: '',
-    votes: []
+    votes: [],
+    comments: []
   }
 
   root: Root = {
@@ -51,8 +53,8 @@ export class CommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe((user) =>{
-      if(user?.preferred_username){
+    this.auth.user$.subscribe((user) => {
+      if (user?.preferred_username) {
         this.user = user.preferred_username
       }
     })
@@ -62,6 +64,7 @@ export class CommentComponent implements OnInit {
 
       this.rootService.getRootById(this.id).then((result: Root) => {
         this.root = result;
+        result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
         console.log(result)
 
         for(let comment of this.root.comments){
@@ -83,8 +86,8 @@ export class CommentComponent implements OnInit {
   onSubmit(postForm: NgForm) {
     console.log("Comment submitted")
 
-    this.auth.user$.subscribe((user) =>{
-      if(user?.preferred_username){
+    this.auth.user$.subscribe((user) => {
+      if (user?.preferred_username) {
         this.comment.userName = user.preferred_username
       }
 
@@ -97,7 +100,7 @@ export class CommentComponent implements OnInit {
       console.log(this.root)
 
       this.rootService.addComment(this.comment).then(res => {
-        alert("Post successfully created")
+        alert("Comment successfully created")
         location.reload()
       })
     })

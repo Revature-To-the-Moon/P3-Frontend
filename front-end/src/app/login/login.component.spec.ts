@@ -6,9 +6,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthModule } from '@auth0/auth0-angular';
 import {By} from '@angular/platform-browser';
 
-
-
-
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
@@ -55,40 +52,22 @@ describe('LoginComponent', () => {
   it('should have one button with "Login" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));
     const nativeButton: HTMLButtonElement = linkDes[0].nativeElement;
-    expect(nativeButton.textContent).toBe('Login');
+    expect(nativeButton.textContent).toBe('Log into Cadmus');
   });
-  
 
-  
   it('should have one button with "Register" on the page', () => {
     const linkDes = fixture.debugElement.queryAll(By.css('button'));
     const nativeButton: HTMLButtonElement = linkDes[1].nativeElement;
-    expect(nativeButton.textContent).toBe('Register');
+    expect(nativeButton.textContent).toBe('Create new account');
+  });
+
+  it('should not have the logout button on the page when user is not logged in', () => {
+    const buttons = fixture.debugElement.queryAll(By.css('.btn3'));
+    expect(buttons.length <= 1).toBeTruthy();
   });
 
 
-  it('should send data on submit', async () => {
-    const AuthServiceSpy = jasmine.createSpyObj('AuthService',['Login']);
 
-    let fixture = TestBed.createComponent(LoginComponent)
-    let component: LoginComponent = fixture.componentInstance;
-    let element = fixture.nativeElement;
-
-    fixture.detectChanges();
-
-    // expect(element.querySelector('#userService-username').value).toEqual(expectedUsername);
-
-    // element.querySelector(component.Loginfunc).toHaveBeenCalled();
-
-    // spyOn(component, 'click').and.returnValue();
-    // let buttonElement = fixture.debugElement.query(By.css('table'));;
-    // spyOn(component, 'click');
-    // await buttonElement.triggerEventHandler('click');
-    // fixture.detectChanges();
-    // expect(component.Loginfunc).toHaveBeenCalled();
-
-
-  });
 
 
 });

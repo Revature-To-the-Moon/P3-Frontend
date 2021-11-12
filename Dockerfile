@@ -1,16 +1,12 @@
-# My Dockerfile
-# Stage 1
 FROM node:14-alpine as build-step
-
-RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY package.json /app
+COPY /front-end/package.json /app
 
 RUN npm install
 
-COPY . /app
+COPY /front-end/. /app
 
 RUN npm run build --prod
 
@@ -19,3 +15,6 @@ RUN npm run build --prod
 FROM nginx:1.17.1-alpine
 
 COPY --from=build-step /app/dist/front-end /usr/share/nginx/html
+# COPY /front-end/default.conf /etc/nginx/nginx.conf
+
+EXPOSE 80

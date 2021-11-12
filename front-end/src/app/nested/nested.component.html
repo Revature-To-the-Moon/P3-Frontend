@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" id="left">
+        </div>
+        <div class="row col-6" id="center">
+            <div class="container" id="root">
+                <div class="row">
+                    <div class="col">
+                        <p><span>{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
+                    </div>
+                    <div class="col" id="follow-post-btn">
+                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: -10px;">
+                    <h4>{{ root.message }}</h4>
+                </div>
+            </div>
+
+            <div class="container-comment">
+                <span><small>Add to the story as <span
+                            style="color: brown;"><small>{{user}}</small></span></small></span>
+                <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
+                    <div class="form-group mb-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                            placeholder="What are you thinking?" rows="5" maxlength="140" [(ngModel)]="comment.message"
+                            name="message" #message="ngModel" required></textarea>
+                    </div>
+                    <div class="d-md-flex justify-content-md-end">
+                        <div *ngIf="postForm.controls['message']?.valid; else invalid">
+                            <input class="btn btn-primary rounded-pill" type="submit" value="Comment">
+                        </div>
+                        <ng-template #invalid>
+                            <input class="btn btn-primary btn-sm rounded-pill disabled" type="submit" value="Comment">
+                        </ng-template>
+                    </div>
+                </form>
+            </div>
+
+            <div class="allComments">
+                <div class="container" id="comments" *ngFor='let comment of root.comments'>
+                    <div class="row">
+                        <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> • {{
+                            comment.dateTime | date:'short' }}
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>{{ comment.message }}</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" style="margin-right: 5px;">Upvote</button>
+                            <a class="btn btn-outline-primary" routerLink="/nest/{{ comment.id }}"
+                                role="button">{{(comment.comments).length}} Comments</a>
+                            <p style="float: right;">{{ comment.totalVote }} Votes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3" id="right">
+        </div>
+    </div>
+</div>

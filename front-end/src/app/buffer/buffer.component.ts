@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { ProfileService } from '../service/profile.service';
 import { User } from '../models/user';
+import { UserCreationService } from '../service/user-creation.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,21 +12,30 @@ import { User } from '../models/user';
   styleUrls: ['./buffer.component.css']
 })
 export class BufferComponent implements OnInit {
-    
+  flag: boolean = false;
 
-  constructor(private auth: AuthService, private profileService: ProfileService) { }
-    
-  
-    user: User = {
-      username: ''
-    };
+
+
+  constructor(private auth: AuthService, private http: HttpClient, private UserCreationService: UserCreationService, private router: Router) { }
+
+  userList: User[];
+  user: User = {
+    username: ''
+  };
+  myUserName: string;
 
   ngOnInit(): void {
     this.auth.user$.subscribe(profile =>
       {
         this.user.username = profile.preferred_username;
-        this.auth.loginWithRedirect({appState: {target: '/root'}});
-      }
-    )}
+        this.UserCreationService.userName = this.user.username;
+        this.UserCreationService.getUserByName(profile.preferred_username).then((result: User) => {
+          if (result == null)
+          {
+            this.UserCreationService.AddObject(this.user)
+          }
+        })
+        this.router.navigateByUrl('/root');
+      })
+  }
 }
-          

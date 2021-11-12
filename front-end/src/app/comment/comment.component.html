@@ -3,23 +3,24 @@
         <div class="col-3" id="left">
         </div>
         <div class="row col-6" id="center">
-            <div class="container">
+            <div class="container" id="root">
                 <div class="row">
                     <div class="col">
-                        <p><span>{{ root.userName }}</span> | Posted {{ root.dateTime | dateAgo }}</p>
+                        <p><span>{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
                     </div>
                 </div>
-                <div class="row">
-                    <h4>{{ root.title }}</h4>
-                    <h5>{{ root.message }}</h5>
+                <div class="row" style="margin-top: -10px;">
+                    <h2>{{ root.title }}</h2>
+                    <h4>{{ root.message }}</h4>
                 </div>
             </div>
 
             <div class="container-comment">
-                <span><small>Add to the story as <span style="color: brown;"><small>{{user}}</small></span></small></span>
+                <span><small>Add to the story as <span
+                            style="color: brown;"><small>{{user}}</small></span></small></span>
                 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
                     <div class="form-group mb-3">
                         <textarea class="form-control" id="exampleFormControlTextarea1"
@@ -37,57 +38,51 @@
                 </form>
             </div>
 
-            <div class="container" id="comments" *ngFor='let comment of root.comments'>
-                <div class="row">
-                    <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> | Posted
-                        {{ comment.dateTime | dateAgo }}
-                    </p>
-                </div>
-                <div class="row">
-                    <h6>{{ comment.message }}</h6>
-                </div>
-                <div *ngIf="comment.votes.length !== 0 else zero">
-                    <div *ngIf="checkIfCommentIsLiked(comment.votes) else notTouched">
-                        <div *ngIf="checkIfCommentIsLikedValue(comment.votes) else disliked">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="../../assets/arrowdark-upward.png" alt="" width="20px" id="upLiked" (click)="likeComment(comment.id)">
-                                    <span id="vote">{{comment.totalVote}}</span>
-                                    <img src="../../assets/arrow-downward.png" alt="" width="20px" id="downLiked"  (click)="unLikeComment(comment.id)">
-                                </div>
-                            </div>
-                        </div>
-                        <ng-template #disliked>
-                            <div class="row">
-                                <div class="col">
-                                    <img src="../../assets/arrow-upward.png" alt="" width="20px" id="upDisliked" (click)="likeComment(comment.id)">
-                                    <span id="vote">{{comment.totalVote}}</span>
-                                    <img src="../../assets/arrowdark-downward.png" alt="" width="20px" id="downDisliked"  (click)="unLikeComment(comment.id)">
-                                </div>
-                            </div>
-                        </ng-template>
+            <div class="allComments">
+                <div class="container" id="comments" *ngFor='let comment of root.comments'>
+                    <div class="row">
+                        <p style="font-size: 13px;"><span style="font-size: 15px;">{{ comment.userName }}</span> • {{
+                            comment.dateTime | date:'short' }}
+                        </p>
                     </div>
-    
-                    <ng-template #notTouched>
-                        <div class="row">
-                            <div class="col">
+                    <div class="row">
+                        <h5>{{ comment.message }}</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span *ngIf="comment.votes.length !== 0 else zero">
+                                <span *ngIf="checkIfCommentIsLiked(comment.votes) else notTouched">
+                                    <span *ngIf="checkIfCommentIsLikedValue(comment.votes) else disliked">
+                                        <img src="../../assets/arrowdark-upward.png" alt="" width="20px" id="upLiked" (click)="likeComment(comment.id)">
+                                        <span id="vote">{{comment.totalVote}}</span>
+                                        <img src="../../assets/arrow-downward.png" alt="" width="20px" id="downLiked"  (click)="unLikeComment(comment.id)">
+                                    </span>
+                                    <ng-template #disliked>
+                                        <img src="../../assets/arrow-upward.png" alt="" width="20px" id="upDisliked" (click)="likeComment(comment.id)">
+                                        <span id="vote">{{comment.totalVote}}</span>
+                                        <img src="../../assets/arrowdark-downward.png" alt="" width="20px" id="downDisliked"  (click)="unLikeComment(comment.id)">
+                                    </ng-template>
+                                </span> 
+                                <ng-template #notTouched>
+                                    <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likeComment(comment.id)">
+                                    <span id="vote">{{comment.totalVote}}</span>
+                                    <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikeComment(comment.id)">
+                                </ng-template>
+                            </span>
+                            <ng-template #zero>
                                 <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likeComment(comment.id)">
                                 <span id="vote">{{comment.totalVote}}</span>
                                 <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikeComment(comment.id)">
-                            </div>
-                        </div>
-                    </ng-template>
-                </div>
-                <ng-template #zero>
-                    <div class="row">
-                        <div class="col">
-                            <img src="../../assets/arrow-upward.png" alt="" width="20px" id="up" (click)="likeComment(comment.id)">
-                            <span id="vote">{{comment.totalVote}}</span>
-                            <img src="../../assets/arrow-downward.png" alt="" width="20px" id="down"  (click)="unLikeComment(comment.id)">
+                            </ng-template>
+                            <a class="btn btn-outline-primary" routerLink="/nest/{{ comment.id }}"
+                                role="button">{{(comment.comments).length}} Comments</a>
+                            <p style="float: right;">{{ comment.totalVote }} Votes</p>
                         </div>
                     </div>
-                </ng-template>
+                </div>
             </div>
+
+            
         </div>
         <div class="col-3" id="right">
         </div>

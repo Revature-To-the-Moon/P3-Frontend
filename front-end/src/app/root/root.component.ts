@@ -25,6 +25,8 @@ export class RootComponent implements OnInit {
     commentId: 0
   }
   counter: number = 0;
+  popular: Root[] = [];
+  user: string = '';
 
   ngOnInit(): void {
     this.rootService.getAllRoots().then(result => {
@@ -35,20 +37,26 @@ export class RootComponent implements OnInit {
 
     this.rootService.getAllVotes().then(result => {
       this.votes = result;
+    this.rootService.getAllRoots().then(result => {
+      result.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
+      this.popular = result;
     })
-  }
+
+    this.auth.user$.subscribe((user) => {
+      if (user?.preferred_username) {
+        this.user = user.preferred_username
+      }
+    })
+  })
+}
 
   goToCreatePost(): void {
     this.router.navigateByUrl('create-post');
   }
 
-  goToComment(id: number): void {
-    this.router.navigateByUrl(`comment/` + id);
-  }
-
   sortPopular(): void {
     this.rootService.getAllRoots().then(result => {
-      result.sort((a, b) => (a.totalVote > b.totalVote) ? 1 : -1);
+      result.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
       this.roots = result;
     })
   }
@@ -67,31 +75,4 @@ export class RootComponent implements OnInit {
     })
   }
 
-  likePost(id: number){
-    this.rootService.getRootById(id).then(result => {
-      result.totalVote++;
-
-      this.rootService.updateRoot(result).then(res => {
-        this.rootService.getAllRoots().then(result => {
-          result.sort((a, b) => (a.dateTime < b.dateTime) ? 1 : -1);
-          this.roots = result;
-        })
-        console.log("Post liked")
-      })
-    })
-  }
-
-  unLikePost(id: number){
-    this.rootService.getRootById(id).then(result => {
-      result.totalVote--;
-
-      this.rootService.updateRoot(result).then(res => {
-        this.rootService.getAllRoots().then(result => {
-          result.sort((a, b) => (a.dateTime < b.dateTime) ? 1 : -1);
-          this.roots = result;
-        })
-        console.log("Post unliked")
-      })
-    })
-  }
 }

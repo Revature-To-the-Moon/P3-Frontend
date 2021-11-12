@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterBarComponent } from './filter-bar.component';
+import { ReadRootComponent } from './read-root.component';
 
-describe('FilterBarComponent', () => {
-  let component: FilterBarComponent;
-  let fixture: ComponentFixture<FilterBarComponent>;
+describe('ReadRootComponent', () => {
+  let component: ReadRootComponent;
+  let fixture: ComponentFixture<ReadRootComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterBarComponent ]
+      declarations: [ ReadRootComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterBarComponent);
+    fixture = TestBed.createComponent(ReadRootComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

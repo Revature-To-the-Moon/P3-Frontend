@@ -28,8 +28,8 @@ export class CreatePostComponent implements OnInit {
   }
 
   onSubmit(postForm: NgForm) {
-    this.auth.user$.subscribe((user) =>{
-      if(user?.preferred_username){
+    this.auth.user$.subscribe((user) => {
+      if (user?.preferred_username) {
         this.root.userName = user.preferred_username
       }
 
@@ -42,9 +42,9 @@ export class CreatePostComponent implements OnInit {
       })
 
       //console.log(formatDate(this.root.dateTime, "yyyy-MM-ddTHH:mm:ss", "en-US"))
-      
+
     })
-    
+
   }
 
 }

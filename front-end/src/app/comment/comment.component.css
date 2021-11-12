@@ -1,26 +1,20 @@
 .container-fluid {
     padding: 0;
-    background-color: rgb(228, 228, 228);
+    background-color: #f7f2ff;
+    background-size: cover;
 }
 
 #left {
-    background-color: rgb(116, 116, 116);
+    background-color: #f7f2ff;
 }
 
 #center {
     padding-top: 20px;
+    margin: 0 auto;
 }
 
 #right {
-    background-color: rgb(116, 116, 116);
-}
-
-.name-create {
-    padding: 20px 10px;
-}
-
-#create-btn {
-    float: right;
+    background-color: #f7f2ff;
 }
 
 .btn-primary {
@@ -49,6 +43,7 @@
 span {
     font-size: 16px;
     color: black;
+    font-weight: bold;
 }
 
 p {
@@ -68,7 +63,7 @@ hr {
     margin-bottom: 30px;
     padding-bottom: 20px;
     padding-top: 5px;
-    border-bottom: solid 1px #666;
+    border-bottom: solid 1px rgb(100, 100, 100);
 }
 
 textarea{
@@ -86,18 +81,53 @@ textarea{
     cursor: pointer;
 }
 
-#down#downLiked{
+#down{
     cursor: pointer;
+    margin-right: 10px;
 }
 #downDisliked{
     cursor: pointer;
+    margin-right: 10px;
     filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); 
 }
 #downLiked{
     cursor: pointer;
+    margin-right: 10px;
 }
 
 #vote{
     margin-left: 5px;
     margin-right: 5px;
+    background-color: white;
+}
+
+.allComments {
+    background-color: white;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    margin-bottom: 3vh;
+}
+
+#comments {
+    border-bottom: 1px solid rgb(100, 100, 100);
+    padding: 20px 10px;
+}
+
+#comments:last-child {
+    border: none;
+}
+
+.allComments:empty {
+    border: none;
+}
+
+#root {
+    padding: 10px;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    margin-bottom: 1vh;
+}
+
+.container {
+    background-color: white;
 }
