@@ -37,7 +37,7 @@ describe('CreatePostComponent', () => {
   });
 
   it('should call onSubmit when the form is submitted', () => {
-    spyOn(component, 'onSubmit').and.returnValue();
+    spyOn(component, 'onSubmit');
 
     let form = fixture.debugElement.query(By.css('form'));
 

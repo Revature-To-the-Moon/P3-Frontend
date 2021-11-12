@@ -6,7 +6,8 @@
             <div class="container" id="root">
                 <div class="row">
                     <div class="col">
-                        <p style="font-size: 13px;"><span style="font-size: 13px;">{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
+                        <p style="font-size: 13px;"><span style="font-size: 13px;">{{ root.userName }}</span> • {{
+                            root.dateTime | date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
                         <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
@@ -16,6 +17,11 @@
                     <h5>{{ root.title }}</h5>
                     <h6>{{ root.message }}</h6>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-primary" routerLink="/read-root/{{root.id}}" role="button">Read Story</a>
+                    </div>
+                </div>
             </div>
 
             <div class="container-comment">
@@ -24,7 +30,8 @@
                 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
                     <div class="form-group mb-3">
                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                            placeholder="What are you thinking?" rows="5" cols="50" maxlength="140" [(ngModel)]="comment.message"
+                            placeholder="What are you thinking?" rows="5" cols="50" maxlength="140"
+                            [(ngModel)]="comment.message"
                             name="message" #message="ngModel" required></textarea>
                     </div>
                     <div class="d-md-flex justify-content-md-end">
