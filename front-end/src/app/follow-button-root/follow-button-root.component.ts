@@ -1,11 +1,12 @@
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ProfileService } from '../service/profile.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { User } from '../models/user';
 import { FollowingPost } from '../models/FollowingPost';
 import { RootServiceService } from '../service/root-service.service';
 import { Post } from '../models/post';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-follow-button-root',
@@ -16,6 +17,9 @@ import { Post } from '../models/post';
 export class FollowButtonRootComponent implements OnInit {
 
   @Input() id = 0;
+  @Output() toggle = new EventEmitter<boolean>();
+
+
   followingId = 0;
   postname = "";
   isFollow = false;
@@ -32,7 +36,7 @@ export class FollowButtonRootComponent implements OnInit {
     name: "",
     followings: []
   }; 
-  constructor(public profileService: ProfileService, public auth: AuthService, public rootService: RootServiceService) { }
+  constructor(public profileService: ProfileService, public auth: AuthService, public rootService: RootServiceService, public router: Router ) { }
 
 
   ngOnInit(): void {
@@ -66,26 +70,36 @@ export class FollowButtonRootComponent implements OnInit {
     }
     
   }
-  ngOnChanges(){
-    
-  }
+  ngOnChanges(
+  ){  }
   
   onClick() {
     if(this.isFollow== false){
-      
-    console.log("Click function activated")
       this.rootService.getRootById(this.id).then((result: Post) => {
         this.newFollowing.postname= result.title;
         this.newFollowing.rootId= this.id;
         this.newFollowing.userId= this.currentUser.id;
         this.profileService.followPost(this.newFollowing);
-        console.log(this.newFollowing)
+        
+      this.isFollow=true;
       });
       };
       if(this.isFollow == true){
-        console.log("unfollowing...")
-        this.profileService.unfollowPost(this.followingId);
-      }
       
+        console.log("unfollowing...")
+        this.profileService.getFollowedPostByUserId(this.currentUser.id).then((result: FollowingPost[]) => {
+          let listOfFollowings = result;
+          for(let i = 0; i < listOfFollowings.length; i++){
+            if (listOfFollowings[i].rootId == this.id){
+              this.profileService.unfollowPost(listOfFollowings[i].id);
+              break;
+            }
+          }
+        })    
+        
+        this.isFollow=false;
+      }
+    
     };
+
   }

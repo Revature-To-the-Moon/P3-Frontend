@@ -60,7 +60,7 @@ export class FollowButtonComponent implements OnInit {
       this.profileService.followUser(this.follows).subscribe(
         data => {
           this.isFollow = true;
-          this.toggle.emit(false);
+          this.ngOnInit();
         }
       );
     } else if (this.isFollow == false) {
@@ -69,7 +69,7 @@ export class FollowButtonComponent implements OnInit {
       this.profileService.unfollowUser(this.follows).subscribe(
         data => {
           this.isFollow = false;
-          this.toggle.emit(true);
+          this.ngOnInit();
         }
       );
     }
