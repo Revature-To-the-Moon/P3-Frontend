@@ -6,6 +6,8 @@ import { Comment } from '../models/Comment';
 import { RootServiceService } from '../service/root-service.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { Vote } from '../models/vote';
+import { User } from '../models/user';
+import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'app-comment',
@@ -14,7 +16,7 @@ import { Vote } from '../models/vote';
 })
 export class CommentComponent implements OnInit {
 
-  constructor(public router: Router, private currentRoute: ActivatedRoute, private rootService: RootServiceService, private cdr: ChangeDetectorRef, public auth: AuthService) { }
+  constructor(public profileService:ProfileService,public router: Router, private currentRoute: ActivatedRoute, private rootService: RootServiceService, private cdr: ChangeDetectorRef, public auth: AuthService) { }
 
   id = 0;
   user: string = '';
@@ -218,6 +220,13 @@ export class CommentComponent implements OnInit {
     this.status = false
   })
     
+  }
+
+  goToUserProfile(username:string):void {
+    this.profileService.getUserByName(username).then((result: User) => {
+      let userId= result.id;
+      this.router.navigateByUrl('profile/'+userId);
+    });
   }
 
   unLikeComment(id: number){

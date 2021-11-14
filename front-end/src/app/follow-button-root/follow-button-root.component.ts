@@ -71,31 +71,35 @@ export class FollowButtonRootComponent implements OnInit {
     
   }
   ngOnChanges(
-  ){
-    
-  }
+  ){  }
   
   onClick() {
     if(this.isFollow== false){
-    
-    console.log("Click function activated")
       this.rootService.getRootById(this.id).then((result: Post) => {
         this.newFollowing.postname= result.title;
         this.newFollowing.rootId= this.id;
         this.newFollowing.userId= this.currentUser.id;
         this.profileService.followPost(this.newFollowing);
-        console.log(this.newFollowing)
-        //this.reloadComponent();
+        
+      this.isFollow=true;
       });
       };
       if(this.isFollow == true){
       
         console.log("unfollowing...")
-        this.profileService.unfollowPost(this.followingId);
-        //this.reloadComponent();
+        this.profileService.getFollowedPostByUserId(this.currentUser.id).then((result: FollowingPost[]) => {
+          let listOfFollowings = result;
+          for(let i = 0; i < listOfFollowings.length; i++){
+            if (listOfFollowings[i].rootId == this.id){
+              this.profileService.unfollowPost(listOfFollowings[i].id);
+              break;
+            }
+          }
+        })    
+        
+        this.isFollow=false;
       }
     
-      this.ngOnInit();
     };
 
   }
