@@ -7,6 +7,7 @@ import { FollowingPost } from '../models/FollowingPost';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post';
 import { Followings } from '../models/Followings';
+import { RecentActivity } from '../models/RecentActivity';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,48 @@ export class ProfileService {
   updateUser(updatedUser: User): Promise<User> {
     return this.http.post<User>(this.apiUrl+'/user/', updatedUser).toPromise();
   }
+
+  getRecentActivity(username: string): RecentActivity[]
+  {
+    var activityList= new Array();
+    
+    this.http.get<[]>(this.rootUrl + "/comment/").toPromise().then((result: Comment[]) => {
+      for(let i = 0; i<result.length; i++){
+        if (result[i].userName==username){
+          let activityToAdd: RecentActivity= {
+            id: 0,
+            date: null,
+            type: "",
+            title:""
+          }
+          activityToAdd.date=result[i].dateTime;
+          activityToAdd.id=result[i].id;
+          activityToAdd.type="nest";
+          activityToAdd.title=result[i].message;
+          activityList.push(activityToAdd);
+          }
+        };
+    });
+    this.http.get<[]>(this.rootUrl + "/post/").toPromise().then((result: Root[]) => {
+      for(let i = 0; i<result.length; i++){
+        if (result[i].userName==username){
+          let activityToAdd: RecentActivity= {
+            id: 0,
+            date: null,
+            type: "",
+            title:""
+          }
+          activityToAdd.date=result[i].dateTime;
+          activityToAdd.id=result[i].id;
+          activityToAdd.type="comment";
+          activityToAdd.title=result[i].title;
+          activityList.push(activityToAdd);
+          }
+        };
+    });
+    console.log(activityList);
+    return(activityList);
+  }
   
   getAllPostsAndCommentsByUser(name: string): any[]
   {
@@ -76,6 +119,7 @@ export class ProfileService {
         });
         LoC.sort((a,b) => (a.dateTime > b.dateTime ? 1 : -1));
       });
+      console.log(LoC);
     return LoC;
   }
 
@@ -84,7 +128,6 @@ export class ProfileService {
     console.log("Got into addCommentToList. Username: " + Com.userName);
     if (Com.comments)
     {
-      console.log("It has a comment!");
       Com.comments.forEach(commy => {
         LoC = this.addCommentToList(commy, LoC, name);
       });
