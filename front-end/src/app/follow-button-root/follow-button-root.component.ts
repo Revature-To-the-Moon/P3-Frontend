@@ -72,33 +72,6 @@ export class FollowButtonRootComponent implements OnInit {
   }
   ngOnChanges(
   ){
-    if (this.auth.isAuthenticated$)
-    {
-      this.auth.user$.subscribe(
-        (profile) => (this.currentUser.username = profile.preferred_username))
-
-      this.auth.user$.subscribe((user) => {
-        if (user?.preferred_username) {
-          this.currentUser.username = user.preferred_username;
-          this.profileService.getUserByName(this.currentUser.username).then((result: User) => {
-            this.currentUser= result;
-            
-        // this.isFollow = this.profileService.checkFollowingPost(this.id, this.currentUser.id);
-        this.profileService.getFollowedPostByUserId(this.currentUser.id).then((result: FollowingPost[]) => {
-          let listOfFollowings = result;
-          console.log(listOfFollowings)
-          for(let i = 0; i < listOfFollowings.length; i++){
-            if (listOfFollowings[i].rootId == this.id){
-              this.isFollow = true;
-              this.followingId=listOfFollowings[i].id;
-              break;
-            }
-          }
-        })    
-          });
-        }
-      })
-    }
     
   }
   
@@ -122,14 +95,7 @@ export class FollowButtonRootComponent implements OnInit {
         //this.reloadComponent();
       }
     
-      this.isFollow = !this.isFollow;
+      this.ngOnInit();
     };
 
-
-  reloadComponent() {
-    let currentUrl = this.router.url;
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate([currentUrl]);
-    }
   }
