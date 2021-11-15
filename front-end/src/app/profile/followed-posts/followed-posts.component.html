@@ -1,7 +1,7 @@
 <div class="card col box">
     <h1>Followed Posts</h1>
     <table summary="a table of followed post">
-        <th>
+        <th scope="col">
         </th>
         <tr *ngFor="let post of followedList" id="visual">
             <td class="edit" routerLink="/comment/{{post.rootId}}">{{post.postname}}</td>

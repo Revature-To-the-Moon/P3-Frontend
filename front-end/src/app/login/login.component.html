@@ -1,8 +1,8 @@
-<div class="wrapper">       
+<div class="wrapper">
     <div class="container mt-5 d-flex justify-content-center">
         <div class="loginhtml">
             <div class="ml-3 w-100">
-            <img class="img center" src="../../assets/fontlogo.png">
+            <img class="img center" src="../../assets/fontlogo.png" alt="image of Cadmus Logo">
                 <button type="button" class="btn btn-success btn-lg btn1 center" (click)="Loginfunc()" *ngIf="!(auth.isAuthenticated$ | async)">Log into Cadmus</button>
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-success btn-lg btn2 center" (click)="Registerfunc()" *ngIf="!(auth.isAuthenticated$ | async)">Create new account</button>
@@ -10,6 +10,6 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 

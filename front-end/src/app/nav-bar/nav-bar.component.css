@@ -1,7 +1,7 @@
 #nav-text{
     color: #fdf4f7;
     font-size: 18px;
-    font-family: 'Segoe UI', Tahoma;
+    font-family: 'Segoe UI', 'Tahoma', sans-serif;
 }
 
 #nav-text:hover{
@@ -15,7 +15,7 @@
     min-height: 3vw;
     background-position-x: right;
     background-repeat: no-repeat, repeat;
-  
+
 }
 .navbar-brand{
     margin-left: 3vw;
@@ -24,7 +24,7 @@
 .container-fluid{
     padding: 0;
     margin: 0;
-    
+
 }
 
 .navbar-nav{
