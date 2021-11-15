@@ -13,6 +13,7 @@ Cadmus is a social media application that creates a platform for users to collab
 - Follow posts
 - Vote on post
 - Display following post in my feed
+- Deployed to Web
 
 
 ## User Stories
