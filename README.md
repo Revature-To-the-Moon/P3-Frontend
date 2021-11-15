@@ -28,26 +28,26 @@ As a user,
 - My feed should only displays posts from user that I follow.
 
 ## Stretch Goals
--Verbal Story
--Profainity Filter
--Create Join Group/Team
--Chat Room
--YouTube Links
--Dark Mode
--Upload Profile Picture
+- Verbal Story
+- Profainity Filter
+- Create Join Group/Team
+- Chat Room
+- YouTube Links
+- Dark Mode
+- Upload Profile Picture
 
 ## Tech Stack:
 
--Angular
--C#
--AzureSQL DB
--EF Core
--Oauth
--Karma/Jasmine
--Xunit
--Azure Webapp
--Github Actions
--SonarCloud
--ASP.NET CORE API
--Docker
--Kubernetes
+- Angular
+- C#
+- AzureSQL DB
+- EF Core
+- Oauth
+- Karma/Jasmine
+- Xunit
+- Azure Webapp
+- Github Actions
+- SonarCloud
+- ASP.NET CORE API
+- Docker
+- Kubernetes
