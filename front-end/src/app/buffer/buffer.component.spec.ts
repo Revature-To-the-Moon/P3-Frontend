@@ -7,6 +7,7 @@ import { BufferComponent } from './buffer.component';
 import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { RootComponent } from '../root/root.component';
+import { UserCreationService } from '../service/user-creation.service';
 
 describe('BufferComponent', () => {
   let component: BufferComponent;
@@ -19,29 +20,32 @@ describe('BufferComponent', () => {
       declarations: [ BufferComponent ],
       imports: [HttpClientTestingModule,
         RouterTestingModule.withRoutes(
-          [{path: 'root', component: RootComponent}]
-        ),
+          [{path: 'root', component: RootComponent}]),
         AuthModule.forRoot(
         {
           domain: 'dev-0w--5cqa.us.auth0.com',
           clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
-        }
-        )]
-
+        })],
+      providers: [{ provide: UserCreationService}]
     })
     .compileComponents();
-    router = TestBed.get(Router)
-    location = TestBed.get(Location)
+    router = TestBed.inject(Router)
+    location = TestBed.inject(Location)
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BufferComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    //or declare variable here
   });
 
   it('should create', () => {
+    //declare variable here
     expect(component).toBeTruthy();
+    router.navigateByUrl("/root").then(() => {
+      expect(location.path()).toBe("/root");
+    })
   });
 
   it('should have a buffer', () => {
@@ -49,10 +53,15 @@ describe('BufferComponent', () => {
     expect(buttons.length >= 1).toBeTruthy();
   });
 
-  it('Should navigate to /root', fakeAsync(() => {
-    router.navigate(["/root"]).then(() => {
-      expect(location.path()).toBe("/root");
-    });
-
+/*
+  it('should assign auth0 preferred username to user.username', () => {
+    component.ngOnInit();
   })
-  )})
+*//*
+  it('should call ngOnInit', () =>
+  {
+    spyOn(component, 'ngOnInit' ).and.stub();
+    component.ngOnInit();
+    expect(component.ngOnInit()).toHaveBeenCalled();
+  })*/
+})

@@ -12,7 +12,7 @@ describe('RootServiceService', () => {
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(RootServiceService);
-    
+
   });
 
   it('should be created', () => {

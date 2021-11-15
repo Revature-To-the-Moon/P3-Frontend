@@ -16,7 +16,7 @@ export class BufferComponent implements OnInit {
 
 
 
-  constructor(private auth: AuthService, private http: HttpClient, private userService: UserCreationService, private router: Router) { }
+  constructor(private auth: AuthService, private http: HttpClient, public _userService: UserCreationService, private router: Router) { }
 
   userList: User[];
   user: User = {
@@ -28,11 +28,11 @@ export class BufferComponent implements OnInit {
     this.auth.user$.subscribe(profile =>
       {
         this.user.username = profile.preferred_username;
-        this.userService.userName = this.user.username;
-        this.userService.getUserByName(profile.preferred_username).then((result: User) => {
+        this._userService.userName = this.user.username;
+        this._userService.getUserByName(profile.preferred_username).then((result: User) => {
           if (result == null)
           {
-            this.userService.AddObject(this.user)
+            this._userService.AddObject(this.user)
           }
         })
         this.router.navigateByUrl('/root');

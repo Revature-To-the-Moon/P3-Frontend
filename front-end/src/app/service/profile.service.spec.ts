@@ -43,7 +43,7 @@ describe('ProfileService', () => {
       followings: []
     };
     spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
-    
+
     await service.getUserById(1).then((res) => {
       expect(res).toEqual(fakeUser);
       expect(service.getUserById).toHaveBeenCalled();
@@ -58,7 +58,7 @@ describe('ProfileService', () => {
 
     spyOn(service, 'getAllUsers').and.returnValue(Promise.resolve(fakeUser));
 
-    service.getAllUsers().then((res) => {
+    await service.getAllUsers().then((res) => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(fakeUser[0]);
       expect(service.getAllUsers).toHaveBeenCalled();
@@ -154,7 +154,7 @@ describe('ProfileService', () => {
     spyOn(service, 'getAllPostsAndCommentsByUser').and.returnValue(fakeComment);
 
     var res = await service.getAllPostsAndCommentsByUser("Zoe")
-    
+
     expect(res.length).toEqual(1);
     expect(res[0]).toEqual(fakeComment[0]);
     expect(service.getAllPostsAndCommentsByUser).toHaveBeenCalled();
@@ -188,11 +188,11 @@ describe('ProfileService', () => {
       followingUserName: "bob"
     }
     service.followUser(fakefollower).subscribe();
-  
+
     let req = httpMock.expectOne({method: "POST", url: apiUrl});
     expect(req.request.body).toEqual(fakefollower);
   });
 
 
-  
+
 });
