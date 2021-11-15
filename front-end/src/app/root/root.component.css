@@ -35,6 +35,28 @@
     float: right;
 }
 
+.follow {
+    background-color: #4d4382;
+    color: white;
+    border: none;
+    padding: 0.4em 1.1em;
+    text-align: center;
+    margin: 1em;
+    text-decoration: none;
+    font-size: 1.0em;
+    display: float;
+    float: right;
+    cursor:pointer;
+    border-radius: 4px;
+    min-width: 110px;
+}
+
+.follow:hover {
+    color: #fdf4f7;
+    background-color: #291a4a;
+    border-color: #291a4a;
+}
+
 .btn-primary {
     color: #fdf4f7;
     background-color: #4d4382;

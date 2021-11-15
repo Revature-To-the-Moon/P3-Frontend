@@ -7,6 +7,7 @@ import { FollowingPost } from '../models/FollowingPost';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post';
 import { Followings } from '../models/Followings';
+import { RecentActivity } from '../models/RecentActivity';
 
 @Injectable({
   providedIn: 'root'
@@ -27,42 +28,84 @@ export class ProfileService {
 
   getUserById(id: number): Promise<User>  
   {
-    return this.http.get<User>(this.apiUrl + "/user/id" + id).toPromise();
+    return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
   getUserByName(username: string): Promise<User> {
-    return this.http.get<User>(this.apiUrl + "/user/username" + username).toPromise();
+    return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
   }
 
   getAllUsers(): Promise<User[]>
   {
-    return this.http.get<[]>(this.apiUrl + "/user").toPromise();
+    return this.http.get<[]>(this.apiUrl + "/user/").toPromise();
   }
 
   getAllPosts(): Promise<Root[]>
   {
-    return this.http.get<Root[]>(this.rootUrl + "/post").toPromise();
+    return this.http.get<Root[]>(this.rootUrl + "/post/").toPromise();
   }
 
   getAllComments(): Promise<Comment[]>
   {
-    return this.http.get<[]>(this.rootUrl + "/comment").toPromise();
+    return this.http.get<[]>(this.rootUrl + "/comment/").toPromise();
   }
 
   getFollowedPostByUserId(id: number): Promise<FollowingPost[]>
   {
-    return this.http.get<[]>(this.apiUrl + "/followingpost/userid"+ id).toPromise();
+    return this.http.get<[]>(this.apiUrl + "/followingpost/userid/"+ id).toPromise();
   }
 
   //we can use updateUser to follow/unfollow both posts and other users, since both following models are contained within the user
   updateUser(updatedUser: User): Promise<User> {
-    return this.http.post<User>(this.apiUrl+'/user', updatedUser).toPromise();
+    return this.http.post<User>(this.apiUrl+'/user/', updatedUser).toPromise();
+  }
+
+  getRecentActivity(username: string): RecentActivity[]
+  {
+    var activityList= new Array();
+    
+    this.http.get<[]>(this.rootUrl + "/comment/").toPromise().then((result: Comment[]) => {
+      for(let i = 0; i<result.length; i++){
+        if (result[i].userName==username){
+          let activityToAdd: RecentActivity= {
+            id: 0,
+            date: null,
+            type: "",
+            title:""
+          }
+          activityToAdd.date=result[i].dateTime;
+          activityToAdd.id=result[i].id;
+          activityToAdd.type="nest";
+          activityToAdd.title=result[i].message;
+          activityList.push(activityToAdd);
+          }
+        };
+    });
+    this.http.get<[]>(this.rootUrl + "/post/").toPromise().then((result: Root[]) => {
+      for(let i = 0; i<result.length; i++){
+        if (result[i].userName==username){
+          let activityToAdd: RecentActivity= {
+            id: 0,
+            date: null,
+            type: "",
+            title:""
+          }
+          activityToAdd.date=result[i].dateTime;
+          activityToAdd.id=result[i].id;
+          activityToAdd.type="comment";
+          activityToAdd.title=result[i].title;
+          activityList.push(activityToAdd);
+          }
+        };
+    });
+    console.log(activityList);
+    return(activityList);
   }
   
   getAllPostsAndCommentsByUser(name: string): any[]
   {
     var LoC = [] as Array<any>
 
-    this.http.get<[]>(this.rootUrl + "/post").toPromise().then(
+    this.http.get<[]>(this.rootUrl + "/post/").toPromise().then(
       (posts: any[]) => {
         // posts now has every single post, including comments, in the entire website...
         posts.forEach(posty => {
@@ -76,6 +119,7 @@ export class ProfileService {
         });
         LoC.sort((a,b) => (a.dateTime > b.dateTime ? 1 : -1));
       });
+      console.log(LoC);
     return LoC;
   }
 
@@ -84,7 +128,6 @@ export class ProfileService {
     console.log("Got into addCommentToList. Username: " + Com.userName);
     if (Com.comments)
     {
-      console.log("It has a comment!");
       Com.comments.forEach(commy => {
         LoC = this.addCommentToList(commy, LoC, name);
       });
