@@ -1,7 +1,7 @@
 # Cadmus
 
 ## Overview
-Cadmus is a social media application that allows users to interact by creating a root post to start a story or to comment on an existing post to continue an existing story. Users can vote on comments and follow their favorite stories.
+Cadmus is a social media application that creates a platform for users to collaborate in a creative environment that boasts a polymorphic method of story writing. Cadmus allows users to interact and share ideas, like Cadmus of Greek myth, bringing new language and writing to new readers. Enabling them to create, embellish, and add to the story through comments on the root post. Users can vote on comments and follow their favorite stories to keep the story going. This lets users create their own mythos that, like those of ancient Greece, can be retold and changed throughout the ages.
 
 
 ## MVP
