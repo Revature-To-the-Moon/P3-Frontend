@@ -53,7 +53,7 @@ describe('ProfileService', () => {
 
     spyOn(service, 'getAllUsers').and.returnValue(Promise.resolve(fakeUser));
 
-    service.getAllUsers().then((res) => {
+    await service.getAllUsers().then((res) => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(fakeUser[0]);
       expect(service.getAllUsers).toHaveBeenCalled();
