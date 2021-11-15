@@ -4,17 +4,29 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FollowButtonComponent } from './follow-button.component';
 import { By } from '@angular/platform-browser';
+import { AuthModule } from '@auth0/auth0-angular';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 describe('FollowButtonComponent', () => {
   let component: FollowButtonComponent;
   let fixture: ComponentFixture<FollowButtonComponent>;
   let de: DebugElement;
   let httpMock: HttpTestingController;
+  let activatedRoute: ActivatedRoute = new ActivatedRoute;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ FollowButtonComponent ],
-      imports: [RouterTestingModule, HttpClientTestingModule]
+      imports: [RouterModule, RouterTestingModule, HttpClientTestingModule, AuthModule.forRoot(
+        {
+          domain: 'dev-0w--5cqa.us.auth0.com',
+          clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
+        })],
+      providers: [
+        {
+            provide: ActivatedRoute,
+            useValue: activatedRoute
+        }]
     })
     .compileComponents();
   });
