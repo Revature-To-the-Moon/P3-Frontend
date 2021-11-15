@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() {}
+  constructor() {/*Intentionally blank*/}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {/*Intentionally blank*/}
 
 }
