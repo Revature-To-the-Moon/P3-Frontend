@@ -35,7 +35,6 @@ describe('RootComponent', () => {
   });
 /*
   it('should create', () => {
-    component.roots = [];
     expect(component).toBeTruthy();
   });
 

@@ -8,12 +8,14 @@ import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { RootComponent } from '../root/root.component';
 import { UserCreationService } from '../service/user-creation.service';
+import { User } from '../models/user';
 
 describe('BufferComponent', () => {
   let component: BufferComponent;
   let fixture: ComponentFixture<BufferComponent>;
   let router: Router;
   let location: Location;
+  let service: UserCreationService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,6 +33,7 @@ describe('BufferComponent', () => {
     .compileComponents();
     router = TestBed.inject(Router)
     location = TestBed.inject(Location)
+    service = TestBed.inject(UserCreationService);
   });
 
   beforeEach(() => {
@@ -57,5 +60,22 @@ describe('BufferComponent', () => {
     router.navigateByUrl("/root").then(() => {
       expect(location.path()).toBe("/root");
     })
-  }))
+  }));
+
+  it('should get user by username', async () => {
+    let fakeUser: User = {
+      id: 1,
+      email: 'Zoot@zooter.com',
+      name: 'Zambie',
+      username: 'Zoot',
+      followings: []
+    };
+    spyOn(service, 'getUserByName').and.returnValue(Promise.resolve(fakeUser));
+
+    await service.getUserByName('Zoot').then((res) => {
+      expect(res).toEqual(fakeUser);
+      expect(service.getUserByName).toHaveBeenCalledWith('Zoot');
+    })
+  });
+
 })
