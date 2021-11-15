@@ -26,11 +26,10 @@ As a user,
 - I should have a post feed that displays other user's posts.
 - I should be able to vote on another user's post.
 - I should be able to follow another user to see their posts on my feed.
-- My feed should only displays posts from user that I follow.
 
 ## Stretch Goals
 - Verbal Story
-- Profainity Filter
+- Profanity Filter
 - Create Join Group/Team
 - Chat Room
 - YouTube Links
