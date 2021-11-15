@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI_CD
 
 on:
   push:
@@ -49,7 +49,7 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-          
+    
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

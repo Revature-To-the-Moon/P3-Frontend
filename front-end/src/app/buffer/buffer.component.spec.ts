@@ -53,15 +53,9 @@ describe('BufferComponent', () => {
     expect(buttons.length >= 1).toBeTruthy();
   });
 
-/*
-  it('should assign auth0 preferred username to user.username', () => {
-    component.ngOnInit();
-  })
-*//*
-  it('should call ngOnInit', () =>
-  {
-    spyOn(component, 'ngOnInit' ).and.stub();
-    component.ngOnInit();
-    expect(component.ngOnInit()).toHaveBeenCalled();
-  })*/
+  it('Should navigate to /root', fakeAsync(() => {
+    router.navigateByUrl("/root").then(() => {
+      expect(location.path()).toBe("/root");
+    })
+  }))
 })

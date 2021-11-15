@@ -25,9 +25,10 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: './',
+      dir: require('path').join(__dirname, '.'),
+      subdir: '.',
       reporters: [
-        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.info' }
+        { type: 'lcovonly' },
       ]
     },
     reporters: ['progress', 'kjhtml', 'coverage'],
@@ -46,3 +47,4 @@ module.exports = function (config) {
     restartOnFileChange: true
   });
 };
+

@@ -21,13 +21,40 @@
 }
 
 #username-span {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #4d4382;
+    cursor: pointer;
+}
+
+#username-span:hover {
+    text-decoration: underline;
 }
 
 #create-btn {
     float: right;
+}
+
+.follow {
+    background-color: #4d4382;
+    color: white;
+    border: none;
+    padding: 0.4em 1.1em;
+    text-align: center;
+    margin: 1em;
+    text-decoration: none;
+    font-size: 1.0em;
+    display: float;
+    float: right;
+    cursor:pointer;
+    border-radius: 4px;
+    min-width: 110px;
+}
+
+.follow:hover {
+    color: #fdf4f7;
+    background-color: #291a4a;
+    border-color: #291a4a;
 }
 
 .btn-primary {
@@ -79,6 +106,22 @@ p {
 
 #follow-post-btn {
     text-align: right;
+}
+
+#up{
+    cursor: pointer;
+    /* filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); */
+}
+
+#down{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+#vote{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #filter-bar {
