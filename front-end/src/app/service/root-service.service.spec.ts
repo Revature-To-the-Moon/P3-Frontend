@@ -14,7 +14,12 @@ describe('RootServiceService', () => {
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(RootServiceService);
+    httpMock =TestBed.inject(HttpTestingController);
 
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -23,7 +28,7 @@ describe('RootServiceService', () => {
 
   //Root Tests//
   it('addRoot should add new story', async () => {
-    let fakePost = {
+    let fakePost: Post = {
       id: 1,
       title: 'Walking the Dog',
       message: 'It was sunday morning when I...',
@@ -34,7 +39,6 @@ describe('RootServiceService', () => {
     }
 
     spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakePost));
-
     await service.addRoot(fakePost).then((res) => {
       expect(service.addRoot).toHaveBeenCalled();
       expect(res).toEqual(fakePost);
@@ -86,6 +90,24 @@ describe('RootServiceService', () => {
       expect(service.getRootById).toHaveBeenCalledWith(1);
       expect(res).toEqual(fakePost);
     })
+  });
+
+  it('updateRoot should update story', async () => {
+    let fakePost = {
+      id: 1,
+      title: 'Walking the Dog',
+      message: 'It was sunday morning when I...',
+      dateTime: null,
+      userName: 'ToTheMoon1234',
+      totalVote: 5,
+      comments: []
+    }
+
+    spyOn(service, 'updateRoot').and.returnValue(Promise.resolve(fakePost));
+    await service.updateRoot(fakePost).then((res) => {
+      expect(service.updateRoot).toHaveBeenCalled();
+      expect(res).toEqual(fakePost);
+    });
   });
   //comment tests//
 
@@ -148,7 +170,7 @@ describe('RootServiceService', () => {
     });
   });
 
-  it('addVote should post new vote', async() => {
+  it('addVote should post new vote', async () => {
     let fakeVote = {
       id: 2,
       userName: 'ToTheMoon1234',
@@ -162,7 +184,7 @@ describe('RootServiceService', () => {
     });
   });
 
-  it('updateVote should update vote', async() => {
+  it('updateVote should update vote', async () => {
     let fakeVote = {
       id: 2,
       userName: 'ToTheMoon1234',

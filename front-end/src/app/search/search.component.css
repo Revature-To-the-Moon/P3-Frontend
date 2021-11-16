@@ -9,27 +9,43 @@
     width: 30vw;
 } */
 
+.fade.in {
+    opacity: 1;
+ }
+
 .form-control{
-    width: 20vw;
+    width: 25vw;
 }
 
 .searchResult{
-    border: 3px solid white;
-    color: aliceblue;
+    border: 3px solid #7877cf;
+    background-color: #291a4a !important;
+    margin-bottom: 1vw;
+    color: #fdf4f7;
+    width:30vw;
+    align-self: center;
+    margin-left: 5vw;
 }
 li{
     list-style: none;
 }
 
-/* #clearButton{
-    float: right;
-} */
-
-.btn-primary{
-    background-color: #7977CF;
-    border-color: #7977CF;
+.modal-header{
+    background-color: #291a4a !important;
+    color: #fdf4f7
 }
 
-.btn-primary:active{
-    border: none;
+.modal-body{
+    background-color: #291a4a !important;
+    background-image: url(../../assets/starrynight2.png);
+    background-size: cover ;
+}
+
+.modal-footer{
+    background-color: #291a4a !important;
+}
+
+
+.badge-success{
+    background-color: #986aa8;
 }
