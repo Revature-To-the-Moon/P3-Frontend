@@ -17,9 +17,12 @@ max-height: 900px;
     width: 100%;
     height: auto;
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 3em;
 }
 
+.btn1 {
+    margin-bottom: 1em;
+}
 
 
 .wrapper {
