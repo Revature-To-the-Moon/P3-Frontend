@@ -157,49 +157,6 @@ describe('ProfileService', () => {
       expect(service.updateUser).toHaveBeenCalled();
     })
   })
-
-  it('should get all posts and comments by user', async () => {
-    let fakeComment: Comment[] = [ {
-      id: 1,
-      message: "We's still walkin' a ducky!",
-      totalVote: 32,
-      dateTime: null,
-      userName: "Zoe",
-      parentId: 1,
-      rootId: 1,
-      votes: [],
-      comments: [],
-    } ];
-
-    spyOn(service, 'getAllPostsAndCommentsByUser').and.returnValue(fakeComment);
-
-    var res = await service.getAllPostsAndCommentsByUser("Zoe")
-
-    expect(res.length).toEqual(1);
-    expect(res[0]).toEqual(fakeComment[0]);
-    expect(service.getAllPostsAndCommentsByUser).toHaveBeenCalled();
-  });
-
-  it('should add comment to list', () => {
-    let fakeComment: Comment[] = [ {
-      id: 1,
-      message: "We's still walkin' a ducky!",
-      totalVote: 32,
-      dateTime: null,
-      userName: "Zoe",
-      parentId: 1,
-      rootId: 1,
-      votes: [],
-      comments: [],
-    } ];
-    spyOn(service, 'addCommentToList').and.returnValue(fakeComment);
-
-    var res : any[] = []
-    res = service.addCommentToList(fakeComment[0], res, "Zoe")
-    expect(res.length).toEqual(1);
-    expect(res[0]).toEqual(fakeComment[0]);
-    expect(service.addCommentToList).toHaveBeenCalled();
-  });
 /*
   it('should return follow user', () => {
     let fakefollower: Followings = {
