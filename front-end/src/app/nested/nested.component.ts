@@ -76,10 +76,15 @@ export class NestedComponent implements OnInit {
       console.log(this.comment.rootId)
 
       this.rootService.addComment(this.comment).then(res => {
-        alert("Post successfully created")
+        alert("Comment successfully created")
         location.reload()
       })
     })
   }
 
+  deleteComment(id: number) {
+    this.rootService.deleteComment(id).then(res => {
+      location.reload()
+    })
+  }
 }

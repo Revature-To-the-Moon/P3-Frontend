@@ -19,14 +19,6 @@ export class LoginButtonsComponent implements OnInit {
     }
   }
 
-  Loginfunc() {
-    this.auth.loginWithRedirect({ appState: { target: '/' } });
-  }
-
-  Registerfunc() {
-    this.auth.loginWithRedirect({ screen_hint: 'signup', appState: { target: '/' } });
-  }
-
   Logoutfunc() {
     this.auth.logout({ returnTo: this.doc.location.origin });
   }
