@@ -43,7 +43,7 @@ describe('NavBarComponent', () => {
   })
 
   it('should have "home" nav link', () => {
-    const elem = fixture.debugElement.query(By.css('#nav-text'))
+    const elem = fixture.debugElement.query(By.css('.home-text'))
     const HTMLelem: HTMLElement = elem.nativeElement;
     expect(HTMLelem.textContent).toBe('Home');
   })
