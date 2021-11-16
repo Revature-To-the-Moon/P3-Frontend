@@ -23,7 +23,6 @@ export class FollowButtonRootComponent implements OnInit {
   followingId = 0;
   postname = "";
   isFollow = false;
-
   newFollowing: FollowingPost ={
     postname: '',
     rootId: 0,
@@ -100,4 +99,5 @@ export class FollowButtonRootComponent implements OnInit {
         this.isFollow=false;
       }  
     };
+
   }

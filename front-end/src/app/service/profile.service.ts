@@ -140,6 +140,11 @@ export class ProfileService {
     return LoC;
   }
 
+  getFollowingsByUserId(id: number): Promise<Followings[]>
+  {
+    return this.http.get<[]>(this.followUrl + "/followeruserId/"+ id).toPromise();
+  }
+
   checkFollowingPost(followedPostId: number, currentUser:number): boolean{
 
     var doesFollow = false;
