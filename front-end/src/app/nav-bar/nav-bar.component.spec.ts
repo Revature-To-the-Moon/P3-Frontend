@@ -5,7 +5,8 @@ import { RegisterButtonComponent } from '../register-button/register-button.comp
 import { SearchComponent } from '../search/search.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NavBarComponent } from './nav-bar.component';
-import { By } from '@angular/platform-browser'
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 
 
 describe('NavBarComponent', () => {
@@ -14,7 +15,7 @@ describe('NavBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule,AuthModule.forRoot(
+      imports: [HttpClientTestingModule,RouterTestingModule,AuthModule.forRoot(
         {
           domain: 'dev-0w--5cqa.us.auth0.com',
           clientId: '4LqYhiuu6amu7r3BOQH38phFDBycgDQB'
@@ -35,5 +36,16 @@ describe('NavBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain routes', () => {
+    const elem = fixture.debugElement.queryAll(By.css('.nav-link'))
+    expect(elem.length >= 1).toBeTruthy();
+  })
+
+  it('should have "home" nav link', () => {
+    const elem = fixture.debugElement.query(By.css('#nav-text'))
+    const HTMLelem: HTMLElement = elem.nativeElement;
+    expect(HTMLelem.textContent).toBe('Home');
+  })
 
 });
