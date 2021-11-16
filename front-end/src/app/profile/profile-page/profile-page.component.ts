@@ -16,8 +16,6 @@ export class ProfilePageComponent implements OnInit {
   constructor(private currentRoute: ActivatedRoute, public profileService: ProfileService, private router: Router, private auth: AuthService) { }
   id = 0;
 
-  
-
   userList:User[];
   currentUser: User = {
     id: 0,
@@ -26,6 +24,7 @@ export class ProfilePageComponent implements OnInit {
     name: "",
     followings: []
   };
+  test = 0;
 
   profileUser: User = {
     id: 0,
@@ -49,8 +48,8 @@ export class ProfilePageComponent implements OnInit {
         });
         this.auth.user$.subscribe((user) => {
           if (user?.preferred_username) {
-          this.currentUser.username = user.preferred_username;
-        }
+            this.currentUser.username = user.preferred_username;
+          }
       })
     }
   }

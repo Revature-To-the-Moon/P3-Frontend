@@ -35,5 +35,12 @@ describe('FollowButtonRootComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    
+    component.ngOnChanges();
+
+    component.isFollow = true;
+    component.onClick();
+    component.isFollow = false;
+    component.onClick();
   });
 });
