@@ -46,4 +46,50 @@ describe('CommentComponent', () => {
 
     expect(component.onSubmit).toHaveBeenCalled();
   })
+
+  it('should check if a comment is liked', () => {
+    const mockVote = [{
+      // vote info
+      id: 99,
+      userName: 'Richard',
+      value: 1,
+      commentId: 99
+    }]
+    component.user = 'Richard';
+    var reply = component.checkIfCommentIsLiked(mockVote);
+    expect(reply == true);
+    component.user = 'Blachard';
+    reply = component.checkIfCommentIsLiked(mockVote);
+    expect(reply == false);
+  }),
+
+  it('should check the value of a liked comment', () => {
+    const mockVote = [{
+      // vote info
+      id: 99,
+      userName: 'Richard',
+      value: 1,
+      commentId: 99
+    }]
+    component.user = 'Richard';
+    var reply = component.checkIfCommentIsLikedValue(mockVote);
+    expect(reply == true);
+    component.user = 'Blachard';
+    reply = component.checkIfCommentIsLikedValue(mockVote);
+    expect(reply == false);
+  })
+
+  // like comment
+
+  // goToUserProfile
+  it('should go to userProfile', () => {
+    let username = 'Hello';
+    
+    component.goToUserProfile(username);
+    // then it goes into a service...
+  })
+
+  // unLikeComment
+
+  // 
 });

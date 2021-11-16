@@ -14,6 +14,14 @@ describe('ProfilePageComponent', () => {
   let service: ProfileService;
   let activatedRoute: ActivatedRouteStub = new ActivatedRouteStub;
 
+  let fakeUser: User = {
+    id: 55,
+    username: "Tenzin",
+    email: "",
+    name: "",
+    followings: []
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ProfilePageComponent ],
@@ -33,7 +41,7 @@ describe('ProfilePageComponent', () => {
     fixture = TestBed.createComponent(ProfilePageComponent);
     component = fixture.componentInstance;
 
-    activatedRoute.setParams({id: 5});
+    activatedRoute.setParams({id: 55});
 
     fixture.detectChanges();
   });
@@ -47,17 +55,9 @@ describe('ProfilePageComponent', () => {
   });
 
   // it('should assign result to currentUser', async () => {
-  //   let fakeUser: User = {
-  //     id: 55,
-  //     username: "Tenzin",
-  //     email: "",
-  //     name: "",
-  //     followings: []
-  //   };
-    
   //   spyOn(service, 'getUserById').and.returnValue(Promise.resolve(fakeUser));
     
-  //   await component.ngOnInit();
+  //   component.ngOnInit();
     
   //   expect(service.getUserById).toHaveBeenCalledWith(55);
   //   expect(component.currentUser).toEqual(fakeUser);

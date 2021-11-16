@@ -29,6 +29,7 @@ export class ProfileService {
   {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
+  
   getUserByName(username: string): Promise<User> {
     return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
   }

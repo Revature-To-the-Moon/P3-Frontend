@@ -45,6 +45,22 @@ describe('ProfileService', () => {
     })
   });
 
+  it('should get user by name', async () => {
+    let fakeUser: User = {
+      id: 1,
+      email: 'Zoot@zooter.com',
+      name: 'Zambie',
+      username: 'Zoot',
+      followings: []
+    };
+    spyOn(service, 'getUserByName').and.returnValue(Promise.resolve(fakeUser));
+
+    await service.getUserByName('Zoot').then((res) => {
+      expect(res).toEqual(fakeUser);
+      expect(service.getUserByName).toHaveBeenCalled();
+    })
+  });
+
   it('should get all users', async () => {
     let fakeUser: User[] = [ {
       id: 1,

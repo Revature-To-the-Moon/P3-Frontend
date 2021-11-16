@@ -22,6 +22,7 @@ export class ProfilePageComponent implements OnInit {
     name: "",
     followings: []
   };
+  test = 0;
 
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
