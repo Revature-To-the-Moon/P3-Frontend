@@ -14,6 +14,7 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, public profileService: ProfileService, private router: Router) { }
   id = 0;
+
   userList:User[];
   currentUser: User = {
     id: 0,
