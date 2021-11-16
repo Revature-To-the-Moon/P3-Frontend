@@ -1,14 +1,16 @@
 <div *ngIf="currentUser.username != profileUser.username">
-    <button class="follow">
-        <app-follow-button [followId]="id"></app-follow-button>
-    </button>
+    <app-follow-button [followId]="id"></app-follow-button>
 </div>
 
 <body class="bg">
-    
     <br>
-    <div class="greeting container">
-        <p>{{profileUser.username}}</p>
+    <div class="greeting container" *ngIf="currentUser.username != profileUser.username; else elseWelcome">
+        <p>Welcome to {{profileUser.username}}'s Page</p>
+    </div>
+    <div>
+        <ng-template #elseWelcome>
+            <p class="greeting">Hello, {{currentUser.username}}</p>
+        </ng-template>
     </div>
     <br>
     <div class="container">
