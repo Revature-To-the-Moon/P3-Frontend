@@ -21,7 +21,6 @@ export class RootServiceService {
   addRoot(root: Root): Promise<Root> {
     return this.http.post<Root>(this.rootUrl, root).toPromise();
   }
-
   updateRoot(root: Root): Promise<Root> {
     return this.http.put<Root>(this.rootUrl + "/" + root.id, root).toPromise();
   }

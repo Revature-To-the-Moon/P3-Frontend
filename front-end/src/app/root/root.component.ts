@@ -54,6 +54,8 @@ export class RootComponent implements OnInit {
       if (user?.preferred_username) {
         this.profileService.getUserByName(user.preferred_username).then((result: User) => {
           this.currentUser= result;
+          console.log(this.currentUser);
+          
         });
       }
     })

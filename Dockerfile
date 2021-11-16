@@ -8,7 +8,7 @@ RUN npm install
 
 COPY /front-end/. /app
 
-RUN npm run build --prod
+RUN npm run build
 
 # Stage 2
 

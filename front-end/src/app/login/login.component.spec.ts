@@ -67,6 +67,13 @@ describe('LoginComponent', () => {
   });
 
 
+  it('should call login func', async () => {
+
+    spyOn(component, 'Loginfunc').and.returnValue();
+    component.Loginfunc();
+    expect(component.Loginfunc).toHaveBeenCalled();
+
+  });
 
 
 

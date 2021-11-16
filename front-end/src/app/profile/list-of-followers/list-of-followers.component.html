@@ -1,10 +1,10 @@
 <div class="card col box">
-    <table>
-        <th>
+    <table aria-describedby="testing">
+        <th scope="col">
             <h1 id = "testing">Followed Users</h1>
         </th>
         <caption hidden>
-            The list of people you're following. 
+            The list of people you're following.
         </caption>
         <tr *ngFor="let follower of followedList" id="visual">
             <td class="edit" routerLink="/profile/{{follower.followingUserId}}">{{follower.followingUserName}}</td>
