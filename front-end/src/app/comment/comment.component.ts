@@ -143,7 +143,6 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
-                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -169,7 +168,6 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
-                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -205,7 +203,6 @@ export class CommentComponent implements OnInit {
 
             this.rootService.getRootById(this.id).then((result: Root) => {
               this.root = result;
-              result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
               for (let comment of this.root.comments) {
                 comment.totalVote = 0;
@@ -246,7 +243,6 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
-                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -272,7 +268,6 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
-                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -307,7 +302,6 @@ export class CommentComponent implements OnInit {
 
             this.rootService.getRootById(this.id).then((result: Root) => {
               this.root = result;
-              result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
               for (let comment of this.root.comments) {
                 comment.totalVote = 0;

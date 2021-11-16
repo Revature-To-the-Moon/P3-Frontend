@@ -6,11 +6,13 @@
             <div class="container" id="root">
                 <div class="row">
                     <div class="col">
-                        <p style="font-size: 13px;"><span style="font-size: 13px;" (click)="goToUserProfile(root.userName)">{{ root.userName }}</span> • {{
+                        <p style="font-size: 13px;"><span style="font-size: 13px;"
+                                (click)="goToUserProfile(root.userName)">{{ root.userName }}</span> • {{
                             root.dateTime | date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
-                        <app-follow-button-root class="btn btn-primary" style="min-width: 110px;" [id]="root.id"></app-follow-button-root>
+                        <app-follow-button-root class="btn btn-primary" style="min-width: 110px;" [id]="root.id">
+                        </app-follow-button-root>
                     </div>
                 </div>
                 <div class="row" style="margin-top: -10px;">
@@ -26,7 +28,8 @@
 
             <div class="container-comment">
                 <span><small>Add to the story as <span
-                            style="color: brown;"><small (click)="goToUserProfile(user)">{{user}}</small></span></small></span>
+                            style="color: brown;"><small
+                                (click)="goToUserProfile(user)">{{user}}</small></span></small></span>
                 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
                     <div class="form-group mb-3">
                         <textarea class="form-control" id="exampleFormControlTextarea1"
@@ -48,7 +51,8 @@
             <div class="allComments">
                 <div class="container" id="comments" *ngFor='let comment of root.comments'>
                     <div class="row">
-                        <p style="font-size: 13px;"><span style="font-size: 13px;"(click)="goToUserProfile(comment.userName)">{{ comment.userName }}</span> • {{
+                        <p style="font-size: 13px;"><span style="font-size: 13px;"
+                                (click)="goToUserProfile(comment.userName)">{{ comment.userName }}</span> • {{
                             comment.dateTime | date:'short' }}
                         </p>
                     </div>
