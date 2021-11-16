@@ -3,6 +3,7 @@ import { ProfileService } from 'src/app/service/profile.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { Followings } from 'src/app/models/Followings';
 import { User } from 'src/app/models/user';
+import { LogicalProjectPath } from '@angular/compiler-cli/src/ngtsc/file_system';
 
 @Component({
   selector: 'app-follow-button',
@@ -14,10 +15,10 @@ export class FollowButtonComponent implements OnInit {
   isFollow = false;
   followingId = 0;
   @Input() follower: Followings;
-  @Input() id = 0;
+  @Input() followId = 0;
   @Output() toggle = new EventEmitter<boolean>();
 
-  follows: Followings = {
+  followedUser: Followings = {
     id: 0,
     followerUserId: 0,
     followingUserId: 0,
@@ -44,32 +45,67 @@ export class FollowButtonComponent implements OnInit {
           if (user?.preferred_username) {
           this.currentUser.username = user.preferred_username;
           this.profileService.getUserByName(this.currentUser.username).then((result: User) => {
-            this.currentUser= result;
-            console.log(this.currentUser)
+              this.currentUser= result;
+              console.log(this.currentUser)
+              let listOfFollowings = this.currentUser.followings;
+              console.log(listOfFollowings)
+              for(let i = 0; i < listOfFollowings.length; i++){
+                if (listOfFollowings[i].followingUserId == this.followId){
+                  this.isFollow = true;
+                  this.followedUser=listOfFollowings[i];
+                  console.log(this.followedUser);
+                  break;
+                  }
+                }
           });
         }
       })
     }
   }
 
+  ngOnChanges(){
+    this.isFollow= false;
+    this.ngOnInit();
+
+
+    }
+
+  checkFollows(follows:Followings[]): Followings{
+    for(let i = 0; i < follows.length; i++){
+      if (follows[i].followingUserId == this.followId){
+        this.isFollow = true;
+        var followedUser=follows[i];
+        break;
+        }
+      return followedUser;
+      }
+      return followedUser;
+  }
+
   onClick(): void {
     this.isFollow = !this.isFollow;
     if(this.isFollow){
-      console.log(this.isFollow);
-      console.log(this.id);
-      this.profileService.followUser(this.follows).subscribe(
+      this.profileService.getUserById(this.followId).then((result: User) => {
+      this.followedUser.followerUserId=this.currentUser.id;
+      this.followedUser.followingUserId=this.followId;
+      this.followedUser.followingUserName=result.username
+      this.profileService.followUser(this.followedUser).subscribe(
         data => {
           this.isFollow = true;
           this.ngOnInit();
         }
       );
+    })
     } else if (!this.isFollow) {
-      console.log(this.isFollow);
-      console.log(this.id);
-      this.profileService.unfollowUser(this.follows).subscribe(
+      console.log(this.followedUser);
+      this.profileService.unfollowUser(this.followedUser.id).subscribe(
         data => {
           this.isFollow = false;
           this.ngOnInit();
+          this.followedUser.id=0,
+          this.followedUser.followerUserId=0,
+          this.followedUser.followingUserId=0,
+          this.followedUser.followingUserName=''
         }
       );
     }
