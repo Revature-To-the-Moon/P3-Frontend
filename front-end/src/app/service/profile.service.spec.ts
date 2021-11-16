@@ -9,6 +9,7 @@ import { Post } from '../models/post';
 import { FollowingPost } from '../models/FollowingPost';
 import { Followings } from '../models/Followings';
 import { Component } from '@angular/core';
+import { RecentActivity } from '../models/RecentActivity';
 
 const expectedUserUrl = 'https://52.141.211.229/user/api'
 const expectedPostUrl = 'https://52.141.211.229/post/api'
@@ -140,6 +141,111 @@ describe('ProfileService', () => {
 
       expect(actualComment).toEqual(fakeComment);
     })
+  });
+
+  it('should get recent activity', async () => {
+    let actualComment: Comment[] | undefined;
+    let actualPost: Post[] | undefined;
+    let fakeComment: Comment[] = [ {
+      id: 1,
+      message: "We's still walkin' a ducky!",
+      totalVote: 32,
+      dateTime: null,
+      userName: "Zoe",
+      parentId: -1,
+      rootId: 15,
+      votes: [],
+      comments: [],
+    },
+    {
+      id: 2,
+      message: "The duck liked to swim more than fly",
+      totalVote: 12,
+      dateTime: null,
+      userName: "Zoe",
+      parentId: -1,
+      rootId: 15,
+      votes: [],
+      comments: [],
+    },
+    {
+      id: 1,
+      message: "The bear ate the duck",
+      totalVote: -21,
+      dateTime: null,
+      userName: "Gustav",
+      parentId: -1,
+      rootId: 15,
+      votes: [],
+      comments: [],
+    }];
+
+    let fakePosts: Post[] = [
+      {
+        id: 15,
+        title: "Days of Christmas - Revature Edition",
+        message: "on the first day of Christmas Juniper gave to me... 1 MASSIVE HEADACHE",
+        dateTime: null,
+        totalVote: 24,
+        userName: "Zoe",
+        comments:[]
+      },
+      {
+        id: 15,
+        title: "The story of the ugly ducking",
+        message: "I found an ugly duckling the other day...",
+        dateTime: null,
+        totalVote: 6,
+        userName: "Brian",
+        comments:[
+          {
+            id: 1,
+            message: "We's still walkin' a ducky!",
+            totalVote: 32,
+            dateTime: null,
+            userName: "Zoe",
+            parentId: -1,
+            rootId: 15,
+            votes: [],
+            comments: [],
+          },
+          {
+            id: 2,
+            message: "The duck liked to swim more than fly",
+            totalVote: 12,
+            dateTime: null,
+            userName: "Zoe",
+            parentId: -1,
+            rootId: 15,
+            votes: [],
+            comments: [],
+          },
+          {
+            id: 1,
+            message: "A bear ate the duck",
+            totalVote: -21,
+            dateTime: null,
+            userName: "Gustav",
+            parentId: -1,
+            rootId: 15,
+            votes: [],
+            comments: [],
+          }
+        ]
+      }
+    ]
+
+
+    let recentActivity=service.getRecentActivity("Zoe");
+      const commentRequest = httpMock.expectOne(expectedPostUrl + '/comment/');
+      const postRequest = httpMock.expectOne(expectedPostUrl + '/post/');
+      commentRequest.flush(fakeComment);
+      postRequest.flush(fakePosts);
+      httpMock.verify();
+
+      
+      expect(recentActivity).toBeTruthy();
+
   });
 
   // it('should get followed posts by user id', async () => {
