@@ -175,8 +175,8 @@ export class ProfileService {
     return this.http.post<Followings>(this.followUrl, follow);
   }
 
-  unfollowUser(follow: Followings): Observable<Followings> {
-    return this.http.delete<Followings>(this.followUrl + "/id/"+ follow.id);
+  unfollowUser(followId: number): Observable<Followings> {
+    return this.http.delete<Followings>(this.followUrl + "/id/"+ followId);
   }
 
 }
