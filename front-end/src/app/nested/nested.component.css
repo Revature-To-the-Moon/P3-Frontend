@@ -96,3 +96,12 @@ textarea{
 .container {
     background-color: white;
 }
+
+#buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.votes {
+    text-align: right;
+}
