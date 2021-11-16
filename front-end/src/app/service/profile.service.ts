@@ -29,6 +29,7 @@ export class ProfileService {
   {
     return this.http.get<User>(this.apiUrl + "/user/id/" + id).toPromise();
   }
+  
   getUserByName(username: string): Promise<User> {
     return this.http.get<User>(this.apiUrl + "/user/username/" + username).toPromise();
   }
@@ -74,7 +75,7 @@ export class ProfileService {
           activityToAdd.date=result[i].dateTime;
           activityToAdd.id=result[i].id;
           activityToAdd.type="nest";
-          activityToAdd.title=result[i].message;
+          activityToAdd.title=result[i].message; 
           activityList.push(activityToAdd);
           }
         };
@@ -100,44 +101,9 @@ export class ProfileService {
     return(activityList);
   }
 
-  getAllPostsAndCommentsByUser(name: string): any[]
+  getFollowingsByUserId(id: number): Promise<Followings[]>
   {
-    var LoC = [] as Array<any>
-
-    this.http.get<[]>(this.rootUrl + "/post/").toPromise().then(
-      (posts: any[]) => {
-        // posts now has every single post, including comments, in the entire website...
-        posts.forEach(posty => {
-          if (posty.userName == name)
-          {
-            LoC.push(posty);
-          }
-          posty.comments.forEach(comery => {
-            LoC = this.addCommentToList(comery, LoC, name);
-          });
-        });
-        LoC.sort((a,b) => (a.dateTime > b.dateTime ? 1 : -1));
-      });
-      console.log(LoC);
-    return LoC;
-  }
-
-  addCommentToList(Com: Comment, LoC: Comment[], name: string)
-  {
-    console.log("Got into addCommentToList. Username: " + Com.userName);
-    if (Com.comments)
-    {
-      Com.comments.forEach(commy => {
-        LoC = this.addCommentToList(commy, LoC, name);
-      });
-    }
-    // final comment, or already went through the children
-    if (Com.userName == name)
-    {
-      LoC.push(Com);
-    }
-
-    return LoC;
+    return this.http.get<[]>(this.followUrl + "/followeruserId/"+ id).toPromise();
   }
 
   checkFollowingPost(followedPostId: number, currentUser:number): boolean{
@@ -170,8 +136,8 @@ export class ProfileService {
     return this.http.post<Followings>(this.followUrl, follow);
   }
 
-  unfollowUser(follow: Followings): Observable<Followings> {
-    return this.http.delete<Followings>(this.followUrl + "/id/"+ follow.id);
+  unfollowUser(followId: number): Observable<Followings> {
+    return this.http.delete<Followings>(this.followUrl + "/id/"+ followId);
   }
 
 }

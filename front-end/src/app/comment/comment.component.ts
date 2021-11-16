@@ -188,38 +188,35 @@ export class CommentComponent implements OnInit {
           }
         }
       }
+        
+        if(this.status === false){
+          console.log("Reached here too")
+          this.vote.value = 1
+          this.vote.userName = this.user
+          this.vote.commentId = id
 
-      if (this.status === false) {
-        console.log("Reached here too")
-        this.vote.value = 1
-        this.vote.userName = this.user
-        this.vote.commentId = id
+          this.rootService.addVote(this.vote).then(res => {
+            console.log("Vote added")
 
-        this.rootService.addVote(this.vote).then(res => {
-          console.log("Vote added")
+            this.currentRoute.params.subscribe(params => {
+              this.id = params['id'];
+        
+              this.rootService.getRootById(this.id).then((result: Root) => {
+                this.root = result;
 
-          this.currentRoute.params.subscribe(params => {
-            this.id = params['id'];
-
-            this.rootService.getRootById(this.id).then((result: Root) => {
-              this.root = result;
-
-              for (let comment of this.root.comments) {
-                comment.totalVote = 0;
-                this.counter = 0;
-                for (let vote of comment.votes) {
-                  this.counter = this.counter + vote.value;
+                for(let comment of this.root.comments){
+                  comment.totalVote = 0;
+                  this.counter = 0;
+                  for(let vote of comment.votes){
+                    this.counter = this.counter + vote.value;
+                  }
+                  comment.totalVote = this.counter;
                 }
-                comment.totalVote = this.counter;
-              }
+              })
             })
           })
-        })
-      }
-
-      this.status = false
-    })
-
+        }
+      })
   }
 
   goToUserProfile(username: string): void {
@@ -287,34 +284,33 @@ export class CommentComponent implements OnInit {
           }
         }
       }
+        if(this.status === false){
+          console.log("Reached here too")
+          this.vote.value = -1
+          this.vote.userName = this.user
+          this.vote.commentId = id
 
-      if (this.status === false) {
-        console.log("Reached here too")
-        this.vote.value = -1
-        this.vote.userName = this.user
-        this.vote.commentId = id
+          this.rootService.addVote(this.vote).then(res => {
+            console.log("Vote added")
 
-        this.rootService.addVote(this.vote).then(res => {
-          console.log("Vote added")
+            this.currentRoute.params.subscribe(params => {
+              this.id = params['id'];
+        
+              this.rootService.getRootById(this.id).then((result: Root) => {
+                this.root = result;
 
-          this.currentRoute.params.subscribe(params => {
-            this.id = params['id'];
-
-            this.rootService.getRootById(this.id).then((result: Root) => {
-              this.root = result;
-
-              for (let comment of this.root.comments) {
-                comment.totalVote = 0;
-                this.counter = 0;
-                for (let vote of comment.votes) {
-                  this.counter = this.counter + vote.value;
+                for(let comment of this.root.comments){
+                  comment.totalVote = 0;
+                  this.counter = 0;
+                  for(let vote of comment.votes){
+                    this.counter = this.counter + vote.value;
+                  }
+                  comment.totalVote = this.counter;
                 }
-                comment.totalVote = this.counter;
-              }
+              })
             })
           })
-        })
-      }
+    }
 
       this.status = false
     })

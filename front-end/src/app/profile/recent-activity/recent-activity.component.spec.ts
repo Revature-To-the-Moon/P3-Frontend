@@ -32,6 +32,13 @@ describe('RecentActivityComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
+    // trying to run this sometimes makes tests fail
+    // component.toSource(0, "nest");
+
+    component.ngOnChanges({
+      id: new SimpleChange(null, 1, null)
+    });
   });
 /*
   it('should test the MANUAL execution of the OnChanges', () => {
