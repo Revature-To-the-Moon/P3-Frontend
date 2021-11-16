@@ -14,7 +14,7 @@ export class FollowButtonComponent implements OnInit {
   isFollow = false;
   followingId = 0;
   @Input() follower: Followings;
-  @Input() id = 0;
+  @Input() followId = 0;
   @Output() toggle = new EventEmitter<boolean>();
 
   follows: Followings = {
@@ -46,6 +46,11 @@ export class FollowButtonComponent implements OnInit {
           this.profileService.getUserByName(this.currentUser.username).then((result: User) => {
             this.currentUser= result;
             console.log(this.currentUser)
+            this.follows.followerUserId = this.currentUser.id;
+            this.follows.followingUserId = this.followId;
+            this.profileService.getUserById(this.followId).then((result: User) =>
+            this.follows.followingUserName = result.username
+            );
           });
         }
       })
@@ -56,7 +61,7 @@ export class FollowButtonComponent implements OnInit {
     this.isFollow = !this.isFollow;
     if(this.isFollow == true){
       console.log(this.isFollow);
-      console.log(this.id);
+      console.log(this.followId);
       this.profileService.followUser(this.follows).subscribe(
         data => {
           this.isFollow = true;
@@ -65,7 +70,7 @@ export class FollowButtonComponent implements OnInit {
       );
     } else if (this.isFollow == false) {
       console.log(this.isFollow);
-      console.log(this.id);
+      console.log(this.followId);
       this.profileService.unfollowUser(this.follows).subscribe(
         data => {
           this.isFollow = false;

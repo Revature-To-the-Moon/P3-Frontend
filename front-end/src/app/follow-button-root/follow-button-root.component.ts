@@ -23,6 +23,7 @@ export class FollowButtonRootComponent implements OnInit {
   followingId = 0;
   postname = "";
   isFollow = false;
+
   newFollowing: FollowingPost ={
     postname: '',
     rootId: 0,
@@ -37,7 +38,6 @@ export class FollowButtonRootComponent implements OnInit {
     followings: []
   }; 
   constructor(public profileService: ProfileService, public auth: AuthService, public rootService: RootServiceService, public router: Router ) { }
-
 
   ngOnInit(): void {
     console.log("in ngOnInit for follow button");
@@ -67,9 +67,9 @@ export class FollowButtonRootComponent implements OnInit {
           });
         }
       })
-    }
-    
+    }  
   }
+
   ngOnChanges(
   ){  }
   
@@ -98,8 +98,6 @@ export class FollowButtonRootComponent implements OnInit {
         })    
         
         this.isFollow=false;
-      }
-    
+      }  
     };
-
   }

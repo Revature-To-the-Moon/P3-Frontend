@@ -75,7 +75,7 @@ export class ProfileService {
           activityToAdd.date=result[i].dateTime;
           activityToAdd.id=result[i].id;
           activityToAdd.type="nest";
-          activityToAdd.title=result[i].message;
+          activityToAdd.title=result[i].message; 
           activityList.push(activityToAdd);
           }
         };
