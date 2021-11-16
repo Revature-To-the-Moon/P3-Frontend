@@ -102,8 +102,6 @@ describe('SearchComponent', () => {
         comments: []
       }]);
     });
-
-
   });
 
 
