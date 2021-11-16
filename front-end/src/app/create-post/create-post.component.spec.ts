@@ -45,4 +45,32 @@ describe('CreatePostComponent', () => {
 
     expect(component.onSubmit).toHaveBeenCalled();
   })
+
+  it('should have at least one input on the page', () => {
+    const inputs = fixture.debugElement.queryAll(By.css('input'));
+    expect(inputs.length >= 1).toBeTruthy();
+  });
+
+  it('should have at least one input on the page', () => {
+    const textarea = fixture.debugElement.queryAll(By.css('textarea'));
+    expect(textarea.length >= 1).toBeTruthy();
+  });
+
+  it('should have one input with "Title" as the placeholder', () => {
+    const inputs = fixture.debugElement.queryAll(By.css('input'));
+    const nativeInput: HTMLInputElement = inputs[0].nativeElement;
+    expect(nativeInput.placeholder).toBe('Title');
+  });
+
+  it('should have one input with "Post" as the value', () => {
+    const inputs = fixture.debugElement.queryAll(By.css('input'));
+    const nativeInput: HTMLInputElement = inputs[1].nativeElement;
+    expect(nativeInput.value).toBe('Post');
+  });
+
+  it('should have one textarea with "Whats on your mind..." as the placeholder', () => {
+    const textarea = fixture.debugElement.queryAll(By.css('textarea'));
+    const nativeTextArea: HTMLTextAreaElement = textarea[0].nativeElement;
+    expect(nativeTextArea.placeholder).toBe("What's on your mind...");
+  });
 });
