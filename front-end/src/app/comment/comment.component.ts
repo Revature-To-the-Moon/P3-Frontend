@@ -320,4 +320,9 @@ export class CommentComponent implements OnInit {
     })
   }
 
+  deleteComment(id: number) {
+    this.rootService.deleteComment(id).then(res => {
+      location.reload()
+    })
+  }
 }

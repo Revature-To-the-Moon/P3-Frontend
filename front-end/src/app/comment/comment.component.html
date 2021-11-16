@@ -60,7 +60,7 @@
                         <h6>{{ comment.message }}</h6>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col" id="buttons">
                             <span *ngIf="comment.votes.length !== 0 else zero">
                                 <span *ngIf="checkIfCommentIsLiked(comment.votes) else notTouched">
                                     <span *ngIf="checkIfCommentIsLikedValue(comment.votes) else disliked">
@@ -94,8 +94,11 @@
                                     (click)="unLikeComment(comment.id)">
                             </ng-template>
                             <a class="btn btn-outline-primary" routerLink="/nest/{{ comment.id }}"
-                                role="button">{{(comment.comments).length}} Comments</a>
-                            <p style="float: right;">{{ comment.totalVote }} Votes</p>
+                                role="button" style="margin-right: 5px;">{{(comment.comments).length}} Comments</a>
+                            <div *ngIf="user == comment.userName">
+                                <button type="button" class="btn btn-outline-danger"
+                                    (click)="deleteComment(comment.id)">Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div>
