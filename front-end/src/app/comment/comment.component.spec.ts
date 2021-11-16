@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -79,9 +79,6 @@ describe('CommentComponent', () => {
     expect(reply == false);
   })
 
-  // like comment
-
-  // goToUserProfile
   it('should go to userProfile', () => {
     let username = 'Hello';
     
@@ -89,7 +86,16 @@ describe('CommentComponent', () => {
     // then it goes into a service...
   })
 
-  // unLikeComment
+  it('should submit', () => {
+    let form: NgForm;
+    component.onSubmit(form);
+  })
 
-  // 
+  it('should like comments', () => {
+    component.likeComment(1);
+  })
+
+  it('should unlike comments', () => {
+    component.unLikeComment(1);
+  })
 });
