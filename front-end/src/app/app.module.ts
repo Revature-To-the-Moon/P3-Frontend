@@ -24,6 +24,7 @@ import { RegisterButtonComponent } from './register-button/register-button.compo
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { NestedComponent } from './nested/nested.component';
 import { ReadRootComponent } from './read-root/read-root.component';
+import { FollowButtonRootComponent } from './follow-button-root/follow-button-root.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ReadRootComponent } from './read-root/read-root.component';
     ListOfFollowersComponent,
     FollowedPostsComponent,
     FollowButtonComponent,
+    FollowButtonRootComponent,
     ProfilePageComponent,
     NavBarComponent,
     BufferComponent,

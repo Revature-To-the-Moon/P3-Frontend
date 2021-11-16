@@ -9,10 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./profile-page.component.css'],
   providers: [ProfileService]
 })
+
 export class ProfilePageComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, public profileService: ProfileService, private router: Router) { }
-  isFollow = false;
   id = 0;
   userList:User[];
   currentUser: User = {
@@ -21,7 +21,7 @@ export class ProfilePageComponent implements OnInit {
     email: "",
     name: "",
     followings: []
-  }; 
+  };
 
   ngOnInit(): void {
     this.currentRoute.params.subscribe(params => {
@@ -29,14 +29,7 @@ export class ProfilePageComponent implements OnInit {
 
       this.profileService.getUserById(this.id).then((result: User) => {
         this.currentUser= result;
-        console.log("followed user" + this.currentUser.followings[1].followingUserName);
       });
     });
   }
-
-  GetPosts(): void {
-    var whatever = this.profileService.getAllPostsAndCommentsByUser("Bao3");
-    console.log(whatever);
-  }
-
 }

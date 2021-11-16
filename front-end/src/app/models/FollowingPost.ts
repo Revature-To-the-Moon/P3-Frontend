@@ -1,5 +1,5 @@
 export interface FollowingPost{
-    id: number;
+    id?: number;
     postname: string;
     rootId: number;
     userId: number;

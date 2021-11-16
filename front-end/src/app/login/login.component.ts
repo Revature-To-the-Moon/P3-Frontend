@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document, public userService: UserCreationService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //empty on purpose
+  }
 
   Loginfunc(){
     this.auth.loginWithRedirect({ appState: { target: '/buffer' } });

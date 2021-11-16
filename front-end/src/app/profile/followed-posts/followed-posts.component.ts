@@ -24,6 +24,14 @@ export class FollowedPostsComponent implements OnInit {
   constructor(private route: ActivatedRoute, public profileService: ProfileService) { }
 
   ngOnInit(): void {
+    this.followedList = [];
+    this.profileService.getFollowedPostByUserId(this.id).then((result: [FollowingPost]) => {
+      this.followedList= result;
+      console.log(this.id);
+      console.log(this.followedList);
+      
+      
+    });
 
   }
 
