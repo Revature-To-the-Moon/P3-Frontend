@@ -17,18 +17,6 @@
     background-color: #f7f2ff;
 }
 
-.btn-primary {
-    color: #fdf4f7;
-    background-color: #4d4382;
-    border-color: #4d4382;
-}
-
-.btn-primary:hover {
-    color: #fdf4f7;
-    background-color: #291a4a;
-    border-color: #291a4a;
-}
-
 span {
     font-size: 16px;
     color: black;
