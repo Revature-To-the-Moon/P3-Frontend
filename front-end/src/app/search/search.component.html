@@ -1,21 +1,31 @@
 <div class="search">
     <form class="form-inline">
         <div class="md-form">
-            <input #box (keyup.enter)="onEnter(box.value)" type="search" class="form-control"
-                placeholder="Search Cadmus" aria-label="Search">
+            <input #box (keyup.enter)="onEnter(box.value); open(content)" type="search" class="form-control"
+                placeholder="Search Cadmus...Press Enter to Submit" aria-label="Search">
         </div>
-        <span><button type="reset" class="btn btn-primary" id="clearButton" (click)="onClear()"
-                value="reset">clear</button></span>
-
     </form>
 </div>
 
 <br>
 
-<div *ngFor="let res of result">
-    <div class="row searchResult">
-        <p><a class="badge badge-dark" routerLink="/comment/{{res.id}}">{{res.title}}</a></p>
-        <p>{{res.userName}}</p>
-        <p>{{res.message}}</p>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4>Search Results</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true" style="color: white;">&times;</span>
+        </button>
     </div>
-</div>
+    <div class="modal-body">
+        <div *ngFor="let res of result">
+            <div class="row searchResult rounded">
+                <h5><a class="badge badge-success" routerLink="/comment/{{res.id}}" (click)="modal.close('Close click')">{{res.title}}</a></h5>
+                <p>{{res.userName}}</p>
+                <p>{{res.message}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-light" (click)="modal.close('Close click')">Close</button>
+      </div>
+</ng-template>
