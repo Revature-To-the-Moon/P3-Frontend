@@ -18,17 +18,17 @@ export class RecentActivityComponent implements OnInit {
   roots!: Root[];
   comments!: Comment[];
   activity: RecentActivity[];
-  
+
 
   constructor(private route: ActivatedRoute, public profileService: ProfileService, private router: Router) { }
 
   ngOnInit(): void {
-
+    /*Intentionally blank*/
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log('searching for recent activity');
     this.activity=this.profileService.getRecentActivity(this.username);
-    
+
 
     // this.message = 'ngOnChanges Executed'
     // this.profileService.getUserById(this.id).then((user: User) => (

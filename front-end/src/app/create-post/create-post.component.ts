@@ -24,7 +24,7 @@ export class CreatePostComponent implements OnInit {
     comments: []
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { //Intentionally blank
   }
 
   onSubmit(postForm: NgForm) {

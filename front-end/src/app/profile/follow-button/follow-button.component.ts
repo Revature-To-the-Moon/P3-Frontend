@@ -30,16 +30,16 @@ export class FollowButtonComponent implements OnInit {
     email: "",
     name: "",
     followings: []
-  }; 
+  };
 
   constructor(private profileService: ProfileService, public auth: AuthService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     if(this.auth.isAuthenticated$){
       this.auth.user$.subscribe(
         (profile) => (this.currentUser.username = profile.preferred_username)
         )
-        
+
         this.auth.user$.subscribe((user) => {
           if (user?.preferred_username) {
           this.currentUser.username = user.preferred_username;
@@ -51,10 +51,10 @@ export class FollowButtonComponent implements OnInit {
       })
     }
   }
-  
+
   onClick(): void {
     this.isFollow = !this.isFollow;
-    if(this.isFollow == true){
+    if(this.isFollow){
       console.log(this.isFollow);
       console.log(this.id);
       this.profileService.followUser(this.follows).subscribe(
@@ -63,7 +63,7 @@ export class FollowButtonComponent implements OnInit {
           this.ngOnInit();
         }
       );
-    } else if (this.isFollow == false) {
+    } else if (!this.isFollow) {
       console.log(this.isFollow);
       console.log(this.id);
       this.profileService.unfollowUser(this.follows).subscribe(
