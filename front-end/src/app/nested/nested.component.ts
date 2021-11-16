@@ -82,4 +82,9 @@ export class NestedComponent implements OnInit {
     })
   }
 
+  deleteComment(id: number) {
+    this.rootService.deleteComment(id).then(res => {
+      location.reload()
+    })
+  }
 }

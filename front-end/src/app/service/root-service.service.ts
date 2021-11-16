@@ -34,14 +34,17 @@ export class RootServiceService {
   addComment(comment: Comment): Promise<Comment> {
     return this.http.post<Comment>(this.rootUrl_1, comment).toPromise();
   }
-  getCommentById(id: number): Promise<Comment>{
+  deleteComment(id: number): Promise<Comment> {
+    return this.http.delete<Comment>(this.rootUrl_1 + '/' + id).toPromise();
+  }
+  getCommentById(id: number): Promise<Comment> {
     return this.http.get<Comment>(this.rootUrl_1 + '/' + id).toPromise();
   }
 
   getAllVotes(): Promise<Vote[]> {
     return this.http.get<Vote[]>(this.rootUrl_2).toPromise();
   }
-  addVote(vote: Vote): Promise<Vote>{
+  addVote(vote: Vote): Promise<Vote> {
     return this.http.post<Vote>(this.rootUrl_2, vote).toPromise();
   }
   updateVote(vote: Vote): Promise<Vote> {
@@ -51,12 +54,13 @@ export class RootServiceService {
     return this.http.delete<void>(this.rootUrl_2 + "/" + id).toPromise();
   }
 
-  RecursiveFunction(chosenComment: Comment): Comment[]{
+  RecursiveFunction(chosenComment: Comment): Comment[] {
     if (chosenComment.comments.length > 1) {
-    chosenComment.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);}
+      chosenComment.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1);
+    }
     //sorts by popularity
     let winningComment = chosenComment.comments[0];
-    let commentArray: Comment []= [winningComment];
+    let commentArray: Comment[] = [winningComment];
     //selects most popular
     chosenComment.comments = [winningComment];
     if (winningComment.comments.length > 0) {
@@ -65,5 +69,5 @@ export class RootServiceService {
     }
     return commentArray;
   }
-  
+
 }
