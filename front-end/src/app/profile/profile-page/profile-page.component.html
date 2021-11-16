@@ -1,17 +1,20 @@
-<button class="follow">
-    <app-follow-button [id]="id"></app-follow-button>
-</button>
+<div *ngIf="currentUser.username != profileUser.username">
+    <button class="follow">
+        <app-follow-button [followId]="id"></app-follow-button>
+    </button>
+</div>
+
 <body class="bg">
     
     <br>
     <div class="greeting container">
-        <p>¡¡¡¡Bienvenidos {{currentUser.username}}!!!!</p>
+        <p>{{profileUser.username}}</p>
     </div>
     <br>
     <div class="container">
         <div class="row center-text">
             <div class="col">
-                <app-recent-activity [username]="currentUser.username"></app-recent-activity>
+                <app-recent-activity [username]="profileUser.username"></app-recent-activity>
             </div>
             <div class="col">
                 <app-list-of-followers [id]="id"></app-list-of-followers>

@@ -75,7 +75,7 @@ export class ProfileService {
           activityToAdd.date=result[i].dateTime;
           activityToAdd.id=result[i].id;
           activityToAdd.type="nest";
-          activityToAdd.title=result[i].message;
+          activityToAdd.title=result[i].message; 
           activityList.push(activityToAdd);
           }
         };
@@ -141,6 +141,11 @@ export class ProfileService {
     return LoC;
   }
 
+  getFollowingsByUserId(id: number): Promise<Followings[]>
+  {
+    return this.http.get<[]>(this.followUrl + "/followeruserId/"+ id).toPromise();
+  }
+
   checkFollowingPost(followedPostId: number, currentUser:number): boolean{
 
     var doesFollow = false;
@@ -171,8 +176,8 @@ export class ProfileService {
     return this.http.post<Followings>(this.followUrl, follow);
   }
 
-  unfollowUser(follow: Followings): Observable<Followings> {
-    return this.http.delete<Followings>(this.followUrl + "/id/"+ follow.id);
+  unfollowUser(followId: number): Observable<Followings> {
+    return this.http.delete<Followings>(this.followUrl + "/id/"+ followId);
   }
 
 }

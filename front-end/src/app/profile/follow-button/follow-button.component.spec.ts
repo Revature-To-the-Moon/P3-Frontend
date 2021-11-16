@@ -55,4 +55,6 @@ describe('FollowButtonComponent', () => {
       component.onClick();
       expect(component.isFollow).toBe(true);
     });
+
+    
 });
