@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -102,4 +102,55 @@ describe('CommentComponent', () => {
   });
 
   
+  it('should check if a comment is liked', () => {
+    const mockVote = [{
+      // vote info
+      id: 99,
+      userName: 'Richard',
+      value: 1,
+      commentId: 99
+    }]
+    component.user = 'Richard';
+    var reply = component.checkIfCommentIsLiked(mockVote);
+    expect(reply == true);
+    component.user = 'Blachard';
+    reply = component.checkIfCommentIsLiked(mockVote);
+    expect(reply == false);
+  }),
+
+  it('should check the value of a liked comment', () => {
+    const mockVote = [{
+      // vote info
+      id: 99,
+      userName: 'Richard',
+      value: 1,
+      commentId: 99
+    }]
+    component.user = 'Richard';
+    var reply = component.checkIfCommentIsLikedValue(mockVote);
+    expect(reply == true);
+    component.user = 'Blachard';
+    reply = component.checkIfCommentIsLikedValue(mockVote);
+    expect(reply == false);
+  })
+
+  it('should go to userProfile', () => {
+    let username = 'Hello';
+    
+    component.goToUserProfile(username);
+    // then it goes into a service...
+  })
+
+  it('should submit', () => {
+    let form: NgForm;
+    component.onSubmit(form);
+  })
+
+  it('should like comments', () => {
+    component.likeComment(1);
+  })
+
+  it('should unlike comments', () => {
+    component.unLikeComment(1);
+  })
 });

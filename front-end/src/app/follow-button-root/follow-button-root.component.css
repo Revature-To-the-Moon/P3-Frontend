@@ -1,1 +1,22 @@
-/*Intentionally blank*/
+.btn{
+    background-color: #4d4382;
+    color: white;
+    border: none;
+    padding: 0.6em 2em;
+    text-align: center;
+    margin: .8em;
+    text-decoration: none;
+    font-size: .9em;
+    display: float;
+    float: right;
+    cursor:pointer;
+    border-radius: 6px;
+    width: 90px;
+    min-width: 110px
+}
+
+.btn:hover {
+    color: #fdf4f7;
+    background-color: #291a4a;
+    border-color: #291a4a;
+}

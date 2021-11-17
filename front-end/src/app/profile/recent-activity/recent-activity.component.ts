@@ -26,17 +26,10 @@ export class RecentActivityComponent implements OnInit {
     /*Intentionally blank*/
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('searching for recent activity');
-    this.activity=this.profileService.getRecentActivity(this.username);
-
-
-    // this.message = 'ngOnChanges Executed'
-    // this.profileService.getUserById(this.id).then((user: User) => (
-    //   this.activity = this.profileService.getAllPostsAndCommentsByUser(user.name)
-    // ))
+    this.activity = this.profileService.getRecentActivity(this.username);
   }
+
   toSource(id:number, type:string){
     this.router.navigateByUrl(type+'/'+id);
-
   }
 }

@@ -1,7 +1,7 @@
 import { Vote } from "./vote";
 
 export interface Comment {
-    id: number;
+    id?: number;
     parentId: number;
     rootId: number;
     message: string;

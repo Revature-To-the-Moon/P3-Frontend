@@ -38,7 +38,6 @@ export class FollowButtonRootComponent implements OnInit {
   }; 
   constructor(public profileService: ProfileService, public auth: AuthService, public rootService: RootServiceService, public router: Router ) { }
 
-
   ngOnInit(): void {
     console.log("in ngOnInit for follow button");
     if (this.auth.isAuthenticated$)
@@ -59,6 +58,8 @@ export class FollowButtonRootComponent implements OnInit {
           for(let i = 0; i < listOfFollowings.length; i++){
             if (listOfFollowings[i].rootId == this.id){
               this.isFollow = true;
+              console.log("You follow this person");
+              
               this.followingId=listOfFollowings[i].id;
               break;
             }
@@ -67,9 +68,9 @@ export class FollowButtonRootComponent implements OnInit {
           });
         }
       })
-    }
-    
+    }  
   }
+
   ngOnChanges(
   ){  }
   
@@ -98,8 +99,7 @@ export class FollowButtonRootComponent implements OnInit {
         })    
         
         this.isFollow=false;
-      }
-    
+      }  
     };
 
   }

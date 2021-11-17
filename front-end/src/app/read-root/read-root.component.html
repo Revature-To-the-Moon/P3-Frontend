@@ -9,7 +9,7 @@
                         <p><span>{{ root.userName }}</span> • {{ root.dateTime | date:'short' }}</p>
                     </div>
                     <div class="col" id="follow-post-btn">
-                        <button type="button" class="btn btn-primary" style="margin-right: 5px;">Follow Post</button>
+                        <app-follow-button-root class="btn" style="margin-right: 5px;" [id]="root.id">Follow Post</app-follow-button-root>
                     </div>
                 </div>
                 <div class="row" style="padding: 10px;">

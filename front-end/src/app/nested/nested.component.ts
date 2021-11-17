@@ -19,7 +19,6 @@ export class NestedComponent implements OnInit {
   comments: Comment[] = [];
 
   comment: Comment = {
-    id: 0,
     parentId: 0,
     rootId: 0,
     message: '',
@@ -31,7 +30,6 @@ export class NestedComponent implements OnInit {
   }
 
   root: Comment = {
-    id: 0,
     parentId: 0,
     rootId: 0,
     message: '',
@@ -69,18 +67,24 @@ export class NestedComponent implements OnInit {
       }
 
       this.currentRoute.params.subscribe(params => {
-        this.comment.rootId = params['id'];
+        this.comment.parentId = params['id'];
       })
 
       this.comment.dateTime = new Date();
-      this.comment.parentId = this.root.id;
-      console.log(this.root)
+      this.comment.rootId = this.root.rootId;
+      console.log(this.root.rootId)
+      console.log(this.comment.rootId)
 
       this.rootService.addComment(this.comment).then(res => {
-        alert("Post successfully created")
+        alert("Comment successfully created")
         location.reload()
       })
     })
   }
 
+  deleteComment(id: number) {
+    this.rootService.deleteComment(id).then(res => {
+      location.reload()
+    })
+  }
 }
