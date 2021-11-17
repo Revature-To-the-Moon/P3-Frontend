@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed } from '@angular/core/testing';
 import { RootServiceService } from './root-service.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Post } from '../models/post'
@@ -19,7 +19,7 @@ describe('RootServiceService', () => {
   });
 
   afterEach(() => {
-    httpMock.verify();
+    //httpMock.verify();
   });
 
   it('should be created', () => {
@@ -27,7 +27,7 @@ describe('RootServiceService', () => {
   });
 
   //Root Tests//
-  it('addRoot should add new story', async () => {
+  it('addRoot should add new story', fakeAsync (() => {
     let fakePost: Post = {
       id: 1,
       title: 'Walking the Dog',
@@ -38,14 +38,14 @@ describe('RootServiceService', () => {
       comments: []
     }
 
-    spyOn(service, 'addRoot').and.returnValue(Promise.resolve(fakePost));
-    await service.addRoot(fakePost).then((res) => {
+    spyOn(service, 'addRoot').and.callThrough();
+    service.addRoot(fakePost).then((res) => {
       expect(service.addRoot).toHaveBeenCalled();
       expect(res).toEqual(fakePost);
     });
-  });
+  }));
 
-  it('getAllRoots should return array of stories', async () => {
+  it('getAllRoots should return array of stories', fakeAsync (() => {
 
     let fakeData: Post[] = [
       {
@@ -68,14 +68,14 @@ describe('RootServiceService', () => {
       }
     ];
 
-    spyOn(service, 'getAllRoots').and.returnValue(Promise.resolve(fakeData));
-    await service.getAllRoots().then((res) => {
+    spyOn(service, 'getAllRoots').and.callThrough();
+    service.getAllRoots().then((res) => {
       expect(service.getAllRoots).toHaveBeenCalled();
       expect(res.length).toEqual(2);
     });
-  });
+  }));
 
-  it('getRootById should return a specific root', async () => {
+  it('getRootById should return a specific root', fakeAsync (() => {
     let fakePost = {
       id: 1,
       title: 'Walking the Dog',
@@ -85,14 +85,14 @@ describe('RootServiceService', () => {
       totalVote: 5,
       comments: []
     }
-    spyOn(service, 'getRootById').and.returnValue(Promise.resolve(fakePost));
-    await service.getRootById(1).then((res) => {
+    spyOn(service, 'getRootById').and.callThrough();
+    service.getRootById(1).then((res) => {
       expect(service.getRootById).toHaveBeenCalledWith(1);
       expect(res).toEqual(fakePost);
     })
-  });
+  }));
 
-  it('updateRoot should update story', async () => {
+  it('updateRoot should update story', fakeAsync (() => {
     let fakePost = {
       id: 1,
       title: 'Walking the Dog',
@@ -103,15 +103,15 @@ describe('RootServiceService', () => {
       comments: []
     }
 
-    spyOn(service, 'updateRoot').and.returnValue(Promise.resolve(fakePost));
-    await service.updateRoot(fakePost).then((res) => {
+    spyOn(service, 'updateRoot').and.callThrough();
+    service.updateRoot(fakePost).then((res) => {
       expect(service.updateRoot).toHaveBeenCalled();
       expect(res).toEqual(fakePost);
     });
-  });
+  }));
   //comment tests//
 
-  it('addComment should post new comment', async () => {
+  it('addComment should post new comment', fakeAsync (() => {
     let fakeComment = {
       id: 8,
       parentId: -1,
@@ -123,14 +123,14 @@ describe('RootServiceService', () => {
       votes: [],
       comments: []
     }
-    spyOn(service, 'addComment').and.returnValue(Promise.resolve(fakeComment));
-    await service.addComment(fakeComment).then((res) => {
+    spyOn(service, 'addComment').and.callThrough();
+    service.addComment(fakeComment).then((res) => {
       expect(service.addComment).toHaveBeenCalled();
       expect(res).toEqual(fakeComment);
     });
-  });
+  }));
 
-  it('getCommentById should return specific comment', async () => {
+  it('getCommentById should return specific comment', fakeAsync (() => {
     let fakeComment = {
       id: 8,
       parentId: -1,
@@ -142,15 +142,15 @@ describe('RootServiceService', () => {
       votes: [],
       comments: []
     }
-    spyOn(service, 'getCommentById').and.returnValue(Promise.resolve(fakeComment));
-    await service.getCommentById(8).then((res) => {
+    spyOn(service, 'getCommentById').and.callThrough();
+    service.getCommentById(8).then((res) => {
       expect(service.getCommentById).toHaveBeenCalledWith(8);
       expect(res).toEqual(fakeComment);
     })
-  });
+  }));
   //vote tests//
 
-  it('getAllVotes should get all votes', async () => {
+  it('getAllVotes should get all votes', fakeAsync (() => {
     let fakeVotes: Vote[] = [{
       id: 1,
       userName: 'Wowowubzy3456',
@@ -163,53 +163,55 @@ describe('RootServiceService', () => {
       value: 10,
       commentId: 7
     }];
-    spyOn(service, 'getAllVotes').and.returnValue(Promise.resolve(fakeVotes));
-    await service.getAllVotes().then((res) => {
+    spyOn(service, 'getAllVotes').and.callThrough();
+    service.getAllVotes().then((res) => {
       expect(service.getAllVotes).toHaveBeenCalled();
       expect(res.length).toEqual(2);
     });
-  });
+  }));
 
-  it('addVote should post new vote', async () => {
+  it('addVote should post new vote', fakeAsync (() => {
     let fakeVote = {
       id: 2,
       userName: 'ToTheMoon1234',
       value: 10,
       commentId: 7
     }
-    spyOn(service, 'addVote').and.returnValue(Promise.resolve(fakeVote));
-    await service.addVote(fakeVote).then((res) => {
+    spyOn(service, 'addVote').and.callThrough();
+    service.addVote(fakeVote).then((res) => {
       expect(service.addVote).toHaveBeenCalled();
       expect(res).toEqual(fakeVote);
     });
-  });
+  }));
 
-  it('updateVote should update vote', async () => {
+  it('updateVote should update vote', fakeAsync (() => {
     let fakeVote = {
       id: 2,
       userName: 'ToTheMoon1234',
       value: 10,
       commentId: 7
     }
-    spyOn(service, 'updateVote').and.returnValue(Promise.resolve(fakeVote));
-    await service.updateVote(fakeVote).then((res) => {
+    spyOn(service, 'updateVote').and.callThrough();
+    service.updateVote(fakeVote).then((res) => {
       expect(service.updateVote).toHaveBeenCalled();
       expect(res).toEqual(fakeVote);
     });
-  });
+  }));
 
-  it('getCommentById should return specific comment', async () => {
+  it('getCommentById should return specific comment', fakeAsync (() => {
     let fakeVote = {
       id: 2,
       userName: 'ToTheMoon1234',
       value: 10,
       commentId: 7
     }
-    spyOn(service, 'deleteVote').and.returnValue(Promise.resolve(null));
-    await service.deleteVote(2).then((res) => {
+    spyOn(service, 'deleteVote').and.callThrough();
+    service.deleteVote(2).then((res) => {
       expect(service.deleteVote).toHaveBeenCalledWith(2);
       expect(res).toEqual(null);
     })
-  });
+  }));
+
+  
 
 });
