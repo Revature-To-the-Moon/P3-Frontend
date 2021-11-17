@@ -16,7 +16,7 @@ import { ProfileService } from '../service/profile.service';
 })
 export class CommentComponent implements OnInit {
 
-  constructor(public profileService: ProfileService, public router: Router, private currentRoute: ActivatedRoute, private rootService: RootServiceService, private cdr: ChangeDetectorRef, public auth: AuthService) { }
+  constructor(public profileService: ProfileService, public router: Router, private currentRoute: ActivatedRoute, public rootService: RootServiceService, private cdr: ChangeDetectorRef, public auth: AuthService) { }
 
   id = 0;
   user: string = '';
@@ -67,7 +67,6 @@ export class CommentComponent implements OnInit {
       this.rootService.getRootById(this.id).then((result: Root) => {
         this.root = result;
         result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
-        console.log(result)
 
         for (let comment of this.root.comments) {
           comment.totalVote = 0;
@@ -86,7 +85,6 @@ export class CommentComponent implements OnInit {
   }
 
   onSubmit(postForm: NgForm) {
-    console.log("Comment submitted")
 
     this.auth.user$.subscribe((user) => {
       if (user?.preferred_username) {
@@ -99,7 +97,6 @@ export class CommentComponent implements OnInit {
 
       this.comment.dateTime = new Date();
       this.comment.parentId = -1;
-      console.log(this.root)
 
       this.rootService.addComment(this.comment).then(res => {
         alert("Comment successfully created")
@@ -129,9 +126,7 @@ export class CommentComponent implements OnInit {
   }
 
   likeComment(id: number) {
-    console.log(this.user)
     this.rootService.getCommentById(id).then(result => {
-      console.log(result)
       if (result.votes.length !== 0) {
         for (let vote of result.votes) {
           if (vote.userName === this.user) {
@@ -162,7 +157,6 @@ export class CommentComponent implements OnInit {
               vote.value = 1
 
               this.rootService.updateVote(vote).then(res => {
-                console.log("Vote added")
 
                 this.currentRoute.params.subscribe(params => {
                   this.id = params['id'];
@@ -192,13 +186,11 @@ export class CommentComponent implements OnInit {
       }
         
         if(this.status === false){
-          console.log("Reached here too")
           this.vote.value = 1
           this.vote.userName = this.user
           this.vote.commentId = id
 
           this.rootService.addVote(this.vote).then(res => {
-            console.log("Vote added")
 
             this.currentRoute.params.subscribe(params => {
               this.id = params['id'];
@@ -232,9 +224,7 @@ export class CommentComponent implements OnInit {
   }
 
   unLikeComment(id: number) {
-    console.log(this.user)
     this.rootService.getCommentById(id).then(result => {
-      console.log(this.status)
       if (result.votes.length !== 0) {
         for (let vote of result.votes) {
           if (vote.userName === this.user) {
@@ -265,7 +255,6 @@ export class CommentComponent implements OnInit {
               vote.value = -1
 
               this.rootService.updateVote(vote).then(res => {
-                console.log("Vote added")
 
                 this.currentRoute.params.subscribe(params => {
                   this.id = params['id'];
@@ -293,13 +282,11 @@ export class CommentComponent implements OnInit {
         }
       }
       if(this.status === false){
-        console.log("Reached here too")
         this.vote.value = -1
         this.vote.userName = this.user
         this.vote.commentId = id
 
         this.rootService.addVote(this.vote).then(res => {
-          console.log("Vote added")
 
           this.currentRoute.params.subscribe(params => {
             this.id = params['id'];

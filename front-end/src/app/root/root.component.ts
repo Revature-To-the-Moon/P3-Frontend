@@ -42,8 +42,6 @@ export class RootComponent implements OnInit {
     this.rootService.getAllRoots().then(result => {
       result.sort((a, b) => (a.dateTime < b.dateTime) ? 1 : -1);
       this.roots = result;
-      console.log(result);
-
       for(let root of this.roots){
         root.totalVote = 0
         this.rootVoteCounter = 0
@@ -58,7 +56,6 @@ export class RootComponent implements OnInit {
         }
         root.totalVote = this.rootVoteCounter
       }
-
     })
 
     this.rootService.getAllVotes().then(result => {
@@ -72,7 +69,6 @@ export class RootComponent implements OnInit {
       if (user?.preferred_username) {
         this.profileService.getUserByName(user.preferred_username).then((result: User) => {
           this.currentUser= result;
-          console.log(this.currentUser);
           
         });
       }
