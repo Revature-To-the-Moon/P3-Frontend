@@ -51,7 +51,7 @@ describe('CreatePostComponent', () => {
     expect(inputs.length >= 1).toBeTruthy();
   });
 
-  it('should have at least one input on the page', () => {
+  it('should have at least one textarea on the page', () => {
     const textarea = fixture.debugElement.queryAll(By.css('textarea'));
     expect(textarea.length >= 1).toBeTruthy();
   });

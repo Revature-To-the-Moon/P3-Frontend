@@ -47,6 +47,61 @@ describe('CommentComponent', () => {
     expect(component.onSubmit).toHaveBeenCalled();
   })
 
+  it('should call likeComment when up arrow is clicked', () => {
+
+    spyOn(component, 'likeComment');
+
+    if(component.checkIfCommentIsLiked(component.comment.votes)){
+      if(component.checkIfCommentIsLikedValue(component.comment.votes)){
+        let buttonEvent = fixture.debugElement.query(By.css('#upLiked'))
+
+        buttonEvent.triggerEventHandler('click', null);
+
+        expect(component.likeComment).toHaveBeenCalled();
+      }
+    }
+
+  })
+
+  it('should call unLikeComment when down arrow is clicked', () => {
+
+    spyOn(component, 'unLikeComment');
+
+    if(component.checkIfCommentIsLiked(component.comment.votes)){
+      if(component.checkIfCommentIsLikedValue(component.comment.votes)){
+        let buttonEvent = fixture.debugElement.query(By.css('#downLiked'))
+
+        buttonEvent.triggerEventHandler('click', null);
+
+        expect(component.unLikeComment).toHaveBeenCalled();
+      }
+    }
+
+  });
+
+  it('should have at least one input on the page', () => {
+    const inputs = fixture.debugElement.queryAll(By.css('input'));
+    expect(inputs.length >= 1).toBeTruthy();
+  });
+
+  it('should have at least one textarea on the page', () => {
+    const textarea = fixture.debugElement.queryAll(By.css('textarea'));
+    expect(textarea.length >= 1).toBeTruthy();
+  });
+
+  it('should have one input with "Comment" as the value', () => {
+    const inputs = fixture.debugElement.queryAll(By.css('input'));
+    const nativeInput: HTMLInputElement = inputs[0].nativeElement;
+    expect(nativeInput.value).toBe('Comment');
+  });
+
+  it('should have a textarea with "What are you thinking?" as the placeholder', () => {
+    const textarea = fixture.debugElement.queryAll(By.css('textarea'));
+    const nativeTextArea: HTMLTextAreaElement = textarea[0].nativeElement;
+    expect(nativeTextArea.placeholder).toBe("What are you thinking?");
+  });
+
+  
   it('should check if a comment is liked', () => {
     const mockVote = [{
       // vote info
