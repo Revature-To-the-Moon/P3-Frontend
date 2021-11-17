@@ -97,11 +97,10 @@ export class ProfileService {
           }
         };
     });
-    console.log(activityList);
     return(activityList);
   }
 
-  getFollowingsByUserId(id: number): Promise<Followings[]>
+  async getFollowingsByUserId(id: number): Promise<Followings[]>
   {
     return this.http.get<[]>(this.followUrl + "/followeruserId/"+ id).toPromise();
   }
@@ -111,16 +110,12 @@ export class ProfileService {
     var doesFollow = false;
     this.getFollowedPostByUserId(currentUser).then((result: FollowingPost[]) => {
       let listOfFollowings = result;
-      console.log("followedPostId is "+followedPostId+", userID is "+currentUser)
-      console.log(listOfFollowings)
       for(let i = 0; i < listOfFollowings.length; i++){
         if (listOfFollowings[i].rootId == followedPostId){
-          console.log("returning true")
           doesFollow = true;
         }
       }
     })
-    console.log("final decision is: "+doesFollow)
     return doesFollow;
 }
 
