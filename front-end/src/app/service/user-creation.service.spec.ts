@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UserCreationService } from './user-creation.service';
 import { User } from '../models/user';
@@ -37,5 +37,39 @@ describe('UserCreationService', () => {
       expect(actualUsers).toEqual(fakeUsers);
     })
   });
+
+  it('should get user by username', fakeAsync(() => {
+    let fakeUser: User = {
+      id: 1,
+      email: 'Zoot@zooter.com',
+      name: 'Zambie',
+      username: 'Zoot',
+      followings: []
+    };
+
+    spyOn(service, 'getUserByName').and.callThrough();
+
+    service.getUserByName('Zoot').then((res) => {
+      expect(res).toEqual(fakeUser);
+      expect(service.getUserByName).toHaveBeenCalledWith('Zoot');
+    })
+  }));
+
+  it('should add a user', fakeAsync(() => {
+    let fakeUser: User = {
+      id: 1,
+      email: 'Zoot@zooter.com',
+      name: 'Zambie',
+      username: 'Zoot',
+      followings: []
+    };
+
+    spyOn(service, 'AddObject').and.callThrough();
+
+    service.AddObject(fakeUser).then((res) => {
+      expect(res).toEqual(fakeUser);
+      expect(service.AddObject).toHaveBeenCalled;
+    })
+  }));
 
 });
