@@ -34,8 +34,6 @@ export class CreatePostComponent implements OnInit {
       }
 
       this.root.dateTime = new Date()
-      console.log(this.root)
-
       this.rService.addRoot(this.root).then(res => {
         alert("Post successfully created")
         this.router.navigateByUrl('root');

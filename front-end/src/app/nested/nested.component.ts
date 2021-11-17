@@ -65,7 +65,6 @@ export class NestedComponent implements OnInit {
       this.rootService.getCommentById(this.id).then((result: Comment) => {
         this.root = result;
         this.root.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
-        console.log(result)
       })
     })
   }
@@ -75,7 +74,6 @@ export class NestedComponent implements OnInit {
   }
 
   onSubmit(postForm: NgForm) {
-    console.log("Comment submitted")
 
     this.auth.user$.subscribe((user) => {
       if (user?.preferred_username) {
@@ -88,8 +86,6 @@ export class NestedComponent implements OnInit {
 
       this.comment.dateTime = new Date();
       this.comment.rootId = this.root.rootId;
-      console.log(this.root.rootId)
-      console.log(this.comment.rootId)
 
       this.rootService.addComment(this.comment).then(res => {
         alert("Comment successfully created")

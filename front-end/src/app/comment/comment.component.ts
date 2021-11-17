@@ -67,9 +67,8 @@ export class CommentComponent implements OnInit {
       this.rootService.getRootById(this.id).then((result: Root) => {
         this.root = result;
         result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
-        console.log(result)
+        for(let comment of this.root.comments){
 
-        for (let comment of this.root.comments) {
           comment.totalVote = 0;
           this.counter = 0;
           for (let vote of comment.votes) {
@@ -86,7 +85,6 @@ export class CommentComponent implements OnInit {
   }
 
   onSubmit(postForm: NgForm) {
-    console.log("Comment submitted")
 
     this.auth.user$.subscribe((user) => {
       if (user?.preferred_username) {
@@ -99,7 +97,6 @@ export class CommentComponent implements OnInit {
 
       this.comment.dateTime = new Date();
       this.comment.parentId = -1;
-      console.log(this.root)
 
       this.rootService.addComment(this.comment).then(res => {
         alert("Comment successfully created")
@@ -128,54 +125,53 @@ export class CommentComponent implements OnInit {
     return this.liked
   }
 
-  likeComment(id: number) {
-    console.log(this.user)
+  likeComment(id: number){
     this.rootService.getCommentById(id).then(result => {
-      console.log(result)
-      if (result.votes.length !== 0) {
-        for (let vote of result.votes) {
-          if (vote.userName === this.user) {
-            if (vote.value === 1) {
-              this.status = true
-              this.rootService.deleteVote(vote.id).then(res => {
-                this.currentRoute.params.subscribe(params => {
-                  this.id = params['id'];
+        if(result.votes.length !== 0){
+          for(let vote of result.votes){
+            if(vote.userName === this.user){
+              if(vote.value === 1){
+                this.status = true
+                this.rootService.deleteVote(vote.id).then(res =>{
+                  this.currentRoute.params.subscribe(params => {
+                    this.id = params['id'];
+              
+                    this.rootService.getRootById(this.id).then((result: Root) => {
+                      this.root = result;
+  
+                      for(let comment of this.root.comments){
+                        comment.totalVote = 0;
+                        this.counter = 0;
+                        for(let vote of comment.votes){
+                          this.counter = this.counter + vote.value;
+                        }
+                        comment.totalVote = this.counter;
 
-                  this.rootService.getRootById(this.id).then((result: Root) => {
-                    this.root = result;
-                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
-
-                    for (let comment of this.root.comments) {
-                      comment.totalVote = 0;
-                      this.counter = 0;
-                      for (let vote of comment.votes) {
-                        this.counter = this.counter + vote.value;
                       }
                       comment.totalVote = this.counter;
                     }
                   })
                 })
-              })
-            }
-            else if (vote.value === -1) {
-              this.status = true
-              vote.value = 1
+              }
+              else if(vote.value === -1){
+                this.status = true
+                vote.value = 1
 
-              this.rootService.updateVote(vote).then(res => {
-                console.log("Vote added")
+                this.rootService.updateVote(vote).then(res => {
 
-                this.currentRoute.params.subscribe(params => {
-                  this.id = params['id'];
+                  this.currentRoute.params.subscribe(params => {
+                    this.id = params['id'];
+              
+                    this.rootService.getRootById(this.id).then((result: Root) => {
+                      this.root = result;
 
-                  this.rootService.getRootById(this.id).then((result: Root) => {
-                    this.root = result;
-                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
-
-                    for (let comment of this.root.comments) {
-                      comment.totalVote = 0;
-                      this.counter = 0;
-                      for (let vote of comment.votes) {
-                        this.counter = this.counter + vote.value;
+                      for(let comment of this.root.comments){
+                        comment.totalVote = 0;
+                        this.counter = 0;
+                        for(let vote of comment.votes){
+                          this.counter = this.counter + vote.value;
+                        }
+                        comment.totalVote = this.counter;
                       }
                       comment.totalVote = this.counter;
                     }
@@ -192,13 +188,11 @@ export class CommentComponent implements OnInit {
       }
         
         if(this.status === false){
-          console.log("Reached here too")
           this.vote.value = 1
           this.vote.userName = this.user
           this.vote.commentId = id
 
           this.rootService.addVote(this.vote).then(res => {
-            console.log("Vote added")
 
             this.currentRoute.params.subscribe(params => {
               this.id = params['id'];
@@ -231,28 +225,51 @@ export class CommentComponent implements OnInit {
     });
   }
 
-  unLikeComment(id: number) {
-    console.log(this.user)
+  unLikeComment(id: number){
     this.rootService.getCommentById(id).then(result => {
-      console.log(this.status)
-      if (result.votes.length !== 0) {
-        for (let vote of result.votes) {
-          if (vote.userName === this.user) {
-            if (vote.value === -1) {
-              this.status = true
-              this.rootService.deleteVote(vote.id).then(res => {
-                this.currentRoute.params.subscribe(params => {
-                  this.id = params['id'];
+        if(result.votes.length !== 0){
+          for(let vote of result.votes){
+            if(vote.userName === this.user){
+              if(vote.value === -1){
+                this.status = true
+                this.rootService.deleteVote(vote.id).then(res =>{
+                    this.currentRoute.params.subscribe(params => {
+                      this.id = params['id'];
+                
+                      this.rootService.getRootById(this.id).then((result: Root) => {
+                        this.root = result;
+    
+                        for(let comment of this.root.comments){
+                          comment.totalVote = 0;
+                          this.counter = 0;
+                          for(let vote of comment.votes){
+                            this.counter = this.counter + vote.value;
+                          }
+                          comment.totalVote = this.counter;
+                        }
+                      })
+                    })
+                })
+              }
+              else if(vote.value === 1){
+                this.status = true
+                vote.value = -1
 
-                  this.rootService.getRootById(this.id).then((result: Root) => {
-                    this.root = result;
-                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
+                this.rootService.updateVote(vote).then(res => {
 
-                    for (let comment of this.root.comments) {
-                      comment.totalVote = 0;
-                      this.counter = 0;
-                      for (let vote of comment.votes) {
-                        this.counter = this.counter + vote.value;
+                  this.currentRoute.params.subscribe(params => {
+                    this.id = params['id'];
+              
+                    this.rootService.getRootById(this.id).then((result: Root) => {
+                      this.root = result;
+
+                      for(let comment of this.root.comments){
+                        comment.totalVote = 0;
+                        this.counter = 0;
+                        for(let vote of comment.votes){
+                          this.counter = this.counter + vote.value;
+                        }
+                        comment.totalVote = this.counter;
                       }
                       comment.totalVote = this.counter;
                     }
@@ -260,12 +277,16 @@ export class CommentComponent implements OnInit {
                 })
               })
             }
-            else if (vote.value === 1) {
-              this.status = true
-              vote.value = -1
+          }
+        }
+        
+        if(this.status === false){
+          this.vote.value = -1
+          this.vote.userName = this.user
+          this.vote.commentId = id
 
-              this.rootService.updateVote(vote).then(res => {
-                console.log("Vote added")
+          this.rootService.addVote(this.vote).then(res => {
+
 
                 this.currentRoute.params.subscribe(params => {
                   this.id = params['id'];
