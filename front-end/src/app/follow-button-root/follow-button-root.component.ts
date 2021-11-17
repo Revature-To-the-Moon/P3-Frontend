@@ -84,7 +84,6 @@ export class FollowButtonRootComponent implements OnInit {
       };
       if(this.isFollow == true){
       
-        console.log("unfollowing...")
         this.profileService.getFollowedPostByUserId(this.currentUser.id).then((result: FollowingPost[]) => {
           let listOfFollowings = result;
           for(let i = 0; i < listOfFollowings.length; i++){

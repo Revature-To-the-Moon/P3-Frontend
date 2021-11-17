@@ -70,8 +70,6 @@ export class ReadRootComponent implements OnInit {
           this.popular = result.comments[0];
           this.topStory= [this.popular];
           this.topStory = this.topStory.concat(this.rootService.RecursiveFunction(this.popular));
-          console.log("story:")
-          console.log(this.topStory)
         }
       })
     })

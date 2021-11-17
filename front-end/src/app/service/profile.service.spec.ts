@@ -299,14 +299,11 @@ describe('ProfileService', () => {
   spyOn(service, 'getFollowingsByUserId').and.returnValue(Promise.resolve(fakeFollowing));
   
     service.getFollowingsByUserId(0).then((following:Followings[]) => {
-      console.log("getting all followers");
-      console.log(following);
       actualFollowing = following;
       httpMock.verify();
       expect(actualFollowing).toEqual(fakeFollowing);
       done();      
     })
-    console.log("after the block");
     
   });
 });
