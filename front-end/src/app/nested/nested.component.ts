@@ -14,7 +14,7 @@ import { Root } from '../models/root';
 })
 export class NestedComponent implements OnInit {
 
-  constructor(public router: Router, private currentRoute: ActivatedRoute, private rootService: RootServiceService, public auth: AuthService, private cdr: ChangeDetectorRef) { }
+  constructor(public router: Router, private currentRoute: ActivatedRoute, public rootService: RootServiceService, public auth: AuthService, private cdr: ChangeDetectorRef) { }
 
   id = 0;
   user: string = '';
