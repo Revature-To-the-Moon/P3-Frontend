@@ -149,6 +149,7 @@ describe('RootServiceService', () => {
     })
   }));
 
+  //need to check for legitimate passing
   it('deleteComment should delete a comment', fakeAsync (() => {
     let fakeComment = {
       id: 8,
