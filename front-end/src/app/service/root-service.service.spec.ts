@@ -231,6 +231,6 @@ describe('RootServiceService', () => {
     })
   }));
 
-  
+})
 
 
