@@ -46,14 +46,11 @@ export class FollowButtonComponent implements OnInit {
           this.currentUser.username = user.preferred_username;
           this.profileService.getUserByName(this.currentUser.username).then((result: User) => {
               this.currentUser= result;
-              console.log(this.currentUser)
               let listOfFollowings = this.currentUser.followings;
-              console.log(listOfFollowings)
               for(let i = 0; i < listOfFollowings.length; i++){
                 if (listOfFollowings[i].followingUserId == this.followId){
                   this.isFollow = true;
                   this.followedUser=listOfFollowings[i];
-                  console.log(this.followedUser);
                   break;
                   }
                 }
@@ -97,7 +94,6 @@ export class FollowButtonComponent implements OnInit {
       );
     })
     } else if (!this.isFollow) {
-      console.log(this.followedUser);
       this.profileService.unfollowUser(this.followedUser.id).subscribe(
         data => {
           this.isFollow = false;

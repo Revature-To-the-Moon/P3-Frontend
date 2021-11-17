@@ -17,6 +17,8 @@ export class RootComponent implements OnInit {
 
   constructor(private router: Router, private rootService: RootServiceService, public auth: AuthService, public profileService: ProfileService) { }
 
+  voteCounter: number = 0;
+  rootVoteCounter: number = 0;
   roots: Root[] = [];
   votes: Vote[] = [];
 
@@ -40,7 +42,20 @@ export class RootComponent implements OnInit {
     this.rootService.getAllRoots().then(result => {
       result.sort((a, b) => (a.dateTime < b.dateTime) ? 1 : -1);
       this.roots = result;
-      console.log(result);
+      for(let root of this.roots){
+        root.totalVote = 0
+        this.rootVoteCounter = 0
+        for (let comment of root.comments) {
+          comment.totalVote = 0;
+          this.voteCounter = 0;
+          for (let vote of comment.votes) {
+            this.voteCounter = this.voteCounter + vote.value;
+          }
+          comment.totalVote = this.voteCounter;
+          this.rootVoteCounter = this.rootVoteCounter + comment.totalVote
+        }
+        root.totalVote = this.rootVoteCounter
+      }
     })
 
     this.rootService.getAllVotes().then(result => {
@@ -54,7 +69,6 @@ export class RootComponent implements OnInit {
       if (user?.preferred_username) {
         this.profileService.getUserByName(user.preferred_username).then((result: User) => {
           this.currentUser= result;
-          console.log(this.currentUser);
           
         });
       }

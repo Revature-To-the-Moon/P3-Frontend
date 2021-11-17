@@ -22,7 +22,6 @@ export class SearchComponent implements OnInit {
     if (value) {
       this.result = this.roots.filter(res => res.title.toLocaleLowerCase().includes(this.value.toLocaleLowerCase()) ||
         res.userName.toLocaleLowerCase().includes(this.value.toLocaleLowerCase()))
-      console.log(this.result)
     }
     else if(!value){
       this.result = [];
