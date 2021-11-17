@@ -148,6 +148,26 @@ describe('RootServiceService', () => {
       expect(res).toEqual(fakeComment);
     })
   }));
+
+  //need to check for legitimate passing
+  it('deleteComment should delete a comment', fakeAsync (() => {
+    let fakeComment = {
+      id: 8,
+      parentId: -1,
+      rootId: 1,
+      message: 'My dog ran into the store...',
+      totalVote: 12,
+      dateTime: null,
+      userName: 'ToTheMoon1234',
+      votes: [],
+      comments: []
+    }
+    spyOn(service, 'deleteComment').and.callThrough();
+    service.deleteComment(8).then((res) => {
+      expect(service.deleteVote).toHaveBeenCalledWith(8);
+      expect(res).toEqual(null);
+  })
+}));
   //vote tests//
 
   it('getAllVotes should get all votes', fakeAsync (() => {
@@ -212,6 +232,6 @@ describe('RootServiceService', () => {
     })
   }));
 
-  
+})
 
-});
+
