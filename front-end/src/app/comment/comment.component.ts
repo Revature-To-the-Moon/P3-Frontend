@@ -143,6 +143,7 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
+                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -168,6 +169,7 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
+                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -203,6 +205,7 @@ export class CommentComponent implements OnInit {
         
               this.rootService.getRootById(this.id).then((result: Root) => {
                 this.root = result;
+                result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                 for(let comment of this.root.comments){
                   comment.totalVote = 0;
@@ -216,6 +219,8 @@ export class CommentComponent implements OnInit {
             })
           })
         }
+
+        this.status = false
       })
   }
 
@@ -229,6 +234,7 @@ export class CommentComponent implements OnInit {
   unLikeComment(id: number) {
     console.log(this.user)
     this.rootService.getCommentById(id).then(result => {
+      console.log(this.status)
       if (result.votes.length !== 0) {
         for (let vote of result.votes) {
           if (vote.userName === this.user) {
@@ -240,6 +246,7 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
+                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -265,6 +272,7 @@ export class CommentComponent implements OnInit {
 
                   this.rootService.getRootById(this.id).then((result: Root) => {
                     this.root = result;
+                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                     for (let comment of this.root.comments) {
                       comment.totalVote = 0;
@@ -284,33 +292,34 @@ export class CommentComponent implements OnInit {
           }
         }
       }
-        if(this.status === false){
-          console.log("Reached here too")
-          this.vote.value = -1
-          this.vote.userName = this.user
-          this.vote.commentId = id
+      if(this.status === false){
+        console.log("Reached here too")
+        this.vote.value = -1
+        this.vote.userName = this.user
+        this.vote.commentId = id
 
-          this.rootService.addVote(this.vote).then(res => {
-            console.log("Vote added")
+        this.rootService.addVote(this.vote).then(res => {
+          console.log("Vote added")
 
-            this.currentRoute.params.subscribe(params => {
-              this.id = params['id'];
-        
-              this.rootService.getRootById(this.id).then((result: Root) => {
-                this.root = result;
+          this.currentRoute.params.subscribe(params => {
+            this.id = params['id'];
+      
+            this.rootService.getRootById(this.id).then((result: Root) => {
+              this.root = result;
+              result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
-                for(let comment of this.root.comments){
-                  comment.totalVote = 0;
-                  this.counter = 0;
-                  for(let vote of comment.votes){
-                    this.counter = this.counter + vote.value;
-                  }
-                  comment.totalVote = this.counter;
+              for(let comment of this.root.comments){
+                comment.totalVote = 0;
+                this.counter = 0;
+                for(let vote of comment.votes){
+                  this.counter = this.counter + vote.value;
                 }
-              })
+                comment.totalVote = this.counter;
+              }
             })
           })
-    }
+        })
+      }
 
       this.status = false
     })
