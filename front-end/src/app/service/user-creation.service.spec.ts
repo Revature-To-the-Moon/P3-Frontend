@@ -1,4 +1,4 @@
-import { TestBed, fakeAsync } from '@angular/core/testing';
+import { TestBed, fakeAsync, ComponentFixtureAutoDetect, flushMicrotasks } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UserCreationService } from './user-creation.service';
 import { User } from '../models/user';
@@ -20,7 +20,7 @@ describe('UserCreationService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get all users', async () => {
+  it('should get all users', fakeAsync (() => {
     let actualUsers: User[] | undefined;
     let fakeUsers: User[] = [ {
       id: 1,
@@ -36,7 +36,7 @@ describe('UserCreationService', () => {
 
       expect(actualUsers).toEqual(fakeUsers);
     })
-  });
+  }));
 
   it('should get user by username', fakeAsync(() => {
     let fakeUser: User = {
@@ -49,10 +49,10 @@ describe('UserCreationService', () => {
 
     spyOn(service, 'getUserByName').and.callThrough();
 
-    service.getUserByName('Zoot').then((res) => {
-      expect(res).toEqual(fakeUser);
-      expect(service.getUserByName).toHaveBeenCalledWith('Zoot');
-    })
+    service.getUserByName('Zoot');
+    flushMicrotasks();
+    expect(service.getUserByName).toHaveBeenCalledWith('Zoot');
+
   }));
 
   it('should add a user', fakeAsync(() => {
@@ -66,10 +66,9 @@ describe('UserCreationService', () => {
 
     spyOn(service, 'AddObject').and.callThrough();
 
-    service.AddObject(fakeUser).then((res) => {
-      expect(res).toEqual(fakeUser);
-      expect(service.AddObject).toHaveBeenCalled;
-    })
+    service.AddObject(fakeUser);
+    flushMicrotasks();
+    expect(service.AddObject).toHaveBeenCalledWith(fakeUser);
   }));
 
 });
