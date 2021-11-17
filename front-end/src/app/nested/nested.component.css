@@ -107,10 +107,6 @@ textarea{
     flex-wrap: wrap;
 } */
 
-.votes {
-    text-align: right;
-}
-
 #vote{
     margin-left: 5px;
     margin-right: 5px;
