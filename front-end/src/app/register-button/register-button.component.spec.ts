@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AuthModule, AuthService } from '@auth0/auth0-angular';
-import { UserCreationService } from '../service/user-creation.service';
+import { AuthModule } from '@auth0/auth0-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
 
 import { RegisterButtonComponent } from './register-button.component';
 
@@ -31,4 +31,5 @@ describe('RegisterButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

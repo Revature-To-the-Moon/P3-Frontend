@@ -46,6 +46,11 @@ span {
     font-weight: bold;
 }
 
+span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 p {
     font-size: 14px;
     color: rgba(20, 20, 20, 0.8);
@@ -134,3 +139,8 @@ textarea{
 .container {
     background-color: white;
 }
+
+/* #buttons {
+    display: flex;
+    flex-wrap: wrap;
+} */

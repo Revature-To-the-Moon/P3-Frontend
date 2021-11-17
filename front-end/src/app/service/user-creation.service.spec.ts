@@ -1,10 +1,13 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed, fakeAsync, ComponentFixtureAutoDetect, flushMicrotasks } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UserCreationService } from './user-creation.service';
 import { User } from '../models/user';
 
+const expectedUserUrl = 'https://52.141.211.229/user/api'
+
 describe('UserCreationService', () => {
   let service: UserCreationService;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,19 +20,55 @@ describe('UserCreationService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get list of users', async () => {
-    let userList: User[] = [ {
-      username: '',
+  it('should get all users', fakeAsync (() => {
+    let actualUsers: User[] | undefined;
+    let fakeUsers: User[] = [ {
+      id: 1,
+      username: "Tenzin"
     } ];
 
-    spyOn(service, 'getAllUsers').and.returnValue(Promise.resolve(userList));
+    service.getAllUsers().then((users) => {
+      actualUsers = users;
 
-  });
+      const request = httpMock.expectOne(expectedUserUrl + '/user/');
+      request.flush(fakeUsers);
+      httpMock.verify();
 
-  it('should add user to list', () => {
-    let user: User = {
-      username: 'zoe',
+      expect(actualUsers).toEqual(fakeUsers);
+    })
+  }));
+
+  it('should get user by username', fakeAsync(() => {
+    let fakeUser: User = {
+      id: 1,
+      email: 'Zoot@zooter.com',
+      name: 'Zambie',
+      username: 'Zoot',
+      followings: []
     };
-    spyOn(service, 'AddObject').and.returnValue(Promise.resolve(user));
-  });
+
+    spyOn(service, 'getUserByName').and.callThrough();
+
+    service.getUserByName('Zoot');
+    flushMicrotasks();
+    expect(service.getUserByName).toHaveBeenCalledWith('Zoot');
+
+  }));
+
+  it('should add a user', fakeAsync(() => {
+    let fakeUser: User = {
+      id: 1,
+      email: 'Zoot@zooter.com',
+      name: 'Zambie',
+      username: 'Zoot',
+      followings: []
+    };
+
+    spyOn(service, 'AddObject').and.callThrough();
+
+    service.AddObject(fakeUser);
+    flushMicrotasks();
+    expect(service.AddObject).toHaveBeenCalledWith(fakeUser);
+  }));
+
 });

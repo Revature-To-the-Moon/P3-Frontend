@@ -19,7 +19,7 @@
     <div class="modal-body">
         <div *ngFor="let res of result">
             <div class="row searchResult rounded">
-                <h5><a class="badge badge-success" routerLink="/comment/{{res.id}}" (click)="modal.close('Close click')">{{res.title}}</a></h5>
+                <h3><a class="badge badge-success" routerLink="/comment/{{res.id}}" (click)="modal.close('Close click')">{{res.title}}</a></h3>
                 <p>{{res.userName}}</p>
                 <p>{{res.message}}</p>
             </div>

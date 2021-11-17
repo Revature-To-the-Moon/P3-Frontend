@@ -46,6 +46,11 @@ span {
     font-weight: bold;
 }
 
+span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 p {
     font-size: 14px;
     color: rgba(20, 20, 20, 0.8);
@@ -95,4 +100,43 @@ textarea{
 
 .container {
     background-color: white;
+}
+
+/* #buttons {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+#vote{
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: white;
+}
+
+#up{
+    cursor: pointer;
+}
+#upLiked{
+    cursor: pointer;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); 
+}
+
+#upDisliked{
+    cursor: pointer;
+}
+
+#down{
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#downDisliked{
+    cursor: pointer;
+    margin-right: 10px;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); 
+}
+
+#downLiked{
+    cursor: pointer;
+    margin-right: 10px;
 }

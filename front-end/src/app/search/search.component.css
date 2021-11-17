@@ -18,7 +18,7 @@
 }
 
 .searchResult{
-    border: 3px solid #7877cf;
+    border: 1px solid #7877cf;
     background-color: #291a4a !important;
     margin-bottom: 1vw;
     color: #fdf4f7;
@@ -35,6 +35,10 @@ li{
     color: #fdf4f7
 }
 
+h3{
+    margin-top: 0.5vw;
+}
+
 .modal-body{
     background-color: #291a4a !important;
     background-image: url(../../assets/starrynight2.png);
@@ -48,4 +52,8 @@ li{
 
 .badge-success{
     background-color: #986aa8;
+}
+
+.badge-success:hover{
+    background-color: #7877cf;
 }

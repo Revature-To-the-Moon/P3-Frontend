@@ -16,7 +16,7 @@ import { ProfileService } from '../service/profile.service';
 })
 export class CommentComponent implements OnInit {
 
-  constructor(public profileService:ProfileService,public router: Router, private currentRoute: ActivatedRoute, private rootService: RootServiceService, private cdr: ChangeDetectorRef, public auth: AuthService) { }
+  constructor(public profileService: ProfileService, public router: Router, private currentRoute: ActivatedRoute, private rootService: RootServiceService, private cdr: ChangeDetectorRef, public auth: AuthService) { }
 
   id = 0;
   user: string = '';
@@ -68,9 +68,10 @@ export class CommentComponent implements OnInit {
         this.root = result;
         result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
         for(let comment of this.root.comments){
+
           comment.totalVote = 0;
           this.counter = 0;
-          for(let vote of comment.votes){
+          for (let vote of comment.votes) {
             this.counter = this.counter + vote.value;
           }
           comment.totalVote = this.counter;
@@ -81,7 +82,7 @@ export class CommentComponent implements OnInit {
 
   ngAfterContentChecked(): void {
     this.cdr.detectChanges();
-  }  
+  }
 
   onSubmit(postForm: NgForm) {
 
@@ -104,21 +105,21 @@ export class CommentComponent implements OnInit {
     })
   }
 
-  checkIfCommentIsLiked(votes: Vote[]): boolean{
-    if(votes.findIndex((item) => item.userName === this.user) >= 0){
+  checkIfCommentIsLiked(votes: Vote[]): boolean {
+    if (votes.findIndex((item) => item.userName === this.user) >= 0) {
       this.liked = true
     }
-    else{
+    else {
       this.liked = false
     }
     return this.liked
   }
 
-  checkIfCommentIsLikedValue(votes: Vote[]): boolean{
-    if(votes.findIndex((item) => item.userName === this.user && item.value === 1) >= 0){
+  checkIfCommentIsLikedValue(votes: Vote[]): boolean {
+    if (votes.findIndex((item) => item.userName === this.user && item.value === 1) >= 0) {
       this.liked = true
     }
-    else{
+    else {
       this.liked = false
     }
     return this.liked
@@ -145,8 +146,10 @@ export class CommentComponent implements OnInit {
                           this.counter = this.counter + vote.value;
                         }
                         comment.totalVote = this.counter;
+
                       }
-                    })
+                      comment.totalVote = this.counter;
+                    }
                   })
                 })
               }
@@ -170,17 +173,19 @@ export class CommentComponent implements OnInit {
                         }
                         comment.totalVote = this.counter;
                       }
-                    })
+                      comment.totalVote = this.counter;
+                    }
                   })
                 })
-              }
-              else{
-                this.status = false;
-              }
-              
+              })
             }
+            else {
+              this.status = false;
+            }
+
           }
         }
+      }
         
         if(this.status === false){
           this.vote.value = 1
@@ -194,6 +199,7 @@ export class CommentComponent implements OnInit {
         
               this.rootService.getRootById(this.id).then((result: Root) => {
                 this.root = result;
+                result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
 
                 for(let comment of this.root.comments){
                   comment.totalVote = 0;
@@ -206,17 +212,16 @@ export class CommentComponent implements OnInit {
               })
             })
           })
-    }
+        }
 
-    this.status = false
-  })
-    
+        this.status = false
+      })
   }
 
-  goToUserProfile(username:string):void {
+  goToUserProfile(username: string): void {
     this.profileService.getUserByName(username).then((result: User) => {
-      let userId= result.id;
-      this.router.navigateByUrl('profile/'+userId);
+      let userId = result.id;
+      this.router.navigateByUrl('profile/' + userId);
     });
   }
 
@@ -266,13 +271,11 @@ export class CommentComponent implements OnInit {
                         }
                         comment.totalVote = this.counter;
                       }
-                    })
+                      comment.totalVote = this.counter;
+                    }
                   })
                 })
-              }
-              else{
-                this.status = false;
-              }
+              })
             }
           }
         }
@@ -284,27 +287,68 @@ export class CommentComponent implements OnInit {
 
           this.rootService.addVote(this.vote).then(res => {
 
-            this.currentRoute.params.subscribe(params => {
-              this.id = params['id'];
-        
-              this.rootService.getRootById(this.id).then((result: Root) => {
-                this.root = result;
 
-                for(let comment of this.root.comments){
-                  comment.totalVote = 0;
-                  this.counter = 0;
-                  for(let vote of comment.votes){
-                    this.counter = this.counter + vote.value;
-                  }
-                  comment.totalVote = this.counter;
-                }
+                this.currentRoute.params.subscribe(params => {
+                  this.id = params['id'];
+
+                  this.rootService.getRootById(this.id).then((result: Root) => {
+                    this.root = result;
+                    result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
+
+                    for (let comment of this.root.comments) {
+                      comment.totalVote = 0;
+                      this.counter = 0;
+                      for (let vote of comment.votes) {
+                        this.counter = this.counter + vote.value;
+                      }
+                      comment.totalVote = this.counter;
+                    }
+                  })
+                })
               })
+            }
+            else {
+              this.status = false;
+            }
+          }
+        }
+      }
+      if(this.status === false){
+        console.log("Reached here too")
+        this.vote.value = -1
+        this.vote.userName = this.user
+        this.vote.commentId = id
+
+        this.rootService.addVote(this.vote).then(res => {
+          console.log("Vote added")
+
+          this.currentRoute.params.subscribe(params => {
+            this.id = params['id'];
+      
+            this.rootService.getRootById(this.id).then((result: Root) => {
+              this.root = result;
+              result.comments.sort((a, b) => (a.totalVote < b.totalVote) ? 1 : -1)
+
+              for(let comment of this.root.comments){
+                comment.totalVote = 0;
+                this.counter = 0;
+                for(let vote of comment.votes){
+                  this.counter = this.counter + vote.value;
+                }
+                comment.totalVote = this.counter;
+              }
             })
           })
-    }
+        })
+      }
 
-    this.status = false
-  })
+      this.status = false
+    })
   }
 
+  deleteComment(id: number) {
+    this.rootService.deleteComment(id).then(res => {
+      location.reload()
+    })
+  }
 }
