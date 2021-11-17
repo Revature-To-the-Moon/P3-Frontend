@@ -95,27 +95,3 @@ describe('NestedComponent', () => {
   });
 
 });
-
-
-// let fakeComment: Comment[] = [ {
-//   id: 1,
-//   message: "We's still walkin' a ducky!",
-//   totalVote: 32,
-//   dateTime: null,
-//   userName: "Zoe",
-//   parentId: 1,
-//   rootId: 1,
-//   votes: [],
-//   comments: [],
-// } 
-// {
-//   id: 1,
-//   message: "Wah wah I don't wanna test",
-//   totalVote: -67,
-//   dateTime: null,
-//   userName: "Brian",
-//   parentId: 1,
-//   rootId: 1,
-//   votes: [],
-//   comments: [],
-// }];
