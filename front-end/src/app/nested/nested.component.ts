@@ -12,7 +12,7 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class NestedComponent implements OnInit {
 
-  constructor(public router: Router, private currentRoute: ActivatedRoute, private rootService: RootServiceService, public auth: AuthService) { }
+  constructor(public router: Router, public currentRoute: ActivatedRoute, public rootService: RootServiceService, public auth: AuthService) { }
 
   id = 0;
   user: string = '';
